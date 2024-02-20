@@ -1274,17 +1274,17 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.44.0",
-            "version_normalized": "10.44.0.0",
+            "version": "v10.45.0",
+            "version_normalized": "10.45.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "1199dbe361787bbe9648131a79f53921b4148cf6"
+                "reference": "8b08d8cd79f8093eb51a8c59e21647bedfbf05f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/1199dbe361787bbe9648131a79f53921b4148cf6",
-                "reference": "1199dbe361787bbe9648131a79f53921b4148cf6",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/8b08d8cd79f8093eb51a8c59e21647bedfbf05f2",
+                "reference": "8b08d8cd79f8093eb51a8c59e21647bedfbf05f2",
                 "shasum": ""
             },
             "require": {
@@ -1434,7 +1434,7 @@
                 "symfony/postmark-mailer": "Required to enable support for the Postmark mail transport (^6.2).",
                 "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0)."
             },
-            "time": "2024-02-13T16:01:16+00:00",
+            "time": "2024-02-20T15:32:48+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1483,17 +1483,17 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.13.11",
-            "version_normalized": "1.13.11.0",
+            "version": "v1.14.0",
+            "version_normalized": "1.14.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "60a163c3e7e3346a1dec96d3e6f02e6465452552"
+                "reference": "6b127276e3f263f7bb17d5077e9e0269e61b2a0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/60a163c3e7e3346a1dec96d3e6f02e6465452552",
-                "reference": "60a163c3e7e3346a1dec96d3e6f02e6465452552",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/6b127276e3f263f7bb17d5077e9e0269e61b2a0e",
+                "reference": "6b127276e3f263f7bb17d5077e9e0269e61b2a0e",
                 "shasum": ""
             },
             "require": {
@@ -1512,7 +1512,7 @@
                 "nunomaduro/termwind": "^1.15.1",
                 "pestphp/pest": "^2.33.6"
             },
-            "time": "2024-02-13T17:20:13+00:00",
+            "time": "2024-02-20T17:38:05+00:00",
             "bin": [
                 "builds/pint"
             ],
@@ -1612,17 +1612,17 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.27.4",
-            "version_normalized": "1.27.4.0",
+            "version": "v1.28.0",
+            "version_normalized": "1.28.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "3047e1a157fad968cc5f6e620d5cbe5c0867fffd"
+                "reference": "a05861ca9b04558b1ec1f36cff521a271a259b6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/3047e1a157fad968cc5f6e620d5cbe5c0867fffd",
-                "reference": "3047e1a157fad968cc5f6e620d5cbe5c0867fffd",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/a05861ca9b04558b1ec1f36cff521a271a259b6c",
+                "reference": "a05861ca9b04558b1ec1f36cff521a271a259b6c",
                 "shasum": ""
             },
             "require": {
@@ -1636,7 +1636,7 @@
                 "orchestra/testbench": "^7.0|^8.0|^9.0",
                 "phpstan/phpstan": "^1.10"
             },
-            "time": "2024-02-08T15:24:21+00:00",
+            "time": "2024-02-20T15:11:00+00:00",
             "bin": [
                 "bin/sail"
             ],
@@ -5999,17 +5999,17 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "11.4.1",
-            "version_normalized": "11.4.1.0",
+            "version": "11.4.3",
+            "version_normalized": "11.4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "d94b110c2ee9a0602ae1be9bf59e91ae8dab28cf"
+                "reference": "d36b8f2b39811e0269b213df6b166890304360f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/d94b110c2ee9a0602ae1be9bf59e91ae8dab28cf",
-                "reference": "d94b110c2ee9a0602ae1be9bf59e91ae8dab28cf",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/d36b8f2b39811e0269b213df6b166890304360f4",
+                "reference": "d36b8f2b39811e0269b213df6b166890304360f4",
                 "shasum": ""
             },
             "require": {
@@ -6053,7 +6053,7 @@
                 "php-ffmpeg/php-ffmpeg": "Required for generating video thumbnails",
                 "spatie/pdf-to-image": "Required for generating thumbnails of PDFs and SVGs"
             },
-            "time": "2024-02-17T12:22:37+00:00",
+            "time": "2024-02-20T15:26:46+00:00",
             "type": "library",
             "extra": {
                 "laravel": {
@@ -6094,7 +6094,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
-                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.4.1"
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.4.3"
             },
             "funding": [
                 {
