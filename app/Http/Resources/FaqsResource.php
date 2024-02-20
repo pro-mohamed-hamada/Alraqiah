@@ -16,7 +16,7 @@ class FaqsResource extends JsonResource
     {
         return [
             'id'    => $this->id,
-            'equestion' => $this->answer,
+            'equestion' => $this->equestion,
             'answer' => $this->answer,
         ];
     }
