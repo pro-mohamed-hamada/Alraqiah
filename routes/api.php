@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\ClientHistoriesController;
 use App\Http\Controllers\Api\GovernoratesController;
 use App\Http\Controllers\Api\ClientsController;
 use App\Http\Controllers\Api\ClientServicesController;
+use App\Http\Controllers\Api\ComplaintReplayController;
+use App\Http\Controllers\Api\ComplaintsController;
 use App\Http\Controllers\Api\FaqsController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ServicesController;
@@ -31,6 +33,15 @@ Route::group(['middleware'=>['auth:sanctum', 'localization']], function(){
     Route::get('profile',      [AuthController::class, 'profile']);
     Route::get('rates', [RatesController::class, 'index']);
     Route::post('rates', [RatesController::class, 'store']);
+
+    Route::get('complaints', [ComplaintsController::class, 'index']);
+    Route::post('complaints', [ComplaintsController::class, 'store']);
+    Route::put('complaints/{id}', [ComplaintsController::class, 'update']);
+    Route::delete('complaints/{id}', [ComplaintsController::class, 'destroy']);
+
+    Route::post('complaint-replies', [ComplaintReplayController::class, 'store']);
+    Route::put('complaint-replies/{id}', [ComplaintReplayController::class, 'update']);
+    Route::delete('complaint-replies/{id}', [ComplaintReplayController::class, 'destroy']);
 
     Route::get('home', HomeController::class);
     Route::get('faq', FaqsController::class);
