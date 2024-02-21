@@ -74,6 +74,6 @@ class User extends Authenticatable implements HasMedia
 
     public function client(): \Illuminate\Database\Eloquent\Relations\belongsTo
     {
-        return $this->belongsTo(client::class);
+        return $this->belongsTo(Client::class);
     }
 }
