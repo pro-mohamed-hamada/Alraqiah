@@ -76,4 +76,9 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->belongsTo(Client::class);
     }
+
+    public function notifications(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Notification::class,  'user_id');
+    }
 }

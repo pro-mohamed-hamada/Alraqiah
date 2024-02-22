@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RelativesSeeder::class);
         $this->call(FaqsSeeder::class);
         $this->call(SettingsSeeder::class);
+        $this->call(NotificationsSeeder::class);
     }
 }
