@@ -47,7 +47,7 @@
                                         <form method="post" action="{{route('faqs.destroy', $faq->id)}}">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class=" btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <button name="delete" type="submit" class=" btn btn-danger"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </li>
                                     <li class="list-group-item"><a href="{{ route('faqs.edit', $faq->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></li>

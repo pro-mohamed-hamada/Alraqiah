@@ -45,7 +45,7 @@
                                         <form method="post" action="{{route('videos.destroy', $video->id)}}">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class=" btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <button name="delete" type="submit" class=" btn btn-danger"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </li>
                                     <li class="list-group-item"><a href="{{ route('videos.edit', $video->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></li>

@@ -51,4 +51,19 @@
         <script src="{{asset('js/js.js')}}"></script>
         <script src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
 </body>
+<script>
+    $(document).ready(function(){
+        $("body").on("click", "button[name='delete']",function(e){
+            e.preventDefault();
+            
+            var status = confirm("Are you sure you want delete.");
+            
+            if(status==true)
+            {
+                $(this).parent('form').submit();
+            }
+            
+        });
+    });
+</script>
 </html>
