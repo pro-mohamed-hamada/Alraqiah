@@ -47,7 +47,7 @@ class FcmMessagesController extends Controller
             $flags = FcmEventsNames::$FLAGS;
             $fcm_channels = FcmEventsNames::$CHANNELS;
             $fcm_actions = FcmEventsNames::$FCMACTIONS;
-            return view('dashboard.FcmMessages.create',compact('flags','fcm_channels','fcm_actions'));
+            return view('Dashboard.FcmMessages.create',compact('flags','fcm_channels','fcm_actions'));
         }catch(Exception $e){
             return redirect()->back()->with("message", $e->getMessage());
         }
@@ -94,7 +94,7 @@ class FcmMessagesController extends Controller
             $flags = FcmEventsNames::$FLAGS;
             $fcm_channels = FcmEventsNames::$CHANNELS;
             $fcm_actions = FcmEventsNames::$FCMACTIONS;
-            return view('dashboard.FcmMessages.edit', compact('fcmMessage','flags','fcm_channels','fcm_actions'));
+            return view('Dashboard.FcmMessages.edit', compact('fcmMessage','flags','fcm_channels','fcm_actions'));
         
         }catch(Exception $e){
             return redirect()->back()->with("message", $e->getMessage());

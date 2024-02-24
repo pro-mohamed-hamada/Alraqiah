@@ -44,7 +44,7 @@ class ScheduleFcmController extends Controller
             $flags = FcmEventsNames::$FLAGS;
             $fcm_channels = FcmEventsNames::$CHANNELS;
             $triggers = FcmEventsNames::$EVENTS;
-            return view('dashboard.ScheduleFcm.create',compact('flags','fcm_channels','triggers'));
+            return view('Dashboard.ScheduleFcm.create',compact('flags','fcm_channels','triggers'));
         }catch(Exception $e){
             return redirect()->back()->with("message", $e->getMessage());
         }
@@ -91,7 +91,7 @@ class ScheduleFcmController extends Controller
             $flags = FcmEventsNames::$FLAGS;
             $fcm_channels = FcmEventsNames::$CHANNELS;
             $triggers = FcmEventsNames::$EVENTS;
-            return view('dashboard.ScheduleFcm.edit', compact('scheduleFcm','flags','fcm_channels','triggers'));
+            return view('Dashboard.ScheduleFcm.edit', compact('scheduleFcm','flags','fcm_channels','triggers'));
         
         }catch(Exception $e){
             return redirect()->back()->with("message", $e->getMessage());
