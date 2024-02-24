@@ -3,8 +3,11 @@
 namespace App\Services;
 
 use App\Exceptions\NotFoundException;
+use App\Models\FcmMessage;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Notification;
+use App\Models\ScheduleFcm;
+use App\Models\User;
 use App\QueryFilters\NotificationsFilter;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -30,6 +33,20 @@ class NotificationService extends BaseService
     {
         return $this->queryGet(filters: $filters,withRelations: $withRelations)->cursorPaginate($perPage);
     }
+
+    public function store(User $user, FcmMessage|ScheduleFcm $fcm): bool
+    {
+        $data['title'] = $fcm->title;
+        $data['content'] = $fcm->content;
+        $replaced_values = [
+            '@USER_NAME@'=>$user->name,
+        ];
+        $data['content'] = replaceFlags($data['content'],$replaced_values);
+        $notification = $this->getModel()->create($data);
+        if (!$notification)
+            return false ;
+        return true;
+    } //end of store
 
     public function markAsRead(string $id): bool
     {

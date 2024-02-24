@@ -17,22 +17,22 @@ class NotificationsSeeder extends Seeder
         Notification::create([
             'user_id'=>3,
             'title'=>'title 1',
-            'body'=>'notificaton 1',
+            'content'=>'notificaton 1',
         ]);
         Notification::create([
             'user_id'=>3,
             'title'=>'title 2',
-            'body'=>'notification 2',
+            'content'=>'notification 2',
         ]);
         Notification::create([
             'user_id'=>4,
             'title'=>'title 1',
-            'body'=>'notificaton 1',
+            'content'=>'notificaton 1',
         ]);
         Notification::create([
             'user_id'=>4,
             'title'=>'title 2',
-            'body'=>'notification 2',
+            'content'=>'notification 2',
         ]);
     }
 }

@@ -51,6 +51,7 @@
         <script src="{{asset('js/js.js')}}"></script>
         <script src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
 </body>
+@yield('script')
 <script>
     $(document).ready(function(){
         $("body").on("click", "button[name='delete']",function(e){
@@ -63,6 +64,11 @@
                 $(this).parent('form').submit();
             }
             
+        });
+
+        $("body").on("change", "select[name='per_page']",function(e){
+            e.preventDefault();
+            $("form[name='per_page_form']").submit();
         });
     });
 </script>

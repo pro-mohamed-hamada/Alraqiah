@@ -38,6 +38,21 @@ if (!function_exists('getDateOfSpecificDay')) {
     }
 }
 
+if (!function_exists('replaceFlags')) {
+
+    function replaceFlags($content,$values =[])
+    {
+        if (count($values)){
+            foreach (\App\Enum\WhatsappEventsNames::$WHATSAPP_TEMPLATES_FLAGS as $FLAG)
+            {
+                if (isset($values[$FLAG]))
+                    $content = str_replace($FLAG,$values[$FLAG],$content);
+            }
+        }
+        return $content;
+
+    }
+}
 
 if (!function_exists('getLocale')) {
 

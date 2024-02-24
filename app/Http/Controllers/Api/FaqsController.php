@@ -25,7 +25,7 @@ class FaqsController extends Controller
             return apiResponse(data: FaqsResource::collection($rates));
     
         }catch(Exception $e){
-            return apiResponse(message: __('lang.something_went_wrong'), code: 442);
+            return apiResponse(message: $e->getMessage(), code: 442);
         }
         
     }//end of index

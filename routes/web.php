@@ -1,17 +1,12 @@
 <?php
 
-use App\Http\Controllers\Web\CitiesController;
-use App\Http\Controllers\Web\GovernoratesController;
+use App\Http\Controllers\Web\FcmMessagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\ClientsController;
-use App\Http\Controllers\Web\ActivityLogsController;
 use App\Http\Controllers\Web\FaqsController;
+use App\Http\Controllers\Web\ScheduleFcmController;
 use App\Http\Controllers\Web\VideosController;
-use App\Http\Controllers\Web\ReasonsController;
-use App\Http\Controllers\Web\ServicesController;
-use App\Http\Controllers\Web\TargetsController;
 use App\Http\Controllers\Web\UsersController;
-use App\Http\Controllers\Web\VisitsController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -34,4 +29,6 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('users', UsersController::class);
     Route::resource('videos', VideosController::class);
     Route::resource('faqs', FaqsController::class);
+    Route::resource('fcm-messages', FcmMessagesController::class);
+    Route::resource('schedule-fcm', ScheduleFcmController::class);
 });
