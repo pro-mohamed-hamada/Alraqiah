@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('complaint_replays', function (Blueprint $table) {
             $table->id();
-            $table->string('replay');
+            $table->longText('replay');
             $table->foreignIdFor(\App\Models\Complaint::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
