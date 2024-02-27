@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Requests\Web;
+
+use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -29,7 +31,7 @@ class ClientStoreRequest extends FormRequest
             'reservation_number'=>'required|integer',
             'reservation_status'=>'required|string',
             'package'=>'required|string',
-            'launch_date'=>'required|date',
+            'launch_date'=>'required|date|after_or_equal:'.Carbon::now(),
             'seat_number'=>'required|integer',
             'gender'=>'required|string',
             'national_number'=>'required|string',

@@ -81,14 +81,15 @@ class ClientService extends BaseService
     private function prepareRelativesData(array $data): array
     {
         $relativesData = [];
-        for($i = 0; $i< count($data['relatives_name']); $i++)
-        {
-            $relativesData[$i]['name'] = $data['relatives_name'][$i];
-            $relativesData[$i]['gender'] = $data['relatives_gender'][$i];
-            $relativesData[$i]['national_number'] = $data['relatives_national_number'][$i];
-            $relativesData[$i]['seat_number'] = $data['relatives_seat_number'][$i];
-            $relativesData[$i]['city'] = $data['relatives_city'][$i];
-        }
+        if(isset($data['relatives_name']))
+            for($i = 0; $i< count($data['relatives_name']); $i++)
+            {
+                $relativesData[$i]['name'] = $data['relatives_name'][$i];
+                $relativesData[$i]['gender'] = $data['relatives_gender'][$i];
+                $relativesData[$i]['national_number'] = $data['relatives_national_number'][$i];
+                $relativesData[$i]['seat_number'] = $data['relatives_seat_number'][$i];
+                $relativesData[$i]['city'] = $data['relatives_city'][$i];
+            }
         
         return $relativesData;
     }
@@ -141,7 +142,17 @@ class ClientService extends BaseService
         $client = $this->findById($id);
         if (!$client)
             return false;
-        $client->update($data);
+
+        DB::beginTransaction();
+        $clientData = $this->prepareClientData(data: $data);
+        $client->update($clientData);
+
+        $userData = $this->prepareUserData(data: $data);
+        $user = $client->user()->update($userData);
+        $relativesData = $this->prepareRelativesData(data: $data);
+        $client->relatives()->delete();
+        $client->relatives()->createMany($relativesData);
+        DB::commit();
         return $client;
     }
 

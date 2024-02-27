@@ -8,6 +8,15 @@
                     <div class="card-header">{{ __('lang.edit_client') }}</div>
 
                     <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         {{-- start update form --}}
                         <form method="POST" action="{{ route('clients.update', $client->id) }}">
                             @method('put')
@@ -145,7 +154,7 @@
                                                 </div>
                                                 <div class="row mb-3 g-3">
                                                     <div class="relative-buttons">
-                                                        <button type="button" class="btn btn-danger remove-relative"><i class="fa fa-trash"></i></button>
+                                                        <button type="button" data-url="{{ route('relatives.destroy', $relative->id) }}" class="btn btn-danger remove-relative"><i class="fa fa-trash"></i></button>
                                                     </div>
                                                 </div>
                                                 {{-- end update form --}}
@@ -236,9 +245,36 @@
             $('.client-relatives').append(element);
         });
         $('.client-relatives').on('click', '.remove-relative', function(){
-            var element = $(this).parents('.relative')
-            element.remove();
+            
+            var element = $(this).parents('.relative');
+            var url = $(this).data('url');
+            if(url)
+            {
+                var status = confirm("{{ __('lang.are_you_sure') }}");
+            
+                if(status==true){
+                    $.ajax({
+                        url: url,
+                        type: 'post',
+                        data:{"_token": "{{ csrf_token() }}", "_method": "delete"},
+                        beforeSend: function(){
+                            $('.load_content').show();
+                        },
+                        success: function (res) {
+                            element.remove();
+                            $('.load_content').hide();
+                        }
+                        
+                    });
+                }
+                
+            }else{
+                element.remove();
+            }
+            
+            
         });
+        
     });
 </script>
 

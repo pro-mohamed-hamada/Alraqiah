@@ -4,6 +4,7 @@ use App\Http\Controllers\Web\FcmMessagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\ClientsController;
 use App\Http\Controllers\Web\FaqsController;
+use App\Http\Controllers\Web\RelativesController;
 use App\Http\Controllers\Web\ScheduleFcmController;
 use App\Http\Controllers\Web\VideosController;
 use App\Http\Controllers\Web\UsersController;
@@ -26,7 +27,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);
-    // Route::resource('relatives', Relatives::class);
+    Route::delete('relatives/{id}', [RelativesController::class, 'destroy'])->name('relatives.destroy');
     Route::resource('users', UsersController::class);
     Route::resource('videos', VideosController::class);
     Route::resource('faqs', FaqsController::class);

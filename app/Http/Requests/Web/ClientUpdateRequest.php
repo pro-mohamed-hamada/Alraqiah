@@ -4,6 +4,7 @@ namespace App\Http\Requests\Web;
 
 use App\Enum\ClientStatusEnum;
 use App\Models\Client;
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ClientUpdateRequest extends FormRequest
@@ -31,12 +32,10 @@ class ClientUpdateRequest extends FormRequest
             'reservation_number'=>'required|integer',
             'reservation_status'=>'required|string',
             'package'=>'required|string',
-            'launch_date'=>'required|date',
+            'launch_date'=>'required|date|after_or_equal:'.Carbon::now(),
             'seat_number'=>'required|integer',
             'gender'=>'required|string',
             'national_number'=>'required|string',
-            'lat'=>'required|numeric',
-            'lng'=>'required|numeric',
             'city'=>'required|string',
             'relatives_name'=>'nullable|array',
             'relatives_name.*'=>'required|string',

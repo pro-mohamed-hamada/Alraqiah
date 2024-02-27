@@ -44,19 +44,4 @@ class RelativeService extends BaseService
         return $relative->delete();
     }
 
-    public function store(array $data = []):Relative|Model|bool
-    {
-        $relative = $this->getModel()->create($data);
-        if (!$relative)
-            return false ;
-        return $relative;
-    } //end of store
-
-    public function update(int $id, array $data=[])
-    {
-        $relative = $this->findById($id);
-        
-        return $relative->update($data);
-    }
-
 }
