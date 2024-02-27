@@ -29,13 +29,15 @@
                         <th>{{ __('lang.id') }}</th>
                         <th>{{ __('lang.name') }}</th>
                         <th>{{ __('lang.phone') }}</th>
+                        <th>{{ __('lang.reservation_number') }}</th>
+                        <th>{{ __('lang.reservation_status') }}</th>
+                        <th>{{ __('lang.package') }}</th>
+                        <th>{{ __('lang.launch_date') }}</th>
+                        <th>{{ __('lang.seat_number') }}</th>
+                        <th>{{ __('lang.gender') }}</th>
+                        <th>{{ __('lang.national_number') }}</th>
+                        <th>{{ __('lang.location') }}</th>
                         <th>{{ __('lang.city') }}</th>
-                        <th>{{ __('lang.industry') }}</th>
-                        <th>{{ __('lang.company_name') }}</th>
-                        <th>{{ __('lang.other_person_name') }}</th>
-                        <th>{{ __('lang.other_person_phone') }}</th>
-                        <th>{{ __('lang.other_person_city') }}</th>
-                        <th>{{ __('lang.status') }}</th>
                         <th>{{ __('lang.actions') }}</th>
                         
                     </thead>
@@ -43,17 +45,18 @@
                         @foreach ($clients as $client)
                         <tr>
                             <td>{{ $client->id }}</td>
-                            <td>{{ $client->name }}</td>
-                            <td>{{ $client->phone }}</td>
-                            <td>{{ $client->city->name }}</td>
-                            <td>{{ $client->industry }}</td>
-                            <td>{{ $client->company_name }}</td>
-                            <td>{{ $client->other_person_name }}</td>
-                            <td>{{ $client->other_person_phone }}</td>
-                            <td>{{ $client->other_person_position }}</td>
-                            <td>{{ $client->latestStatus?->status }}</td>
+                            <td>{{ $client->user->name }}</td>
+                            <td>{{ $client->user->phone }}</td>
+                            <td>{{ $client->reservation_number }}</td>
+                            <td>{{ $client->reservation_status }}</td>
+                            <td>{{ $client->package }}</td>
+                            <td>{{ $client->launch_date }}</td>
+                            <td>{{ $client->seat_number }}</td>
+                            <td>{{ $client->gender }}</td>
+                            <td>{{ $client->national_number }}</td>
+                            <td><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{$client->lat}},{{$client->lng}}">hjhj</a></td>
+                            <td>{{ $client->city }}</td>
                             <td>
-                                
                                 <ul class="list-group list-group-horizontal">
                                     <li class="list-group-item">
                                         <form method="post" action="{{route('clients.destroy', $client->id)}}">
@@ -70,7 +73,7 @@
                         <tr class=" displayView">
                             <td colspan="10">
                                 <div class="displayViewContent">
-                                    {{-- @include('Datatables.ClientVisitsDatatable') --}}
+                                    @include('Datatables.ClientRelativesDatatable')
                                 </div>
                                 <button class="close btn btn-danger">X</button>     
                             </td>

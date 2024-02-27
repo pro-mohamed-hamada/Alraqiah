@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests\Web;
+use Illuminate\Validation\Rule;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,13 +24,27 @@ class ClientStoreRequest extends FormRequest
     {
         return [
             'name'=>'required|string',
-            'phone'=>'required|string',
-            'industry'=>'required|string',
-            'company_name'=>'required|string',
-            'city_id'=>'required|integer|exists:cities,id',
-            'other_person_name'=>'required|string',
-            'other_person_phone'=>'required|string',
-            'other_person_position'=>'required|string'
+            'phone'=>'required|string|unique:users,phone',
+            'is_active'=>'nullable|string',
+            'reservation_number'=>'required|integer',
+            'reservation_status'=>'required|string',
+            'package'=>'required|string',
+            'launch_date'=>'required|date',
+            'seat_number'=>'required|integer',
+            'gender'=>'required|string',
+            'national_number'=>'required|string',
+            'city'=>'required|string',
+            'relatives_name'=>'nullable|array',
+            'relatives_name.*'=>'required|string',
+            'relatives_gender'=>'nullable|array',
+            'relatives_gender.*'=>'required|string',
+            'relatives_national_number'=>'nullable|array',
+            'relatives_national_number.*'=>'required|string',
+            'relatives_seat_number'=>'nullable|array',
+            'relatives_seat_number.*'=>'required|string',
+            'relatives_city'=>'nullable|array',
+            'relatives_city.*'=>'required|string',
+
         ];
     }
 }

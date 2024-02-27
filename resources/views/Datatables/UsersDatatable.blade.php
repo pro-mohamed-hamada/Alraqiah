@@ -60,7 +60,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="10">
-                                {{ $users->links() }}                 
+                                {{-- {{ $users->links() }}                  --}}
                             </td>
                         </tr>
                     </tfoot>

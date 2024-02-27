@@ -71,7 +71,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="10">
-                                {{ $allScheduleFcm->links() }}                 
+                                {{-- {{ $allScheduleFcm->links() }}                  --}}
                             </td>
                         </tr>
                     </tfoot>

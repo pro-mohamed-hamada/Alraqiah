@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Web;
 
 use App\Enum\ClientStatusEnum;
+use App\Models\Client;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ClientUpdateRequest extends FormRequest
@@ -22,16 +23,31 @@ class ClientUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $client = Client::find($this->client);
         return [
             'name'=>'required|string',
-            'phone'=>'required|string',
-            'industry'=>'required|string',
-            'company_name'=>'required|string',
-            'city_id'=>'required|integer|exists:cities,id',
-            'other_person_name'=>'required|string',
-            'other_person_phone'=>'required|string',
-            'other_person_position'=>'required|string',
-            'client_status'=>'required|integer|in:'.ClientStatusEnum::NEW.','.ClientStatusEnum::CONTACTED_INCOMING.','.ClientStatusEnum::CONTACTED_OUTGOING.','.ClientStatusEnum::INTERESTED.','.ClientStatusEnum::NOT_INTERESTED.','.ClientStatusEnum::PROPOSAL.','.ClientStatusEnum::MEETING.','.ClientStatusEnum::CLOSED.','.ClientStatusEnum::LOST,
+            'phone'=>'required|string|unique:users,phone,'.$client->user->id,
+            'is_active'=>'nullable|string',
+            'reservation_number'=>'required|integer',
+            'reservation_status'=>'required|string',
+            'package'=>'required|string',
+            'launch_date'=>'required|date',
+            'seat_number'=>'required|integer',
+            'gender'=>'required|string',
+            'national_number'=>'required|string',
+            'lat'=>'required|numeric',
+            'lng'=>'required|numeric',
+            'city'=>'required|string',
+            'relatives_name'=>'nullable|array',
+            'relatives_name.*'=>'required|string',
+            'relatives_gender'=>'nullable|array',
+            'relatives_gender.*'=>'required|string',
+            'relatives_national_number'=>'nullable|array',
+            'relatives_national_number.*'=>'required|string',
+            'relatives_seat_number'=>'nullable|array',
+            'relatives_seat_number.*'=>'required|string',
+            'relatives_city'=>'nullable|array',
+            'relatives_city.*'=>'required|string',
         ];
     }
 }

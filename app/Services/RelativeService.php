@@ -44,28 +44,19 @@ class RelativeService extends BaseService
         return $relative->delete();
     }
 
-    public function status($id)
+    public function store(array $data = []):Relative|Model|bool
     {
-        $relative = $this->findbyId($id);
-        $relative->is_active = !$relative->is_active;
-        return $relative->save();
+        $relative = $this->getModel()->create($data);
+        if (!$relative)
+            return false ;
+        return $relative;
+    } //end of store
 
-    }//end of status
-
-    // ///////////////////////
-    /**
-     * @param array $data
-     * @return Reservaion
-     */
-    public function store(array $data)
+    public function update(int $id, array $data=[])
     {
-        // $user = auth('sanctum')->user();
-        // $reservation = $user->client->reservations()->create(['client_id'=> $user->client_id],[
-        //     'launch_date'   => $user->client_id,
-        // ]);
+        $relative = $this->findById($id);
         
-        // return $reservation;
-
+        return $relative->update($data);
     }
 
 }

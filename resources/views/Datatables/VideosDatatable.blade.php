@@ -66,7 +66,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="10">
-                                {{ $videos->links() }}                 
+                                {{-- {{ $videos->links() }}                  --}}
                             </td>
                         </tr>
                     </tfoot>

@@ -74,7 +74,7 @@
                     <tfoot>
                         <tr>
                             <td colspan="10">
-                                {{ $fcmMessages->links() }}                 
+                                {{-- {{ $fcmMessages->links() }}                  --}}
                             </td>
                         </tr>
                     </tfoot>

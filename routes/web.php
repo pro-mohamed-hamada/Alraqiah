@@ -26,6 +26,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);
+    // Route::resource('relatives', Relatives::class);
     Route::resource('users', UsersController::class);
     Route::resource('videos', VideosController::class);
     Route::resource('faqs', FaqsController::class);

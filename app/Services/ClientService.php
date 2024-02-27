@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Enum\ActivationStatusEnum;
 use App\Enum\ClientStatusEnum;
+use App\Enum\UserTypeEnum;
 use App\Exceptions\NotFoundException;
 use App\Models\Client;
 use App\QueryFilters\ClientsFilter;
@@ -12,6 +14,7 @@ use App\Exceptions\BadRequestHttpException;
 use App\Models\User;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class ClientService extends BaseService
 {
@@ -37,11 +40,58 @@ class ClientService extends BaseService
 
     public function store(array $data = []):Client|Model|bool
     {
-        $client = $this->getModel()->create($data);
-        if (!$client)
-            return false ;
+        DB::beginTransaction();
+        $clientData = $this->prepareClientData(data: $data);
+        $client = $this->getModel()->create($clientData);
+
+        // $userData['client_id'] = $client['id'];
+        $userData = $this->prepareUserData(data: $data);
+        $user = $client->user()->create($userData);
+        $relativesData = $this->prepareRelativesData(data: $data);
+        $client->relatives()->createMany($relativesData);
+        DB::commit();
         return $client;
+
     } //end of store
+
+    private function prepareUserData(array $data): array
+    {
+        $userData['name'] = $data['name'];
+        $userData['phone'] = $data['phone'];
+        $userData['password'] = "123456";
+        $userData['type'] = UserTypeEnum::CLIENT;
+        $userData['is_active'] = ActivationStatusEnum::ACTIVE;
+        
+        return $userData;
+    }
+
+    private function prepareClientData(array $data): array
+    {
+        $clientData['reservation_number'] = $data['reservation_number'];
+        $clientData['reservation_status'] = $data['reservation_status'];
+        $clientData['package'] = $data['package'];
+        $clientData['launch_date'] = $data['launch_date'];
+        $clientData['seat_number'] = $data['seat_number'];
+        $clientData['gender'] = $data['gender'];
+        $clientData['national_number'] = $data['national_number'];
+        $clientData['city'] = $data['city'];
+        return $clientData;
+    }
+
+    private function prepareRelativesData(array $data): array
+    {
+        $relativesData = [];
+        for($i = 0; $i< count($data['relatives_name']); $i++)
+        {
+            $relativesData[$i]['name'] = $data['relatives_name'][$i];
+            $relativesData[$i]['gender'] = $data['relatives_gender'][$i];
+            $relativesData[$i]['national_number'] = $data['relatives_national_number'][$i];
+            $relativesData[$i]['seat_number'] = $data['relatives_seat_number'][$i];
+            $relativesData[$i]['city'] = $data['relatives_city'][$i];
+        }
+        
+        return $relativesData;
+    }
 
 
     public function location(array $data = []): bool

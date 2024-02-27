@@ -20,8 +20,8 @@ return new class extends Migration
             $table->integer('seat_number');
             $table->string('gender');
             $table->string('national_number');
-            $table->string('lat');
-            $table->string('lng');
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->string('city');
             $table->foreignId('parent_id')->nullable()->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
