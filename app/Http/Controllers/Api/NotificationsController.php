@@ -19,16 +19,15 @@ class NotificationsController extends Controller
 
     public function index(Request $request)
     {
-        try{
+        // try{
             $filters = $request->all();
             $filters['user_id'] = auth('sanctum')->user()->id;
-            $withRelations = [];
-            $rates = $this->notificationService->getAll(filters: $filters, withRelations: $withRelations);
-            return apiResponse(data: NotificationsResource::collection($rates));
+            $userNotifications = $this->notificationService->getUserNotifications();
+            return apiResponse(data: NotificationsResource::collection($userNotifications));
     
-        }catch(Exception $e){
-            return apiResponse(message: $e->getMessage(), code: 442);
-        }
+        // }catch(Exception $e){
+        //     return apiResponse(message: $e->getMessage(), code: 442);
+        // }
     }//end of index
 
     public function markAsRead(string $id)

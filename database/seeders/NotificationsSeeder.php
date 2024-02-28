@@ -6,6 +6,8 @@ use App\Models\Faq;
 use App\Models\Notification;
 use Illuminate\Database\Seeder;
 use App\Models\Relative;
+use App\Models\User;
+use App\Notifications\GeneralNotification;
 
 class NotificationsSeeder extends Seeder
 {
@@ -14,25 +16,23 @@ class NotificationsSeeder extends Seeder
      */
     public function run(): void
     {
-        Notification::create([
-            'user_id'=>3,
+        $user = User::find(3);
+        $user->notify(new GeneralNotification([
             'title'=>'title 1',
             'content'=>'notificaton 1',
-        ]);
-        Notification::create([
-            'user_id'=>3,
+        ]));
+        $user->notify(new GeneralNotification([
             'title'=>'title 2',
             'content'=>'notification 2',
-        ]);
-        Notification::create([
-            'user_id'=>4,
-            'title'=>'title 1',
-            'content'=>'notificaton 1',
-        ]);
-        Notification::create([
-            'user_id'=>4,
-            'title'=>'title 2',
-            'content'=>'notification 2',
-        ]);
+        ]));
+        $user->notify(new GeneralNotification([
+            'title'=>'title 3',
+            'content'=>'notificaton 3',
+        ]));
+        $user->notify(new GeneralNotification([
+            'title'=>'title 4',
+            'content'=>'notificaton 5',
+        ]));
+    
     }
 }
