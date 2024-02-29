@@ -27,7 +27,7 @@ class VideosController extends Controller
     public function edit(Request $request, $id)
     {
         try{
-            $video = $this->videoService->findById(id: $id, withRelations:['attachments']);
+            $video = $this->videoService->findById(id: $id, withRelations:[]);
             return view('Dashboard.Videos.edit', compact('video'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('lang.something_went_wrong'));

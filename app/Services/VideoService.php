@@ -40,9 +40,7 @@ class VideoService extends BaseService
             return false ;
         if (isset($data['video_file']))
         {
-            $video->addMediaFromRequest('video_file')->toMediaCollection('logos');
-            // $fileData = FileService::saveImage(file: $data['video_file'],path: 'uploads/media', field_name: 'video_file');
-            // $video->storeAttachment($fileData);
+            $video->addMediaFromRequest('video_file')->toMediaCollection('media');
         }
         return $video;
     } //end of store
@@ -52,8 +50,8 @@ class VideoService extends BaseService
         $video = $this->findById($id);
         if (isset($data['video_file']))
         {
-            // $fileData = FileService::saveImage(file: $data['video_file'],path: 'uploads/videos', field_name: 'video_file');
-            // $video->updateAttachment($fileData);
+            $video->clearMediaCollection('media');
+            $video->addMediaFromRequest('video_file')->toMediaCollection('media');
         }
         return $video->update($data);
     }
