@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\NotificationsController;
 use App\Http\Controllers\Api\ServicesController;
 use App\Http\Controllers\Api\RatesController;
+use App\Http\Controllers\Api\WebsitesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,7 @@ Route::group(['middleware'=>['auth:sanctum', 'localization']], function(){
 
     Route::get('home', HomeController::class);
     Route::get('faq', FaqsController::class);
+    Route::get('websites', WebsitesController::class);
     Route::post('location', [ClientsController::class, 'location']);
     Route::post('subscribe', [ClientsController::class, 'subscribe']);
     Route::get('notifications', [NotificationsController::class, 'index']);
