@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enum\ActivationStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RatesResource;
 use Exception;
@@ -21,6 +22,7 @@ class FaqsController extends Controller
     {
         try{
             $filters = $request->all();
+            $filters['is_active'] = ActivationStatusEnum::ACTIVE;
             $rates = $this->faqService->getAll(filters: $filters);
             return apiResponse(data: FaqsResource::collection($rates));
     

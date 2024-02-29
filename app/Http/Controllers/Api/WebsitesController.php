@@ -19,6 +19,7 @@ class WebsitesController extends Controller
     {
         try{
             $filters = $request->all();
+            $filters['is_active'] = ActivationStatusEnum::ACTIVE;
             $websites = $this->websiteService->getAll(filters: $filters);
             return apiResponse(data: WebsitesResource::collection($websites));
     
