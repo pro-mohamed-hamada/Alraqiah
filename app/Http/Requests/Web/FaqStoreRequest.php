@@ -24,6 +24,7 @@ class FaqStoreRequest extends FormRequest
         return [
             'equestion'=>'required|string',
             'answer'=>'required|string',
+            'is_active'=>'nullable|string',
         ];
     }
 }

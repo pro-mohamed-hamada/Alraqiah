@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('equestion');
             $table->string('answer');
-            $table->enum('is_active', [ActivationStatusEnum::ACTIVE, ActivationStatusEnum::NOT_ACTIVE])->default(ActivationStatusEnum::ACTIVE);
+            $table->boolean('is_active')->default(ActivationStatusEnum::ACTIVE);
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\ActivationStatusEnum;
 use App\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Faq;
@@ -35,6 +36,7 @@ class FaqService extends BaseService
 
     public function store(array $data = []):Faq|Model|bool
     {
+        $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
         $faq = $this->getModel()->create($data);
         if (!$faq)
             return false ;
@@ -43,6 +45,7 @@ class FaqService extends BaseService
 
     public function update(int $id, array $data=[])
     {
+        $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
         $faq = $this->findById($id);
         
         return $faq->update($data);
