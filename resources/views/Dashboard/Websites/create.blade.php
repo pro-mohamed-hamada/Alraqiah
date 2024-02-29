@@ -27,6 +27,12 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-check form-switch">
+                                        <input name="is_active" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">{{ __('lang.is_active') }}</label>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row mb-3 g-3">
                                 <div class="">

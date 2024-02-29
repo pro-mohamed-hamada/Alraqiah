@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\ActivationStatusEnum;
 use App\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Website;
@@ -35,6 +36,7 @@ class WebsiteService extends BaseService
 
     public function store(array $data = []):Website|Model|bool
     {
+        $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
         $website = $this->getModel()->create($data);
         if (!$website)
             return false ;
@@ -44,7 +46,7 @@ class WebsiteService extends BaseService
     public function update(int $id, array $data=[])
     {
         $website = $this->findById($id);
-        
+        $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
         return $website->update($data);
     }
 
