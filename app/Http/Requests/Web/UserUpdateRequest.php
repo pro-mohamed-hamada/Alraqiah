@@ -5,7 +5,7 @@ namespace App\Http\Requests\Web;
 use App\Enum\ActivationStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserStoreRequest extends FormRequest
+class UserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class UserStoreRequest extends FormRequest
             'name'=>'required|string',
             'email'=>'required|email',
             'password'=>'required|string|min:8|confirmed',
-            'phone'=>'required|string|unique:users,phone',
+            'phone'=>'required|string|unique:users,phone,'.$this->user,
             'logo'=>'nullable|file',
             'is_active'=>'nullable|string',
         ];

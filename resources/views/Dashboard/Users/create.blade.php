@@ -18,7 +18,7 @@
                             </div>
                         @endif
                         {{-- start create form --}}
-                        <form method="POST" action="{{ route('users.store') }}">
+                        <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3 g-3">
                                 
@@ -57,6 +57,13 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.logo') }} *</label>
+                                    <input type="file" name="logo" class="form-control">
+                                    @error('logo')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                 <div class="col-md-12">
                                     <div class="form-check form-switch">
                                         <input name="is_active" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
@@ -66,7 +73,7 @@
                             </div>
                             <div class="row mb-3 g-3">
                                 <div class="">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{__('lang.create')}}</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.create')}}</button>
                                     <a href="{{ url()->previous() }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> {{__('lang.go_back')}}</a>
                                 </div>
                             </div>

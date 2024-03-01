@@ -29,6 +29,7 @@
                         <th>{{ __('lang.id') }}</th>
                         <th>{{ __('lang.name') }}</th>
                         <th>{{ __('lang.email') }}</th>
+                        <th>{{ __('lang.phone') }}</th>
                         <th>{{ __('lang.is_active') }}</th>
                         <th>{{ __('lang.actions') }}</th>
                         
@@ -39,6 +40,7 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->phone }}</td>
                             <td>{{ $user->is_active }}</td>
                             <td>
                                 
