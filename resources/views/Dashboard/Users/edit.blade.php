@@ -58,6 +58,13 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.logo') }} *</label>
+                                    <input type="file" name="logo" class="form-control">
+                                    @error('logo')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                 <div class="col-md-12">
                                     <div class="form-check form-switch">
                                         <input name="is_active" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" {{ $user->getRawOriginal('is_active') ? "checked":"" }}>
