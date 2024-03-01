@@ -14,12 +14,16 @@ class Complaint extends Model
     protected $fillable = [
         'complaint',
         'is_active',
-        'client_id',
+        'user_id',
     ];
 
     public function replies(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(ComplaintReplay::class);
+    }
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

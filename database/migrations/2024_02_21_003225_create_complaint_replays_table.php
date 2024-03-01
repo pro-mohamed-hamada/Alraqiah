@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->longText('replay');
             $table->foreignIdFor(\App\Models\Complaint::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('sender_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

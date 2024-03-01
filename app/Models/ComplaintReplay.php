@@ -12,11 +12,16 @@ class ComplaintReplay extends Model
     protected $fillable = [
         'replay',
         'complaint_id',
+        'sender_id'
     ];
 
     public function complaint(): \Illuminate\Database\Eloquent\Relations\belongsTo
     {
         return $this->belongsTo(Complaint::class);
+    }
+    public function sender(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
 }

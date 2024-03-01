@@ -1,100 +1,48 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Http\Requests\Api\ComplaintRequest;
-use App\Http\Resources\ComplaintsResource;
-use App\Services\ComplaintService;
+use App\Http\Requests\Web\ComplaintReplayRequest;
+use App\Services\ComplaintReplayService;
 use Exception;
 
 class ComplaintReplayController extends Controller
 {
-    public function __construct(private ComplaintService $complaintService)
+    public function __construct(private ComplaintReplayService $complaintReplayService)
     {
 
     }
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request)
+    public function store(ComplaintReplayRequest $request)
     {
-        try{
-            $filters = $request->all();
-            $withRelations = [];
-            $complaints = $this->complaintService->getAll(filters: $filters, withRelations: $withRelations);
-            return apiResponse(data: ComplaintsResource::collection($complaints));
-    
-        }catch(Exception $e){
-            return apiResponse(message: __('lang.something_went_wrong'), code: 442);
+        try {
+            $this->complaintReplayService->store($request->validated());
+            return redirect()->route('complaints.index')->with('message', __('lang.success_operation'));
+        } catch (Exception $e) {
+            return redirect()->back()->with('message', $e->getMessage());
         }
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(ComplaintRequest $request)
-    {
-        try{
-            $complaint = $this->complaintService->store(data: $request->Validated());
-            if(!$complaint)
-                return apiResponse(message: __('lang.something_went_wrong'));
-            return apiResponse(data: new ComplaintsResource($complaint), message: __('lang.success_operation'));
-    
-        }catch(Exception $e){
-            return apiResponse(message: __('lang.something_went_wrong'), code: 442);
-        }
-        
     }//end of store
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function update(ComplaintReplayRequest $request, $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(ComplaintRequest $request, string $id)
-    {
-        try{
-            $complaint = $this->complaintService->update(id: $id, data: $request->Validated());
-            if(!$complaint)
-                return apiResponse(message: __('lang.something_went_wrong'));
-            return apiResponse(data: new ComplaintsResource($complaint), message: __('lang.success_operation'));
-    
-        }catch(Exception $e){
-            return apiResponse(message: __('lang.something_went_wrong'), code: 442);
+        try {
+            $this->complaintReplayService->update($id, $request->validated());
+            return redirect()->route('complaints.index')->with('message', __('lang.success_operation'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with("message", $e->getMessage());
         }
-        
-    }//end of store
+    } //end of update
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
-    }
+        try {
+            $result = $this->complaintReplayService->destroy($id);
+            if (!$result)
+                return redirect()->back()->with("message", __('lang.not_found'));
+            return redirect()->back()->with("message", __('lang.success_operation'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with("message", $e->getMessage());
+        }
+    } //end of destroy
 }

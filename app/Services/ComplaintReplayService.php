@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\ActivationStatusEnum;
 use App\Exceptions\NotFoundException;
 use App\Models\Complaint;
 use App\Models\ComplaintReplay;
@@ -24,15 +25,20 @@ class ComplaintReplayService extends BaseService
 
     public function store(array $data = []):Faq|Model|bool
     {
+        $data['sender_id'] = auth()->user()->id;
+        $complaint = Complaint::find($data['complaint_id']);
         $complaintReplay = $this->getModel()->create($data);
         if (!$complaintReplay)
             return false ;
+        $complaint->is_active = ActivationStatusEnum::ACTIVE;
+        $complaint->save();
         return $complaintReplay;
     } //end of store
 
     public function update(int $id, array $data=[])
     {
         $complaintReplay = $this->findById($id);
+        $data['sender_id'] = auth()->user()->id;
         $complaintReplay->update($data);
         return $complaintReplay;
     }

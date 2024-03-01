@@ -29,7 +29,7 @@ class ComplaintReplayController extends Controller
             return apiResponse(data: new ComplaintRepliesResource($complaintReplay), message: __('lang.success_operation'));
     
         }catch(Exception $e){
-            return apiResponse(message: __('lang.something_went_wrong'), code: 442);
+            return apiResponse(message: $e->getMessage(), code: 442);
         }
         
     }//end of store
@@ -46,7 +46,7 @@ class ComplaintReplayController extends Controller
             return apiResponse(data: new ComplaintRepliesResource($complaintReplay), message: __('lang.success_operation'));
     
         }catch(Exception $e){
-            return apiResponse(message: __('lang.something_went_wrong'), code: 442);
+            return apiResponse(message: $e->getMessage(), code: 442);
         }
         
     }//end of store

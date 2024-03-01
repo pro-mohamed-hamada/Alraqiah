@@ -17,6 +17,7 @@ class ComplaintRepliesResource extends JsonResource
         return [
             'id'    => $this->id,
             'replay' => $this->replay,
+            'sender' => $this->whenLoaded('sender', $this->sender->name, null),
         ];
     }
 }

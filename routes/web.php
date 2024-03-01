@@ -1,16 +1,16 @@
 <?php
 
+use App\Http\Controllers\Web\ComplaintsController;
 use App\Http\Controllers\Web\WebsitesController;
 use App\Http\Controllers\Web\FcmMessagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\ClientsController;
+use App\Http\Controllers\web\ComplaintReplayController as WebComplaintReplayController;
 use App\Http\Controllers\Web\FaqsController;
 use App\Http\Controllers\Web\RelativesController;
 use App\Http\Controllers\Web\ScheduleFcmController;
 use App\Http\Controllers\Web\VideosController;
 use App\Http\Controllers\Web\UsersController;
-use App\Notifications\GeneralNotification;
-use App\Notifications\SendFcmNotification;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -38,6 +38,12 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('videos', VideosController::class);
     Route::resource('faqs', FaqsController::class);
     Route::resource('websites', WebsitesController::class);
+    Route::get('complaints', [ComplaintsController::class, 'index'])->name('complaints.index');
+    Route::delete('complaints/{id}', [ComplaintsController::class, 'destroy'])->name('complaints.destroy');
+    Route::post('complaints/{id}', [ComplaintsController::class, 'status'])->name('complaints.status');
+    Route::post('complaint-replies', [WebComplaintReplayController::class, 'store'])->name('complaint-replies.store');
+    Route::put('complaint-replies/{id}', [WebComplaintReplayController::class, 'update'])->name('complaint-replies.update');
+    Route::delete('complaint-replies/{id}', [WebComplaintReplayController::class, 'destroy'])->name('complaint-replies.destroy');
     Route::resource('fcm-messages', FcmMessagesController::class);
     Route::resource('schedule-fcm', ScheduleFcmController::class);
 });

@@ -70,6 +70,31 @@
             e.preventDefault();
             $("form[name='per_page_form']").submit();
         });
+        
+        // start the is_active button
+
+        $("body").on("click", "#is_active",function(e){
+            var url = $(this).data("href");
+            $.ajax({
+                url:url,
+                method:"post",
+                data:{"_token": "{{ csrf_token() }}"},
+                beforeSend:function(){
+                    $(".load_content").show();
+                },
+                success:function(responsetext){
+                    $(".load_content").hide();
+                },
+                error: function(data_error, exception){
+                    $(".load_content").hide();
+                    if(exception == "error"){
+                        // $("#alert_message").text(data_error.responseJSON.message).fadeIn().delay(2000).fadeOut();
+                    }
+                }
+            });
+        });
+
+        // end the is_active button
     });
 </script>
 </html>

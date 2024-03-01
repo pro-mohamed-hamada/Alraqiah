@@ -17,6 +17,7 @@
                 {{-- <li><a class="list-group-item" href="{{route('activity-lox')}}"><span class="fa fa-product-hunt"></span> <span>{{ __("lang.relatives") }}</span></a></li> --}}
                 <li><a class="list-group-item" href="{{route('faqs.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.faqs") }}</a></li>
                 <li><a class="list-group-item" href="{{route('websites.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.websites") }}</a></li>
+                <li><a class="list-group-item" href="{{route('complaints.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.complaints") }}</a></li>
                 <li><a class="list-group-item" href="{{route('fcm-messages.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.fcm_messages") }}</a></li>
                 <li><a class="list-group-item" href="{{route('schedule-fcm.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.schedule_fcm") }}</a></li>
         </ul>

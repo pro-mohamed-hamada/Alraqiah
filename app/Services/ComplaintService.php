@@ -34,7 +34,7 @@ class ComplaintService extends BaseService
 
     public function store(array $data = []):Faq|Model|bool
     {
-        $data['client_id'] = auth('sanctum')->user()->client_id;
+        $data['user_id'] = auth('sanctum')->user()->id;
         $complaint = $this->getModel()->create($data);
         if (!$complaint)
             return false ;
@@ -56,5 +56,13 @@ class ComplaintService extends BaseService
         $complaint = $this->findById($id);
         return $complaint->delete();
     } //end of delete
+
+    public function status($id)
+    {
+        $complaint = $this->findById(id: $id);
+        $complaint->is_active = !$complaint->getRawOriginal('is_active');
+        return $complaint->save();
+
+    }//end of status
 
 }
