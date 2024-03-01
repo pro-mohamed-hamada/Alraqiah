@@ -31,8 +31,8 @@
                                 <div class="col-lg-12">
                                     <label>{{ __('lang.current_video') }} *</label>
                                     <video width="320" height="240" controls>
-                                        <source src="{{ $video->getFirstMediaUrl('logos') }}" type="video/mp4">
-                                        <source src="{{ $video->getFirstMediaUrl('logos') }}" type="video/ogg">
+                                        <source src="{{ $video->getFirstMediaUrl('media') }}" type="video/mp4">
+                                        <source src="{{ $video->getFirstMediaUrl('media') }}" type="video/ogg">
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>
