@@ -17,7 +17,7 @@ class VideosResource extends JsonResource
         return [
             'id'    => $this->id,
             'title' => $this->title,
-            'url' =>$this->getFirstMediaUrl('logos') !=""?$this->getFirstMediaUrl('logos') : asset('images/default-image.jpg'),
+            'url' =>$this->getFirstMediaUrl('media') !=""?$this->getFirstMediaUrl('media') : asset('images/default-image.jpg'),
         ];
     }
 }
