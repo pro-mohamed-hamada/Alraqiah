@@ -11,9 +11,11 @@ use App\Traits\EscapeUnicodeJson;
 use App\Traits\Filterable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable, Filterable, EscapeUnicodeJson, InteractsWithMedia;
+    use HasRoles, HasApiTokens, HasFactory, Notifiable, Filterable, EscapeUnicodeJson, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.

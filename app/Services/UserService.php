@@ -46,6 +46,7 @@ class UserService extends BaseService
         $user = $this->getModel()->create($data);
         if (!$user)
             return false ;
+        $user->givePermissionTo($data['permissions']);
         if (isset($data['logo']))
         {
             $user->addMediaFromRequest('logo')->toMediaCollection('users');
@@ -63,7 +64,9 @@ class UserService extends BaseService
             $user->clearMediaCollection('users');
             $user->addMediaFromRequest('logo')->toMediaCollection('users');
         }
-        return $user->update(Arr::except($data, 'logo'));
+        $user->update(Arr::except($data, 'logo'));
+        $user->syncPermissions($data['permissions']);
+        return true;
     } //end of store
 
 

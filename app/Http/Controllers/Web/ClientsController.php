@@ -39,6 +39,7 @@ class ClientsController extends Controller
 
     public function create(Request $request)
     {
+        userCan(request: $request, permission: 'create_client');
         return view('Dashboard.Clients.create');
     }//end of create
 

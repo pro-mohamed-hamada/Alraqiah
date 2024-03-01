@@ -8,7 +8,7 @@ use App\Http\Requests\Web\UserStoreRequest;
 use App\Http\Requests\Web\UserUpdateRequest;
 use App\Services\UserService;
 use Exception;
-
+use Spatie\Permission\Models\Permission;
 class UsersController extends Controller
 {
     public function __construct(private UserService $userService)
@@ -31,7 +31,9 @@ class UsersController extends Controller
 
     public function create(Request $request)
     {
-        return view('Dashboard.Users.create');
+        $permissions = Permission::all();
+        $permissions = $permissions->groupBy('category');
+        return view('Dashboard.Users.create', compact('permissions'));
     }//end of create
 
     public function store(UserStoreRequest $request)
@@ -48,7 +50,9 @@ class UsersController extends Controller
     {
         try{
             $user = $this->userService->findById(id: $id);
-            return view('Dashboard.Users.edit', compact('user'));
+            $permissions = Permission::all();
+            $permissions = $permissions->groupBy('category');
+            return view('Dashboard.Users.edit', compact('user', 'permissions'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('lang.something_went_wrong'));
         }
