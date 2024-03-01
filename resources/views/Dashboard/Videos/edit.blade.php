@@ -29,7 +29,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg-12">
-                                    <label>{{ __('lang.current_video') }} *</label>
+                                    <h2>{{ __('lang.current_video') }} *</h2>
                                     <video width="320" height="240" controls>
                                         <source src="{{ $video->getFirstMediaUrl('media') }}" type="video/mp4">
                                         <source src="{{ $video->getFirstMediaUrl('media') }}" type="video/ogg">
