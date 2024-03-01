@@ -26,7 +26,8 @@ class UserStoreRequest extends FormRequest
             'name'=>'required|string',
             'email'=>'required|email',
             'password'=>'required|string|min:8|confirmed',
-            'is_active'=>'required|in:'.ActivationStatusEnum::ACTIVE.','.ActivationStatusEnum::NOTACTIVE,
+            'phone'=>'required|string|unique:users,phone',
+            'is_active'=>'nullable|string',
         ];
     }
 }

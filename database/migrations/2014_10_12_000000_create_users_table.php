@@ -20,8 +20,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('type',[UserTypeEnum::SUPERADMIN, UserTypeEnum::SUPERVISOR, UserTypeEnum::CLIENT])->default(UserTypeEnum::CLIENT);
-            $table->enum('is_active',[UserActiveEnum::ACTIVE, UserActiveEnum::NONACTIVE])->default(UserActiveEnum::ACTIVE);
+            $table->boolean('is_active')->default(UserActiveEnum::ACTIVE);
             $table->foreignId('client_id')->nullable()->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('device_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

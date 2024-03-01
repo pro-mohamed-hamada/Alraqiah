@@ -62,7 +62,7 @@ class VideoService extends BaseService
     public function destroy($id)
     {
         $video = $this->findById($id);
-       
+        $video->clearMediaCollection('media');
         return $video->delete();
     } //end of delete
 

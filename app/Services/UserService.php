@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\ActivationStatusEnum;
 use App\Enum\ImageTypeEnum;
 use App\Enum\PaymentStatusEnum;
 use App\Enum\UserTypeEnum;
@@ -40,25 +41,27 @@ class UserService extends BaseService
     }
     public function store(array $data = [])
     {
+        $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
+        $data['type'] = UserTypeEnum::SUPERVISOR;
         $user = $this->getModel()->create($data);
         if (!$user)
             return false ;
         if (isset($data['logo']))
         {
-            $fileData = FileService::saveImage(file: $data['logo'],path: 'uploads/users', field_name: 'logo');
-            $user->storeAttachment($fileData);
+            $user->addMediaFromRequest('logo')->toMediaCollection('users');
         }
         return $user;
     } //end of store
 
     public function update(int $id, array $data = [])
     {
-        $user = $this->findById(id: $id, withRelations: ['attachments']);
+        $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
+        $user = $this->findById(id: $id);
         
         if (isset($data['logo']))
         {
-            $fileData = FileService::saveImage(file: $data['logo'],path: 'uploads/users', field_name: 'logo');
-            $user->updateAttachment($fileData);
+            $user->clearMediaCollection('users');
+            $user->addMediaFromRequest('logo')->toMediaCollection('users');
         }
         return $user->update(Arr::except($data, 'logo'));
     } //end of store
@@ -77,7 +80,7 @@ class UserService extends BaseService
     public function destroy($id)
     {
         $user = $this->findById($id);
-        $user->deleteAttachments();
+        $user->clearMediaCollection('users');
         return $user->delete();
     } //end of delete
 
