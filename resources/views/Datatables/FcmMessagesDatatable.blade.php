@@ -1,10 +1,10 @@
 <div class="mb-3">
     <div class="card">
-        <div class="card-header">{{ __('lang.fcmMessages') }}</div>
+        <div class="card-header">{{ __('lang.fcm_messages') }}</div>
 
         <div class="card-body">
             <div class="">
-                <h5><a role="button" class="btn btn-primary " href="{{route('fcm-messages.create')}}"><i class="fa fa-plus-circle"></i> {{__('lang.create_fcm_message')}}</a></h5>
+                <h5><a role="button" class="btn btn-primary " href="{{route('fcm-messages.create')}}"><i class="fa fa-plus"></i> {{__('lang.create_fcm_message')}}</a></h5>
             </div>
             <div class="search-box">
                 <div class="row mb-3 g-3">

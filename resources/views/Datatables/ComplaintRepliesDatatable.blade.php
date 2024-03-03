@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="row mb-3 g-3">
                                         <div class="">
-                                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{__('lang.replay')}}</button>
+                                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.replay')}}</button>
                                         </div>
                                     </div>
                                 </form>

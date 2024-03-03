@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 
                 <div class="navbar-brand">
-                    <i class="sideBar-button fa fa-home"></i>
+                    <i class="sideBar-button fa fa-list d-md-none"></i>
                     <a  class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
@@ -36,6 +36,24 @@
                                 </li>
                             @endif
                         @else
+                            {{-- start language --}}
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="fa fa-language"></i>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('lang', 'en' )}}">
+                                       {{ __('lang.english') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('lang', 'ar' )}}">
+                                       {{ __('lang.arabic') }}
+                                    </a>
+
+                                </div>
+                            </li>
+                            {{-- end language --}}
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

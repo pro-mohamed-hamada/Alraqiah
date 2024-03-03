@@ -24,8 +24,8 @@
                             </div>
                             <div  class="filters-buttons">
                                 <div class="">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{__('lang.search')}}</button>
-                                    <button type="reset" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{__('lang.reset')}}</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> {{__('lang.search')}}</button>
+                                    <button type="reset" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.reset')}}</button>
                                 </div>
                             </div>
                         </form>

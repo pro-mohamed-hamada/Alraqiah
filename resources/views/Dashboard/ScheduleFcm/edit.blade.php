@@ -5,10 +5,10 @@
         <div class="content col-md-9 col-lg-10 offset-md-3 offset-lg-2">
             <div class="mb-3">
                 <div class="card">
-                    <div class="card-header">{{ __('lang.create_schedule_fcm') }}</div>
+                    <div class="card-header">{{ __('lang.edit_schedule_fcm') }}</div>
 
                     <div class="card-body">
-                        {{-- start create form --}}
+                        {{-- start update form --}}
                         <form method="POST" action="{{ route('schedule-fcm.update', $scheduleFcm->id) }}">
                             @method('put')
                             @csrf
@@ -70,12 +70,12 @@
                             
                             <div class="row mb-3 g-3">
                                 <div class="">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{__('lang.create')}}</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.update')}}</button>
                                     <a href="{{ url()->previous() }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> {{__('lang.go_back')}}</a>
                                 </div>
                             </div>
                         </form>
-                        {{-- end create form --}}
+                        {{-- end update form --}}
                     </div>
                 </div>
             </div>

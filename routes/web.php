@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\ClientsController;
 use App\Http\Controllers\Web\ComplaintReplayController;
 use App\Http\Controllers\Web\FaqsController;
+use App\Http\Controllers\Web\LocalizationController;
 use App\Http\Controllers\Web\RelativesController;
 use App\Http\Controllers\Web\ScheduleFcmController;
 use App\Http\Controllers\Web\VideosController;
@@ -46,4 +47,6 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::delete('complaint-replies/{id}', [ComplaintReplayController::class, 'destroy'])->name('complaint-replies.destroy');
     Route::resource('fcm-messages', FcmMessagesController::class);
     Route::resource('schedule-fcm', ScheduleFcmController::class);
+
+    Route::get('lang/{locale}',LocalizationController::class)->name('lang');
 });
