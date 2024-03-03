@@ -54,7 +54,7 @@
                             <td>{{ $client->seat_number }}</td>
                             <td>{{ $client->gender }}</td>
                             <td>{{ $client->national_number }}</td>
-                            <td><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{$client->lat}},{{$client->lng}}">hjhj</a></td>
+                            <td><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{$client->lat}},{{$client->lng}}"><i class="fa fa-map-o"></i></a></td>
                             <td>{{ $client->city }}</td>
                             <td>
                                 <ul class="list-group list-group-horizontal">
