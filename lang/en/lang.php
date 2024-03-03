@@ -17,6 +17,7 @@
         "email"=>"Email",
         "is_active"=>"Is active",
         
+        "clients_filters"=>"Clients filters",
         "clients"=>"Clients",
         "name"=>"Name",
         "phone"=>"Phone",

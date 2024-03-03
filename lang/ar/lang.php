@@ -17,6 +17,7 @@
         "email"=>"الايميل",
         "is_active"=>"نشط",
         
+        "clients_filters"=>"فلترة العملاء",
         "clients"=>"العملاء",
         "name"=>"الاسم",
         "phone"=>"الهاتف",
