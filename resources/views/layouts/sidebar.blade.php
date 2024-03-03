@@ -6,7 +6,7 @@
         <ul>
                 <li>
                         <a class="user-data text-center list-group-item">
-                                <img class="user-img img-responsive img-circle img-thumbnail" src="{{Auth::user()->getFirstMediaUrl('users') ?? asset('images/default-image.jpg')}}">
+                                <img class="user-img img-responsive img-circle img-thumbnail" src="{{ empty(Auth::user()->getFirstMediaUrl('users')) ? asset('images/default-image.jpg'):Auth::user()->getFirstMediaUrl('users')}}">
                                 <h4><span>{{ Auth::user()->name }}</span></h4>
                                 <a class="text-center list-group-item active" href="{{url("/settings")}}"><span>{{ __("lang.profile") }}</span></a>
                         </a>
