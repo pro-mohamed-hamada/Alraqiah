@@ -18,7 +18,7 @@ class WebsitesController extends Controller
 
     public function index(Request $request)
     {
-        
+        userCan(request: $request, permission: 'view_site');
         $filters =  $request->all();
         $websites = $this->websiteService->getAll(['filters'=>$filters]);
         return View('Dashboard.Websites.index', compact(['websites']));
@@ -26,6 +26,7 @@ class WebsitesController extends Controller
 
     public function edit(Request $request, $id)
     {
+        userCan(request: $request, permission: 'edit_site');
         try{
             $website = $this->websiteService->findById(id: $id);
             return view('Dashboard.Websites.edit', compact('website'));
@@ -37,11 +38,13 @@ class WebsitesController extends Controller
 
     public function create(Request $request)
     {
+        userCan(request: $request, permission: 'create_site');
         return view('Dashboard.Websites.create');
     }//end of create
 
     public function store(WebsiteStoreRequest $request)
     {
+        userCan(request: $request, permission: 'create_site');
         try {
             $this->websiteService->store($request->validated());
             return redirect()->route('websites.index')->with('message', __('lang.success_operation'));

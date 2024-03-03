@@ -18,7 +18,7 @@ class VideosController extends Controller
 
     public function index(Request $request)
     {
-        
+        userCan(request: $request, permission: 'view_video');
         $filters =  $request->all();
         $videos = $this->videoService->getAll(['filters'=>$filters]);
         return View('Dashboard.Videos.index', compact(['videos']));
@@ -26,6 +26,7 @@ class VideosController extends Controller
 
     public function edit(Request $request, $id)
     {
+        userCan(request: $request, permission: 'edit_video');
         try{
             $video = $this->videoService->findById(id: $id, withRelations:[]);
             return view('Dashboard.Videos.edit', compact('video'));
@@ -37,11 +38,13 @@ class VideosController extends Controller
 
     public function create(Request $request)
     {
+        userCan(request: $request, permission: 'create_video');
         return view('Dashboard.Videos.create');
     }//end of create
 
     public function store(VideoStoreRequest $request)
     {
+        userCan(request: $request, permission: 'create_video');
         try {
             $this->videoService->store($request->validated());
             return redirect()->route('videos.index')->with('message', __('lang.success_operation'));
@@ -52,6 +55,7 @@ class VideosController extends Controller
 
     public function update(VideoUpdateRequest $request, $id)
     {
+        userCan(request: $request, permission: 'edit_video');
         try {
             $this->videoService->update($id, $request->validated());
             return redirect()->route('videos.index')->with('message', __('lang.success_operation'));
@@ -60,8 +64,9 @@ class VideosController extends Controller
         }
     } //end of update
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        userCan(request: $request, permission: 'delete_video');
         try {
             $result = $this->videoService->destroy($id);
             if (!$result)
@@ -74,6 +79,7 @@ class VideosController extends Controller
 
     public function show(Request $request, $id)
     {
+        userCan(request: $request, permission: 'view_video');
         try{
             $video = $this->videoService->findById(id: $id, withRelations:['attachments']);
             return view('Dashboard.Videos.show', compact('video'));

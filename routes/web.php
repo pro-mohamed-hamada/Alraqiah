@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\RelativesController;
 use App\Http\Controllers\Web\ScheduleFcmController;
 use App\Http\Controllers\Web\VideosController;
 use App\Http\Controllers\Web\UsersController;
+use App\Notifications\SendFcmNotification;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -26,10 +27,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes(['register' => false]);
-// Route::get('/test', function(){
-//     $user = auth()->user();
-//     $user->notify(new SendFcmNotification(['title'=>'test 1', 'content'=>'content 1']));
-// });
+Route::get('/test', function(){
+    $user = auth()->user();
+    $user->notify(new SendFcmNotification(['title'=>'test 1', 'content'=>'content 1']));
+});
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){

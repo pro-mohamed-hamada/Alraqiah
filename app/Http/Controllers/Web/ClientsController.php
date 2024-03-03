@@ -17,7 +17,7 @@ class ClientsController extends Controller
 
     public function index(Request $request)
     {
-        
+        userCan(request: $request, permission: 'view_client');
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
@@ -28,7 +28,7 @@ class ClientsController extends Controller
 
     public function edit(Request $request, $id)
     {
-
+        userCan(request: $request, permission: 'edit_client');
         $client = $this->clientService->findById(id: $id, withRelations:['user', 'relatives']);
         if (!$client)
         {
@@ -45,6 +45,7 @@ class ClientsController extends Controller
 
     public function store(ClientStoreRequest $request)
     {
+        userCan(request: $request, permission: 'create_client');
         try {
             $this->clientService->store($request->validated());
             return redirect()->route('clients.index')->with('message', __('lang.success_operation'));
@@ -55,6 +56,7 @@ class ClientsController extends Controller
 
     public function update(ClientUpdateRequest $request, $id)
     {
+        userCan(request: $request, permission: 'edit_client');
         try {
             $this->clientService->update($id, $request->validated());
             return redirect()->route('clients.index')->with('message', __('lang.success_operation'));
@@ -63,8 +65,9 @@ class ClientsController extends Controller
         }
     } //end of update
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        userCan(request: $request, permission: 'delete_client');
         try {
             $result = $this->clientService->destroy($id);
             if (!$result)

@@ -24,6 +24,7 @@ class FcmMessagesController extends Controller
      */
     public function index(Request $request)
     {
+        userCan(request: $request, permission: 'view_fcm_message');
         try{
             $filters = array_filter($request->all(), function ($value) {
                 return ($value !== null && $value !== false && $value !== '');
@@ -43,6 +44,7 @@ class FcmMessagesController extends Controller
      */
     public function create(Request $request)
     {
+        userCan(request: $request, permission: 'create_fcm_message');
         try{
             $flags = FcmEventsNames::$FLAGS;
             $fcm_channels = FcmEventsNames::$CHANNELS;
@@ -61,6 +63,7 @@ class FcmMessagesController extends Controller
      */
     public function store(FcmMessageStoreRequest $request)
     {
+        userCan(request: $request, permission: 'create_fcm_message');
         try {
             $this->fcmMessageService->store(data: $request->validated());
             return redirect()->route('fcm-messages.index')->with('message', __('lang.success_operation'));
@@ -88,6 +91,7 @@ class FcmMessagesController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        userCan(request: $request, permission: 'edit_fcm_message');
         try{
 
             $fcmMessage = $this->fcmMessageService->findById(id: $id);
@@ -111,6 +115,7 @@ class FcmMessagesController extends Controller
      */
     public function update(FcmMessageUpdateRequest $request, $id)
     {
+        userCan(request: $request, permission: 'edit_fcm_message');
         try {
             $result = $this->fcmMessageService->update($id, $request->validated());
             if(!$result)
@@ -129,6 +134,7 @@ class FcmMessagesController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        userCan(request: $request, permission: 'delete_fcm_message');
         try {
             $result = $this->fcmMessageService->destroy($id);
             if (!$result)
@@ -147,6 +153,7 @@ class FcmMessagesController extends Controller
      */
     public function status(Request $request, int $id)
     {
+        userCan(request: $request, permission: 'change_fcm_message_status');
         try {
             $result = $this->fcmMessageService->status(id: $id);
             if (!$result)

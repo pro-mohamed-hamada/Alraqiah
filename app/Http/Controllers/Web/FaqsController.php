@@ -18,7 +18,7 @@ class FaqsController extends Controller
 
     public function index(Request $request)
     {
-        
+        userCan(request: $request, permission: 'view_faq');
         $filters =  $request->all();
         $faqs = $this->faqService->getAll(['filters'=>$filters]);
         return View('Dashboard.Faqs.index', compact(['faqs']));
@@ -26,6 +26,7 @@ class FaqsController extends Controller
 
     public function edit(Request $request, $id)
     {
+        userCan(request: $request, permission: 'edit_faq');
         try{
             $faq = $this->faqService->findById(id: $id);
             return view('Dashboard.Faqs.edit', compact('faq'));
@@ -37,11 +38,13 @@ class FaqsController extends Controller
 
     public function create(Request $request)
     {
+        userCan(request: $request, permission: 'create_faq');
         return view('Dashboard.Faqs.create');
     }//end of create
 
     public function store(FaqStoreRequest $request)
     {
+        userCan(request: $request, permission: 'create_faq');
         try {
             $this->faqService->store($request->validated());
             return redirect()->route('faqs.index')->with('message', __('lang.success_operation'));
@@ -52,6 +55,7 @@ class FaqsController extends Controller
 
     public function update(FaqUpdateRequest $request, $id)
     {
+        userCan(request: $request, permission: 'edit_faq');
         try {
             $this->faqService->update($id, $request->validated());
             return redirect()->route('faqs.index')->with('message', __('lang.success_operation'));
@@ -60,8 +64,9 @@ class FaqsController extends Controller
         }
     } //end of update
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        userCan(request: $request, permission: 'delete_faq');
         try {
             $result = $this->faqService->destroy($id);
             if (!$result)
@@ -74,8 +79,9 @@ class FaqsController extends Controller
 
     public function show(Request $request, $id)
     {
+        userCan(request: $request, permission: 'view_faq');
         try{
-            $faq = $this->faqService->findById(id: $id, withRelations:['attachments']);
+            $faq = $this->faqService->findById(id: $id);
             return view('Dashboard.Faqs.show', compact('faq'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('lang.something_went_wrong'));

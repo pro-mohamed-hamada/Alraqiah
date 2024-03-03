@@ -4,7 +4,9 @@
 
         <div class="card-body">
             <div class="">
+                @can('create_client')
                 <h5><a role="button" class="btn btn-primary " href="{{route('clients.create')}}"><i class="fa fa-plus"></i> {{__('lang.create_client')}}</a></h5>
+                @endif
             </div>
             <div class="search-box">
                 <div class="row mb-3 g-3">

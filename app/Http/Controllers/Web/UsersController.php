@@ -18,7 +18,7 @@ class UsersController extends Controller
 
     public function index(Request $request)
     {
-        
+        userCan(request: $request, permission: 'view_user');
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
@@ -31,6 +31,7 @@ class UsersController extends Controller
 
     public function create(Request $request)
     {
+        userCan(request: $request, permission: 'create_user');
         $permissions = Permission::all();
         $permissions = $permissions->groupBy('category');
         return view('Dashboard.Users.create', compact('permissions'));
@@ -38,6 +39,7 @@ class UsersController extends Controller
 
     public function store(UserStoreRequest $request)
     {
+        userCan(request: $request, permission: 'create_user');
         try {
             $this->userService->store($request->validated());
             return redirect()->route('users.index')->with('message', __('lang.success_operation'));
@@ -48,6 +50,7 @@ class UsersController extends Controller
 
     public function edit(Request $request, $id)
     {
+        userCan(request: $request, permission: 'edit_user');
         try{
             $user = $this->userService->findById(id: $id);
             $permissions = Permission::all();
@@ -61,6 +64,7 @@ class UsersController extends Controller
 
     public function update(UserUpdateRequest $request, $id)
     {
+        userCan(request: $request, permission: 'edit_user');
         try {
             $this->userService->update($id, $request->validated());
             return redirect()->route('users.index')->with('message', __('lang.success_operation'));
@@ -69,8 +73,9 @@ class UsersController extends Controller
         }
     } //end of update
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        userCan(request: $request, permission: 'delete_user');
         try {
             $result = $this->userService->destroy($id);
             if (!$result)

@@ -24,6 +24,7 @@ class ScheduleFcmController extends Controller
      */
     public function index(Request $request)
     {
+        userCan(request: $request, permission: 'view_schedule_fcm');
         try{
             $filters =  $request->all();
             $allScheduleFcm = $this->scheduleFcmService->getAll(filters: $filters);
@@ -40,6 +41,7 @@ class ScheduleFcmController extends Controller
      */
     public function create(Request $request)
     {
+        userCan(request: $request, permission: 'create_schedule_fcm');
         try{
             $flags = FcmEventsNames::$FLAGS;
             $fcm_channels = FcmEventsNames::$CHANNELS;
@@ -58,6 +60,7 @@ class ScheduleFcmController extends Controller
      */
     public function store(ScheduleFcmStoreRequest $request)
     {
+        userCan(request: $request, permission: 'create_schedule_fcm');
         try {
             $this->scheduleFcmService->store(data: $request->validated());
             return redirect()->route('schedule-fcm.index')->with('message', __('lang.success_operation'));
@@ -85,6 +88,7 @@ class ScheduleFcmController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        userCan(request: $request, permission: 'edit_schedule_fcm');
         try{
 
             $scheduleFcm = $this->scheduleFcmService->findById(id: $id);
@@ -108,6 +112,7 @@ class ScheduleFcmController extends Controller
      */
     public function update(ScheduleFcmUpdateRequest $request, $id)
     {
+        userCan(request: $request, permission: 'edit_schedule_fcm');
         try {
             $result = $this->scheduleFcmService->update($id, $request->validated());
             if(!$result)
@@ -126,6 +131,7 @@ class ScheduleFcmController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        userCan(request: $request, permission: 'delete_schedule_fcm');
         try {
             $result = $this->scheduleFcmService->destroy($id);
             if (!$result)
@@ -144,6 +150,7 @@ class ScheduleFcmController extends Controller
      */
     public function status(Request $request, int $id)
     {
+        userCan(request: $request, permission: 'change_schedule_fcm_status');
         try {
             $result = $this->scheduleFcmService->status(id: $id);
             if (!$result)

@@ -17,14 +17,16 @@ class ComplaintsController extends Controller
 
     public function index(Request $request)
     {
+        userCan(request: $request, permission: 'view_complaint');
         $filters =  $request->all();
         $filters['is_active'] = ActivationStatusEnum::ACTIVE;
         $complaints = $this->complaintService->getAll(filters: $filters);
         return View('Dashboard.Complaints.index', compact(['complaints']));
     }//end of index
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        userCan(request: $request, permission: 'delete_complaint');
         try {
             $result = $this->complaintService->destroy($id);
             if (!$result)
