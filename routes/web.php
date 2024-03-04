@@ -12,6 +12,9 @@ use App\Http\Controllers\Web\RelativesController;
 use App\Http\Controllers\Web\ScheduleFcmController;
 use App\Http\Controllers\Web\VideosController;
 use App\Http\Controllers\Web\UsersController;
+use App\Models\ScheduleFcm;
+use App\Notifications\GeneralNotification;
+use App\Notifications\SendEmailNotification;
 use App\Notifications\SendFcmNotification;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +31,13 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes(['register' => false]);
 Route::get('/test', function(){
-    return "done";
+    // $scheduleFcm = ScheduleFcm::first();
+    // $users[0] = Auth::user();
+    // ScheduleFcm::UserReminderFcm(scheduleFcm: $scheduleFcm, users: $users);
+    // $user = Auth::user();
+    // $notificationData = ['title'=>'this is the title', 'content'=>'this is the content'];
+    // $user->notify(new SendEmailNotification(message: 'this is the message'));
+    return "Done";
 });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
