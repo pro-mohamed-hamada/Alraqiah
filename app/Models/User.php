@@ -79,15 +79,4 @@ class User extends Authenticatable implements HasMedia
         return $this->belongsTo(Client::class);
     }
 
-    
-
-    /**
-     * Specifies the user's FCM token
-     *
-     * @return string|array
-     */
-    public function routeNotificationForFcm()
-    {
-        return $this->fcm_token;
-    }
 }
