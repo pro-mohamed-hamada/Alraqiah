@@ -3,19 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\CitiesController;
-use App\Http\Controllers\Api\ClientHistoriesController;
-use App\Http\Controllers\Api\GovernoratesController;
 use App\Http\Controllers\Api\ClientsController;
-use App\Http\Controllers\Api\ClientServicesController;
 use App\Http\Controllers\Api\ComplaintReplayController;
 use App\Http\Controllers\Api\ComplaintsController;
 use App\Http\Controllers\Api\FaqsController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\NotificationsController;
-use App\Http\Controllers\Api\ServicesController;
 use App\Http\Controllers\Api\RatesController;
-use App\Http\Controllers\Api\WebsitesController;
+use App\Http\Controllers\Api\SitesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +42,7 @@ Route::group(['middleware'=>['auth:sanctum', 'localization']], function(){
 
     Route::get('home', HomeController::class);
     Route::get('faq', FaqsController::class);
-    Route::get('websites', WebsitesController::class);
+    Route::get('sites', SitesController::class);
     Route::post('location', [ClientsController::class, 'location']);
     Route::post('subscribe', [ClientsController::class, 'subscribe']);
     Route::get('notifications', [NotificationsController::class, 'index']);

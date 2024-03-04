@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Web\WebsiteStoreRequest;
-use App\Http\Requests\Web\WebsiteUpdateRequest;
-use App\Services\WebsiteService;
+use App\Http\Requests\Web\SiteStoreRequest;
+use App\Http\Requests\Web\SiteUpdateRequest;
+use App\Services\SiteService;
 use Exception;
 
-class WebsitesController extends Controller
+class SitesController extends Controller
 {
-    public function __construct(private WebsiteService $websiteService)
+    public function __construct(private SiteService $siteService)
     {
 
     }
@@ -20,16 +20,16 @@ class WebsitesController extends Controller
     {
         userCan(request: $request, permission: 'view_site');
         $filters =  $request->all();
-        $websites = $this->websiteService->getAll(['filters'=>$filters]);
-        return View('Dashboard.Websites.index', compact(['websites']));
+        $sites = $this->siteService->getAll(['filters'=>$filters]);
+        return View('Dashboard.Sites.index', compact(['sites']));
     }//end of index
 
     public function edit(Request $request, $id)
     {
         userCan(request: $request, permission: 'edit_site');
         try{
-            $website = $this->websiteService->findById(id: $id);
-            return view('Dashboard.Websites.edit', compact('website'));
+            $site = $this->siteService->findById(id: $id);
+            return view('Dashboard.Sites.edit', compact('site'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('lang.something_went_wrong'));
         }
@@ -39,25 +39,25 @@ class WebsitesController extends Controller
     public function create(Request $request)
     {
         userCan(request: $request, permission: 'create_site');
-        return view('Dashboard.Websites.create');
+        return view('Dashboard.Sites.create');
     }//end of create
 
-    public function store(WebsiteStoreRequest $request)
+    public function store(SiteStoreRequest $request)
     {
         userCan(request: $request, permission: 'create_site');
         try {
-            $this->websiteService->store($request->validated());
-            return redirect()->route('websites.index')->with('message', __('lang.success_operation'));
+            $this->siteService->store($request->validated());
+            return redirect()->route('sites.index')->with('message', __('lang.success_operation'));
         } catch (Exception $e) {
             return redirect()->back()->with('message', $e->getMessage());
         }
     }//end of store
 
-    public function update(WebsiteUpdateRequest $request, $id)
+    public function update(SiteUpdateRequest $request, $id)
     {
         try {
-            $this->websiteService->update($id, $request->validated());
-            return redirect()->route('websites.index')->with('message', __('lang.success_operation'));
+            $this->siteService->update($id, $request->validated());
+            return redirect()->route('sites.index')->with('message', __('lang.success_operation'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());
         }
@@ -66,7 +66,7 @@ class WebsitesController extends Controller
     public function destroy($id)
     {
         try {
-            $result = $this->websiteService->destroy($id);
+            $result = $this->siteService->destroy($id);
             if (!$result)
                 return redirect()->back()->with("message", __('lang.not_found'));
             return redirect()->back()->with("message", __('lang.success_operation'));
@@ -78,8 +78,8 @@ class WebsitesController extends Controller
     public function show(Request $request, $id)
     {
         try{
-            $website = $this->websiteService->findById(id: $id, withRelations:['attachments']);
-            return view('Dashboard.Websites.show', compact('website'));
+            $site = $this->siteService->findById(id: $id, withRelations:['attachments']);
+            return view('Dashboard.Sites.show', compact('site'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('lang.something_went_wrong'));
         }

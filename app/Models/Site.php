@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Filterable;
 
-class Website extends Model
+class Site extends Model
 {
     use HasFactory, Filterable;
 

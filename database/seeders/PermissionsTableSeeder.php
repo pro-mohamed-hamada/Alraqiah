@@ -55,11 +55,11 @@ class PermissionsTableSeeder extends Seeder
             ],
 
             //start doctors permissions
-            'websites'=>[
-                'create_website',
-                'edit_website',
-                'delete_website',
-                'view_website'
+            'sites'=>[
+                'create_site',
+                'edit_site',
+                'delete_site',
+                'view_site'
             ],
             //end doctors permissions
 

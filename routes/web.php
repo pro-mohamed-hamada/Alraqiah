@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\ComplaintsController;
-use App\Http\Controllers\Web\WebsitesController;
+use App\Http\Controllers\Web\SitesController;
 use App\Http\Controllers\Web\FcmMessagesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\ClientsController;
@@ -39,7 +39,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('users', UsersController::class);
     Route::resource('videos', VideosController::class);
     Route::resource('faqs', FaqsController::class);
-    Route::resource('websites', WebsitesController::class);
+    Route::resource('sites', SitesController::class);
     Route::get('complaints', [ComplaintsController::class, 'index'])->name('complaints.index');
     Route::delete('complaints/{id}', [ComplaintsController::class, 'destroy'])->name('complaints.destroy');
     Route::post('complaints/{id}', [ComplaintsController::class, 'status'])->name('complaints.status');

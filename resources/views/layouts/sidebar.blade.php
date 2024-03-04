@@ -24,7 +24,7 @@
                 <li><a class="list-group-item" href="{{route('faqs.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.faqs") }}</a></li>
                 @endcan
                 @can('view_site')
-                <li><a class="list-group-item" href="{{route('websites.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.sites") }}</a></li>
+                <li><a class="list-group-item" href="{{route('sites.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.sites") }}</a></li>
                 @endcan
                 @can('view_complaint')
                 <li><a class="list-group-item" href="{{route('complaints.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.complaints") }}</a></li>

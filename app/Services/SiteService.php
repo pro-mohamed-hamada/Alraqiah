@@ -5,13 +5,13 @@ namespace App\Services;
 use App\Enum\ActivationStatusEnum;
 use App\Exceptions\NotFoundException;
 use Illuminate\Database\Eloquent\Builder;
-use App\Models\Website;
-use App\QueryFilters\WebsitesFilter;
+use App\Models\Site;
+use App\QueryFilters\SitesFilter;
 use Illuminate\Database\Eloquent\Model;
 
-class WebsiteService extends BaseService
+class SiteService extends BaseService
 {
-    public function __construct(private Website $model){
+    public function __construct(private Site $model){
 
     }
 
@@ -22,8 +22,8 @@ class WebsiteService extends BaseService
 
     public function queryGet(array $filters = [] , array $withRelations = []) :builder
     {
-        $website = $this->getModel()->query()->with($withRelations);
-        return $website->filter(new WebsitesFilter($filters));
+        $site = $this->getModel()->query()->with($withRelations);
+        return $site->filter(new SitesFilter($filters));
     }
 
     public function getAll(array $filters = [] , array $withRelations =[], $perPage = null ): \Illuminate\Contracts\Pagination\CursorPaginator|\Illuminate\Database\Eloquent\Collection
@@ -34,20 +34,20 @@ class WebsiteService extends BaseService
             return $this->queryGet(filters: $filters,withRelations: $withRelations)->get();
     }
 
-    public function store(array $data = []):Website|Model|bool
+    public function store(array $data = []):Site|Model|bool
     {
         $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
-        $website = $this->getModel()->create($data);
-        if (!$website)
+        $site = $this->getModel()->create($data);
+        if (!$site)
             return false ;
-        return $website;
+        return $site;
     } //end of store
 
     public function update(int $id, array $data=[])
     {
-        $website = $this->findById($id);
+        $site = $this->findById($id);
         $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
-        return $website->update($data);
+        return $site->update($data);
     }
 
     /**
@@ -55,15 +55,15 @@ class WebsiteService extends BaseService
      */
     public function destroy($id)
     {
-        $website = $this->findById($id);
-        return $website->delete();
+        $site = $this->findById($id);
+        return $site->delete();
     } //end of delete
 
     public function status($id)
     {
-        $website = $this->findById($id);
-        $website->is_active = !$website->is_active;
-        return $website->save();
+        $site = $this->findById($id);
+        $site->is_active = !$site->is_active;
+        return $site->save();
 
     }//end of status
 

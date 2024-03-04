@@ -4,7 +4,7 @@ namespace App\QueryFilters;
 
 use App\Abstracts\QueryFilter;
 
-class WebsitesFilter extends QueryFilter
+class SitesFilter extends QueryFilter
 {
 
     public function __construct($params = array())
@@ -24,7 +24,7 @@ class WebsitesFilter extends QueryFilter
 
     public function keyword($term)
     {
-        return $this->builder->where('name', 'like', '%'.$term.'%');
+        return $this->builder->where('title', 'like', '%'.$term.'%');
     }
 
 }
