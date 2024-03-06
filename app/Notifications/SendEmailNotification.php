@@ -43,7 +43,7 @@ class SendEmailNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Hi')
-                    ->line("From: ".$this->complaint->client->user->name)
+                    ->line("From: ".$this->complaint->user->name)
                     ->line("Complaint: ".$this->complaint->complaint)
                     ->action('Show complaints', route('complaints.index'))
                     ->line('Thank you for using our application!');
