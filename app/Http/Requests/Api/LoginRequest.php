@@ -24,6 +24,7 @@ class LoginRequest extends FormRequest
         return [
             'phone'=>'required|string',
             'remember' =>'nullable|boolean:in:[0,1]',
+            'device_token'=>'required|string',
         ];
     }
 }

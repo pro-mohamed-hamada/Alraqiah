@@ -16,13 +16,15 @@ use function Laravel\Prompts\password;
 class AuthService extends BaseService
 {
 
-    public function loginWithPhone(string $phone, bool $remember = false) :User|Model
+    public function loginWithPhone(string $phone, string $deviceToken = null, bool $remember = false) :User|Model
     {
         $password = '123456';
         $credential = ['phone'=>$phone, 'password'=>$password, 'type'=>[UserTypeEnum::CLIENT, UserTypeEnum::SUPERVISOR]];
         if (!auth()->attempt(credentials: $credential, remember: $remember))
             return throw new NotFoundException(__('lang.login_failed'));
         $user = User::where('phone', $phone)->first();
+        $user->device_token = $deviceToken;
+        $user->save();
         return $user;
     }
 
