@@ -6,9 +6,12 @@ use App\Exceptions\NotFoundException;
 use App\Models\Complaint;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Faq;
+use App\Models\User;
+use App\Notifications\SendEmailNotification;
 use App\QueryFilters\ComplaintsFilter;
 use App\QueryFilters\FaqsFilter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class ComplaintService extends BaseService
 {
@@ -34,10 +37,12 @@ class ComplaintService extends BaseService
 
     public function store(array $data = []):Faq|Model|bool
     {
+        $admin = User::find(1);
         $data['user_id'] = auth('sanctum')->user()->id;
         $complaint = $this->getModel()->create($data);
         if (!$complaint)
             return false ;
+        $admin->notify(new SendEmailNotification(complaint: $complaint));
         return $complaint;
     } //end of store
 

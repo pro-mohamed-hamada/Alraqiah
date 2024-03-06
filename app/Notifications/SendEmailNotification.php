@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Complaint;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -16,7 +17,7 @@ class SendEmailNotification extends Notification
      *
      * @return void
      */
-    public function __construct(protected string $message)
+    public function __construct(protected Complaint $complaint)
     {
         //
     }
@@ -42,8 +43,9 @@ class SendEmailNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Hi')
-                    ->line($this->message)
-                    ->action('Notification Action', url('/'))
+                    ->line("From: ".$this->complaint->client->user->name)
+                    ->line("Complaint: ".$this->complaint->complaint)
+                    ->action('Show complaints', route('complaints.index'))
                     ->line('Thank you for using our application!');
     }
 
