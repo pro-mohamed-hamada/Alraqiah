@@ -45,7 +45,7 @@ class SendEmailNotification extends Notification
                     ->line('Hi')
                     ->line("From: ".$this->complaint->user->name)
                     ->line("Complaint: ".$this->complaint->complaint)
-                    ->action('Show complaints', route('complaints.index'))
+                    ->action('Show complaints', url('dashboard/complaints'))
                     ->line('Thank you for using our application!');
     }
 
