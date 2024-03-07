@@ -27,7 +27,7 @@ class UserStoreRequest extends FormRequest
             'email'=>'required|email',
             'password'=>'required|string|min:8|confirmed',
             'phone'=>'required|string|unique:users,phone',
-            'logo'=>'nullable|file',
+            'logo'=>'nullable|file|image',
             'permissions' => 'required|array|min:1',
             'permissions.*' => 'string|exists:permissions,name',
             'is_active'=>'nullable|string',

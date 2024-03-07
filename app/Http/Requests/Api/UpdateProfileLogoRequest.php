@@ -22,7 +22,7 @@ class UpdateProfileLogoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'logo'=>'required|file',
+            'logo'=>'required|file|image',
         ];
     }
 }

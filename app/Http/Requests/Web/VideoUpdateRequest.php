@@ -23,7 +23,7 @@ class VideoUpdateRequest extends FormRequest
     {
         return [
             'title'=>'required|string',
-            'video_file'=>'required|file',
+            'video_file'=>'required|file|mimes:mp4,mov,avi,mpeg',
         ];
     }
 }
