@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class SendEmailNotification extends Notification
+class AlraqiahEmail extends Notification
 {
     use Queueable;
 
@@ -17,7 +17,7 @@ class SendEmailNotification extends Notification
      *
      * @return void
      */
-    public function __construct(protected Complaint $complaint)
+    public function __construct(protected string $title, protected string $content)
     {
         //
     }
@@ -43,9 +43,9 @@ class SendEmailNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Hi')
-                    ->line("From: ".$this->complaint->user->name)
-                    ->line("Complaint: ".$this->complaint->complaint)
-                    ->action('Show complaints', url('dashboard/complaints'))
+                    ->line("title: ".$this->title)
+                    ->line("email content: ".$this->content)
+                    // ->action('Show complaints', url('dashboard/complaints'))
                     ->line('Thank you for using our application!');
     }
 
