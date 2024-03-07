@@ -16,7 +16,7 @@ class RelativesSeeder extends Seeder
             'name'=>'relative 1',
             'gender'=>'male',
             'national_number'=>'123944729323434',
-            'seat_number'=>1501,
+            'seat_number'=>'1501',
             'city'=>'city one',
             'client_id'=>1,
         ]);
@@ -24,7 +24,7 @@ class RelativesSeeder extends Seeder
             'name'=>'relative 2',
             'gender'=>'female',
             'national_number'=>'74382320384374',
-            'seat_number'=>1502,
+            'seat_number'=>'1502',
             'city'=>'city two',
             'client_id'=>1,
         ]);

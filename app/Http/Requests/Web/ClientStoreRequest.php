@@ -32,7 +32,7 @@ class ClientStoreRequest extends FormRequest
             'reservation_status'=>'required|string',
             'package'=>'required|string',
             'launch_date'=>'required|date|after_or_equal:'.Carbon::now(),
-            'seat_number'=>'required|integer',
+            'seat_number'=>'required|string',
             'gender'=>'required|string',
             'national_number'=>'required|string',
             'city'=>'required|string',

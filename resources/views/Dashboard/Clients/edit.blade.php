@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.seat_number') }} *</label>
-                                    <input type="number" name="seat_number" value="{{ $client->seat_number }}" class="form-control">
+                                    <input type="text" name="seat_number" value="{{ $client->seat_number }}" class="form-control">
                                     @error('seat_number')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
@@ -139,7 +139,7 @@
                                                     </div>
                                                     <div class="col-lg-4">
                                                         <label>{{ __('lang.seat_number') }} *</label>
-                                                        <input type="number" name="relatives_seat_number[]" value="{{ $relative->seat_number }}" class="form-control">
+                                                        <input type="text" name="relatives_seat_number[]" value="{{ $relative->seat_number }}" class="form-control">
                                                         @error("relatives_seat_number[]")
                                                             <span class="error">{{ $message }}</span>
                                                         @enderror

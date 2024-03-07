@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('reservation_status');
             $table->string('package');
             $table->date('launch_date');
-            $table->integer('seat_number');
+            $table->string('seat_number');
             $table->string('gender');
             $table->string('national_number');
             $table->string('lat')->nullable();

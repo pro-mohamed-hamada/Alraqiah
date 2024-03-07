@@ -25,6 +25,9 @@
                 @can('view_faq')
                 <li><a class="list-group-item" href="{{route('faqs.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.faqs") }}</a></li>
                 @endcan
+                @can('view_rate')
+                <li><a class="list-group-item" href="{{route('rates.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.rates") }}</a></li>
+                @endcan
                 @can('view_site')
                 <li><a class="list-group-item" href="{{route('sites.index')}}"></span> <span class="fa fa-users"></span> <span>{{ __("lang.sites") }}</a></li>
                 @endcan

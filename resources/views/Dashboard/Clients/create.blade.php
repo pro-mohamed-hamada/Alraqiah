@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.seat_number') }} *</label>
-                                    <input type="number" name="seat_number" value="{{ old('seat_number') }}" class="form-control">
+                                    <input type="text" name="seat_number" value="{{ old('seat_number') }}" class="form-control">
                                     @error('seat_number')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
@@ -96,6 +96,19 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.supervisor') }} *</label>
+                                    <select class="form-control selectpicker" data-live-search="true">
+                                        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                                        <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                                        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                    </select>
+                                      
+                                    @error("relatives_gender[]")
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+            
                             </div>
                             <hr>
                             <div class="row mb-3 g-3">
@@ -154,7 +167,7 @@
                     </div>
                     <div class="col-lg-4">
                         <label>{{ __('lang.seat_number') }} *</label>
-                        <input type="number" name="relatives_seat_number[]" class="form-control">
+                        <input type="text" name="relatives_seat_number[]" class="form-control">
                         @error("relatives_seat_number[]")
                             <span class="error">{{ $message }}</span>
                         @enderror

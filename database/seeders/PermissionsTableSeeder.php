@@ -37,16 +37,24 @@ class PermissionsTableSeeder extends Seeder
             ],
             //end client permissions
 
-            //start center permissions
+            //start faqs permissions
             'faqs'=>[
                 'create_faq',
                 'edit_faq',
                 'delete_faq',
                 'view_faq'
             ],
-            //end center permissions
+            //end faqs permissions
 
-            //start packages permissions
+            //start rates permissions
+            'rates'=>[
+                'change_rate_status',
+                'delete_rate',
+                'view_rate'
+            ],
+            //end rates permissions
+
+            //start videos permissions
             'videos'=>[
                 'create_video',
                 'edit_video',

@@ -8,6 +8,7 @@ use App\Http\Controllers\Web\ClientsController;
 use App\Http\Controllers\Web\ComplaintReplayController;
 use App\Http\Controllers\Web\FaqsController;
 use App\Http\Controllers\Web\LocalizationController;
+use App\Http\Controllers\Web\RatesController;
 use App\Http\Controllers\Web\RelativesController;
 use App\Http\Controllers\Web\ScheduleFcmController;
 use App\Http\Controllers\Web\VideosController;
@@ -47,6 +48,11 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('users', UsersController::class);
     Route::resource('videos', VideosController::class);
     Route::resource('faqs', FaqsController::class);
+    
+    Route::get('rates', [RatesController::class, 'index'])->name('rates.index');
+    Route::delete('rates/{id}', [RatesController::class, 'destroy'])->name('rates.destroy');
+    Route::post('rates/{id}', [RatesController::class, 'status'])->name('rates.status');
+
     Route::resource('sites', SitesController::class);
     Route::get('complaints', [ComplaintsController::class, 'index'])->name('complaints.index');
     Route::delete('complaints/{id}', [ComplaintsController::class, 'destroy'])->name('complaints.destroy');

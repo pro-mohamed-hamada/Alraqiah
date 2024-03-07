@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Client::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->float('rate_number');
             $table->string('comment');
-            $table->enum('is_active', [ActivationStatusEnum::ACTIVE, ActivationStatusEnum::NOT_ACTIVE])->default(ActivationStatusEnum::ACTIVE);
+            $table->boolean('is_active')->default(ActivationStatusEnum::ACTIVE);
             $table->timestamps();
         });
     }
