@@ -9,10 +9,12 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Models\Faq;
 use App\Models\FcmMessage;
 use App\Models\User;
+use App\Notifications\AlraqiahComplaint;
 use App\Notifications\SendEmailNotification;
 use App\QueryFilters\ComplaintsFilter;
 use App\QueryFilters\FaqsFilter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ComplaintService extends BaseService
@@ -43,7 +45,12 @@ class ComplaintService extends BaseService
         $complaint = $this->getModel()->create($data);
         if (!$complaint)
             return false ;
-        $users[0] = User::find(1);
+        // notify the admin that there is new complaint
+        $admin = User::find(1);
+        $admin->notify(new AlraqiahComplaint(complaint: $complaint));
+
+        //notify the users the complaint created
+        $users[0] = Auth::user();
         event(new PushEvent( users: $users, action: FcmMessage::CREAET_NEW_COMPLAINT));
 
         return $complaint;
