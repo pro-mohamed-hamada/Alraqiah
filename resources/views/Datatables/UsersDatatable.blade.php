@@ -26,7 +26,7 @@
 
             <div class="datatable table-responsive">
                 
-                <table class="usersTable  table text-center table-bordered  table-hover">
+                <table class="usersTable has-data table text-center table-bordered  table-hover">
                     <thead>
                         <th>{{ __('lang.id') }}</th>
                         <th>{{ __('lang.name') }}</th>
@@ -55,8 +55,15 @@
                                         </form>
                                     </li>
                                     <li class="list-group-item"><a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></li>
-                                    <li class="list-group-item"><a href="{{ route('users.show', $user->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a></li>
                                 </ul>
+                            </td>
+                        </tr>
+                        <tr class=" displayView">
+                            <td colspan="10">
+                                <div class="displayViewContent">
+                                    @include('Datatables.SupervisorClients')
+                                </div>
+                                <button class="close btn btn-danger">X</button>     
                             </td>
                         </tr>
                         @endforeach 

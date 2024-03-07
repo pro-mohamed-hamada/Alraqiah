@@ -53,7 +53,6 @@
                                         </form>
                                     </li>
                                     <li class="list-group-item"><a href="{{ route('sites.edit', $site->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></li>
-                                    <li class="list-group-item"><a href="{{ route('sites.show', $site->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a></li>
                                 </ul>
                             </td>
                         </tr>

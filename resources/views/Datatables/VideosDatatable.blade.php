@@ -51,7 +51,6 @@
                                         </form>
                                     </li>
                                     <li class="list-group-item"><a href="{{ route('videos.edit', $video->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></li>
-                                    <li class="list-group-item"><a href="{{ route('videos.show', $video->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a></li>
                                 </ul>
                             </td>
                         </tr>
