@@ -22,12 +22,18 @@ class Client extends Model
         'lng',
         'city',
         'parent_id',
+        'supervisor_id',
     ];
 
 
     public function parent(): \Illuminate\Database\Eloquent\Relations\belongsTo
     {
         return $this->belongsTo(Client::class);
+    }
+
+    public function supervisor(): \Illuminate\Database\Eloquent\Relations\belongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function subscribers(): \Illuminate\Database\Eloquent\Relations\HasMany

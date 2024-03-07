@@ -28,21 +28,5 @@ class UsersSeeder extends Seeder
             'type'=>2,
             'is_active'=>1,
         ]);
-        User::create([
-            'name'=>'Client 1',
-            'phone'=>'01140162540',
-            'password'=>'123456',
-            'type'=>3,
-            'is_active'=>1,
-            'client_id'=>1,
-        ]);
-        User::create([
-            'name'=>'Client 2',
-            'phone'=>'01032551828',
-            'password'=>'123456',
-            'type'=>3,
-            'is_active'=>1,
-            'client_id'=>2,
-        ]);
     }
 }

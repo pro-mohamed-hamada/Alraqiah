@@ -37,32 +37,22 @@ class HomeController extends Controller
                 'company_data'=> $data['company_data'],
             ]);
             return apiResponse(data: $finalResult);
-        }else{
+        }else if($user->type == UserTypeEnum::SUPERVISOR)
+        {
+            $data['client_data'] = ClientsResource::collection($user->supervisorClients);
+            $data['videos'] = VideosResource::collection($this->videoService->getAll(filters: ['is_active' =>ActivationStatusEnum::ACTIVE]));
+            $data['company_data'] = SettingsResource::collection($this->settingService->getAll());
+            $finalResult = collect([
+                'client_data' => $data['client_data'],
+                'videos'=> $data['videos'],
+                'company_data'=> $data['company_data'],
+            ]);
+            return apiResponse(data: $finalResult);
+        }
+        else{
             return apiResponse();
         }
             
-    }
-
-    public function search(Request $request)//: \Illuminate\Http\Response|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory
-    {
-        // $filters = $request->all();
-        // $filters['in_duration'] = 1;
-        // $filters['is_active']   = 1;
-        // $product = $this->productService->queryGet(where_condition: $filters, withRelation: ['defaultLogo'])->select(['id','name'])->limit(10)->get();
-        // $center  = $this->centerService->queryGet(where_condition:  $filters, withRelation: ['defaultLogo'])->select(['id','name'])->limit(10)->get();
-        // $device  = $this->deviceService->queryGet(where_condition:  $filters, withRelation: ['center', 'defaultImage'])->select(['id','name'])->limit(10)->get();
-        // $package = $this->packageService->queryGet(where_condition: $filters, withRelation: ['center', 'attachments'])->limit(10)->get();
-        // $doctor = $this->doctorService->queryGet(filters: $filters, withRelation: ['center', 'defaultLogo'])->limit(10)->get();
-
-        // $finalResult = collect([
-        //     $product,
-        //     $center,
-        //     $device,
-        //     $package,
-        //     $doctor,
-        // ]);
-        // $search_results = new HomeSearchResource($finalResult);
-        // return apiResponse(data: $search_results);
     }
 
 }

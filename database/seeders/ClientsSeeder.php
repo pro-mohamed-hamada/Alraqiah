@@ -14,7 +14,7 @@ class ClientsSeeder extends Seeder
      */
     public function run(): void
     {
-        $client = Client::create([
+        $client1 = Client::create([
             'reservation_number'=>123,
             'reservation_status'=>'pending',
             'package'=>'343',
@@ -26,8 +26,9 @@ class ClientsSeeder extends Seeder
             'lng'=>'5454545.454',
             'city'=>'city one',
             'parent_id'=>null,
+            'supervisor_id'=>2,
         ]);
-        $client = Client::create([
+        $client2 = Client::create([
             'reservation_number'=>123,
             'reservation_status'=>'pending',
             'package'=>'343',
@@ -39,6 +40,23 @@ class ClientsSeeder extends Seeder
             'lng'=>'5454545.454',
             'city'=>'city two',
             'parent_id'=>null,
+            'supervisor_id'=>2,
         ]);
+
+        $client1->user()->create([
+            'name'=>'Client 1',
+            'phone'=>'01140162540',
+            'password'=>'123456',
+            'type'=>3,
+            'is_active'=>1,
+        ]);
+        $client2->user()->create([
+            'name'=>'Client 2',
+            'phone'=>'01032551828',
+            'password'=>'123456',
+            'type'=>3,
+            'is_active'=>1,
+        ]);
+
     }
 }
