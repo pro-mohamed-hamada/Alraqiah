@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Enum\ActivationStatusEnum;
 use App\Enum\FcmEventsNames;
 use App\Events\PushEvent;
 use App\Models\FcmMessage;
@@ -24,7 +25,7 @@ class SendNotification
      */
     public function handle(PushEvent $event): void
     {
-        $fcmMessage = FcmMessage::query()->where('is_active',true)->where('fcm_action', $event->action)->first();
+        $fcmMessage = FcmMessage::query()->where('is_active',ActivationStatusEnum::ACTIVE)->where('fcm_action', $event->action)->first();
         if (!$fcmMessage)
             return;
         User::SendNotification(fcm: $fcmMessage, users: $event->users);
