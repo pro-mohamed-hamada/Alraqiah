@@ -11,13 +11,12 @@ class GeneralNotification extends Notification
 {
     use Queueable;
 
-    private array $notificationData;
     /**
      * Create a new notification instance.
      */
-    public function __construct(array $notificationData)
+    public function __construct(protected string $title, protected string $content)
     {
-        $this->notificationData = $notificationData;
+        //
     }
 
     /**
@@ -36,8 +35,8 @@ class GeneralNotification extends Notification
     public function toDatabase(object $notifiable)
     {
         return [
-            'title'=>$this->notificationData['title'],
-            'content'=>$this->notificationData['content'],
+            'title'=>$this->title,
+            'content'=>$this->content,
         ];
     }
 

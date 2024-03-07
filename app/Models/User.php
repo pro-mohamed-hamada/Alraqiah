@@ -108,6 +108,8 @@ class User extends Authenticatable implements HasMedia
                 app()->make(NotificationService::class)->sendToTokens(title: $title,body: $body,tokens: $tokens);
             else
                 $user->notify(new \App\Notifications\AlraqiahEmail(title: $title, content: $body));
+            
+            $user->notify(new \App\Notifications\GeneralNotification(title: $title, content: $body));
 
         }
 
