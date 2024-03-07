@@ -14,20 +14,20 @@ class SendNotification
     /**
      * Create the event listener.
      */
-    public function __construct(PushEvent $event)
+    public function __construct()
     {
-
-        $fcmMessage = FcmMessage::query()->where('is_active',true)->where('fcm_action', $event->action)->first();
-        if (!$fcmMessage)
-            return;
-        User::SendNotification(fcm: $fcmMessage, users: $event->users);
+        //
     }
 
     /**
      * Handle the event.
      */
-    public function handle(object $event): void
+    public function handle(PushEvent $event): void
     {
-        //
+        $fcmMessage = FcmMessage::query()->where('is_active',true)->where('fcm_action', $event->action)->first();
+        if (!$fcmMessage)
+            return;
+        User::SendNotification(fcm: $fcmMessage, users: $event->users);
+
     }
 }
