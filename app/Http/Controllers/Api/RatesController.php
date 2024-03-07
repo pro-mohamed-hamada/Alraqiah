@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enum\ActivationStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\RatesResource;
 use App\Services\RateService;
@@ -20,6 +21,7 @@ class RatesController extends Controller
     {
         try{
             $filters = $request->all();
+            $filters['is_active'] = ActivationStatusEnum::ACTIVE;
             $withRelations = [];
             $rates = $this->rateService->getAll(filters: $filters, withRelations: $withRelations);
             return apiResponse(data: RatesResource::collection($rates));
