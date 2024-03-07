@@ -30,6 +30,7 @@ class ClientsResource extends JsonResource
             "lng"=>$this->lng,
             "city"=>$this->city,
             "relaives"=>$this->whenLoaded('relatives', RelativesResource::collection($this->relatives)),
+            "supervisor"=> new UsersResource($this->supervisor),
         ];
     }
 }
