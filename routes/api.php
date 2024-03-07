@@ -28,6 +28,7 @@ Route::post('login', [AuthController::class, 'login']);
 Route::group(['middleware'=>['auth:sanctum', 'localization']], function(){
     Route::post('logout',      [AuthController::class, 'logout']);
     Route::get('profile',      [AuthController::class, 'profile']);
+    Route::post('profile-logo', [AuthController::class, 'updateProfileLogo']);
     Route::get('rates', [RatesController::class, 'index']);
     Route::post('rates', [RatesController::class, 'store']);
 

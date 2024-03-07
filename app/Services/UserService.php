@@ -3,14 +3,10 @@
 namespace App\Services;
 
 use App\Enum\ActivationStatusEnum;
-use App\Enum\ImageTypeEnum;
-use App\Enum\PaymentStatusEnum;
 use App\Enum\UserTypeEnum;
 use App\Exceptions\NotFoundException;
 use App\Models\User;
-use App\Models\UserPackage;
 use App\QueryFilters\UsersFilter;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;

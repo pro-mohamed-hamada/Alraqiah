@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Enum\UserTypeEnum;
 use App\Exceptions\NotFoundException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\EndWorkRequest;
 use App\Http\Requests\Api\LoginRequest;
-use App\Http\Requests\Api\LogoutRequest;
-use App\Http\Requests\Api\StartWorkRequest;
+use App\Http\Requests\Api\UpdateProfileLogoRequest;
 use App\Http\Resources\AuthUserResource;
-use App\Models\User;
 use App\Services\AuthService;
 use Exception;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +34,15 @@ class AuthController extends Controller
         try {
             $user = Auth::user();
             
+            return apiResponse(data: new AuthUserResource($user), message: __('lang.success_operation'));
+        } catch (\Exception $exception) {
+            return apiResponse(message: $exception->getMessage(), code: 422);
+        }
+    }
+    public function updateProfileLogo(UpdateProfileLogoRequest $request): \Illuminate\Http\Response|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory
+    {
+        try {
+            $user = $this->authService->updateProfileLogo(data: $request->Validated());
             return apiResponse(data: new AuthUserResource($user), message: __('lang.success_operation'));
         } catch (\Exception $exception) {
             return apiResponse(message: $exception->getMessage(), code: 422);
