@@ -39,7 +39,7 @@ class AlraqiahComplaint extends Notification
                     ->line('New Complaint from: '.$this->complaint->user->name)
                     ->line('Complaint: '.$this->complaint->complaint)
                     ->line('client phone: '.$this->complaint->user->phone)
-                    ->action('Show complaints', url('complaints'))
+                    ->action('Show complaints', url('dashboard/complaints'))
                     ->line('Thank you for using our application!');
     }
 
