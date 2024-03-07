@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ClientsResource;
 use App\Http\Resources\ReservationsResource;
 use App\Http\Resources\SettingsResource;
+use App\Http\Resources\UsersResource;
 use App\Http\Resources\VideosResource;
 use App\Services\ClientService;
 use App\Services\MediaService;
@@ -26,11 +27,13 @@ class HomeController extends Controller
         $user = auth('sanctum')->user();
         if($user->type == UserTypeEnum::CLIENT)
         {
+            $data['user_data'] = new UsersResource($user);
             $data['client_data'] = ClientsResource::collection($this->clientService->getAll(filters: ['id'=> $user->client_id], withRelations: ['relatives']));
             $data['subscrcibers'] = ClientsResource::collection($this->clientService->getAll(filters: ['parent_id' =>$user->client_id], withRelations: ['user']));
             $data['videos'] = VideosResource::collection($this->videoService->getAll(filters: ['is_active' =>ActivationStatusEnum::ACTIVE]));
             $data['company_data'] = SettingsResource::collection($this->settingService->getAll());
             $finalResult = collect([
+                'user_data' => $data['user_data'],
                 'client_data' => $data['client_data'],
                 'subscriber_data'=> $data['subscrcibers'],
                 'videos'=> $data['videos'],
@@ -39,10 +42,12 @@ class HomeController extends Controller
             return apiResponse(data: $finalResult);
         }else if($user->type == UserTypeEnum::SUPERVISOR)
         {
+            $data['user_data'] = new UsersResource($user);
             $data['client_data'] = ClientsResource::collection($user->supervisorClients);
             $data['videos'] = VideosResource::collection($this->videoService->getAll(filters: ['is_active' =>ActivationStatusEnum::ACTIVE]));
             $data['company_data'] = SettingsResource::collection($this->settingService->getAll());
             $finalResult = collect([
+                'user_data' => $data['user_data'],
                 'client_data' => $data['client_data'],
                 'videos'=> $data['videos'],
                 'company_data'=> $data['company_data'],
