@@ -3,6 +3,7 @@
         
         "search"=>"Search",
         "reset"=>"Reset",
+        "logout"=>"Logout",
 
         "users"=>"Users",
         "videos"=>"Videos",

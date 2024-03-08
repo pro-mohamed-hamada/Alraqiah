@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Web\ComplaintsController;
 use App\Http\Controllers\Web\SitesController;
 use App\Http\Controllers\Web\FcmMessagesController;
@@ -40,7 +41,7 @@ Route::get('/test', function(){
     // $user->notify(new SendEmailNotification(message: 'this is the message'));
     return "Done";
 });
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);

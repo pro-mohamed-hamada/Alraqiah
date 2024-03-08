@@ -1,0 +1,21 @@
+.content{
+    position: absolute;
+    left: 0;
+}
+
+.navbar-nav{
+    position: absolute;
+    left: 0;
+}
+.fixed-top{
+    right: auto !important;
+}
+.sideBar ul{
+    text-align: right !important;
+}
+.form-check{
+    float: right;
+}
+.dropdown-menu{
+    text-align: right !important;
+}
