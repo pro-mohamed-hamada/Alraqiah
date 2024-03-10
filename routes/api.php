@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\NotificationsController;
 use App\Http\Controllers\Api\RatesController;
 use App\Http\Controllers\Api\SitesController;
+use App\Http\Controllers\Api\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
 
     Route::get('home', HomeController::class);
     Route::get('faq', FaqsController::class);
+    Route::get('users', UsersController::class);// get the supervisors data
     Route::get('sites', SitesController::class);
     Route::post('location', [ClientsController::class, 'location']);
     Route::post('subscribe', [ClientsController::class, 'subscribe']);
