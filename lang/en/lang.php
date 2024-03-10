@@ -4,6 +4,9 @@
         "search"=>"Search",
         "reset"=>"Reset",
         "logout"=>"Logout",
+        "male"=>"Male",
+        "female"=>"female",
+        "supervisor"=>"Supervisor",
 
         "users"=>"Users",
         "videos"=>"Videos",
@@ -42,6 +45,11 @@
         "create_faq"=>"Create faq",
         "equestion"=>"Equestion",
         "answer"=>"Answer",
+
+        "rates_filters"=>"Rates filters",
+        "rates"=>"Rates",
+        "rate_number"=>"Rate number",
+        "comment"=>"Comment",
 
         "complaints_filters"=>"Complaints filters",
         "complaint"=>"Complaint",

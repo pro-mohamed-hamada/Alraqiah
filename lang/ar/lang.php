@@ -4,6 +4,9 @@
         "search"=>"بحث",
         "reset"=>"استرجاع",
         "logout"=>"تسجيل خروج",
+        "male"=>"ذكر",
+        "female"=>"أنثى",
+        "supervisor"=>"المشرف",
 
         "users"=>"المستخدمين",
         "videos"=>"الفيديوهات",
@@ -42,6 +45,11 @@
         "create_faq"=>"انشاء FAQ",
         "equestion"=>"السؤال",
         "answer"=>"الاجابة",
+
+        "rates_filters"=>"فلترة التقيمات",
+        "rates"=>"التقيمات",
+        "rate_number"=>"رقم التقييم",
+        "comment"=>"التعليق",
 
         "complaints_filters"=>"فلترة الشكاوى",
         "complaint"=>"الشكوى",
