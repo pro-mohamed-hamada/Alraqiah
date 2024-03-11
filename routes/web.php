@@ -47,6 +47,8 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);
     Route::delete('relatives/{id}', [RelativesController::class, 'destroy'])->name('relatives.destroy');
     Route::resource('users', UsersController::class);
+    Route::get('profile', [UsersController::class, 'profileView'])->name('profile.view');
+    Route::put('profile', [UsersController::class, 'profile'])->name('profile.update');
     Route::resource('videos', VideosController::class);
     Route::resource('faqs', FaqsController::class);
     

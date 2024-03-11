@@ -7,6 +7,7 @@
         "male"=>"Male",
         "female"=>"female",
         "supervisor"=>"Supervisor",
+        "profile"=>"Profile",
 
         "users"=>"Users",
         "videos"=>"Videos",

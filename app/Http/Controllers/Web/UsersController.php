@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Web\UserProfileRequest;
 use App\Http\Requests\Web\UserStoreRequest;
 use App\Http\Requests\Web\UserUpdateRequest;
 use App\Services\UserService;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
 class UsersController extends Controller
 {
@@ -78,6 +80,29 @@ class UsersController extends Controller
         userCan(request: $request, permission: 'delete_user');
         try {
             $result = $this->userService->destroy($id);
+            if (!$result)
+                return redirect()->back()->with("message", __('lang.not_found'));
+            return redirect()->back()->with("message", __('lang.success_operation'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with("message", $e->getMessage());
+        }
+    } //end of destroy
+
+    public function profileView()
+    {
+        try {
+            $user = Auth::user();
+            return view('Dashboard.Users.profile', compact('user'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with("message", $e->getMessage());
+        }
+    } //end of destroy
+
+    public function profile(UserProfileRequest $request)
+    {
+        try {
+            $userId = Auth::user()->id;
+            $result = $this->userService->update(id: $userId, data: $request->validated());
             if (!$result)
                 return redirect()->back()->with("message", __('lang.not_found'));
             return redirect()->back()->with("message", __('lang.success_operation'));

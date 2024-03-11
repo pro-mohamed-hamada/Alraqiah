@@ -61,7 +61,8 @@ class UserService extends BaseService
             $user->addMediaFromRequest('logo')->toMediaCollection('users');
         }
         $user->update(Arr::except($data, 'logo'));
-        $user->syncPermissions($data['permissions']);
+        if(isset($data['permissions']))
+            $user->syncPermissions($data['permissions']);
         return true;
     } //end of store
 
