@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md shadow-sm navbar-dark bg-dark fixed-top col-md-9 col-xs-10 col-lg-10 offset-xs-2 offset-md-3 offset-lg-2">
+<nav class="navbar navbar-expand-md shadow-sm navbar-default fixed-top col-md-9 col-xs-10 col-lg-10 offset-xs-2 offset-md-3 offset-lg-2">
             <div class="container-fluid">
                 
                 <div class="navbar-brand">
@@ -55,7 +55,8 @@
                             {{-- start notification --}}
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="fa fa-bell"></i>
+                                    <i class="fa fa-bell-o"></i>
+                                    
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

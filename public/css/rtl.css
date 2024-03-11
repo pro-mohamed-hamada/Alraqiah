@@ -17,5 +17,7 @@
     float: right;
 }
 .dropdown-menu{
+    left: 0 !important;
+    right: auto !important;
     text-align: right !important;
 }

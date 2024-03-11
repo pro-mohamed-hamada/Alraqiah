@@ -18,10 +18,6 @@ body{
     background-color:#FFF !important;
 }
 
-.nav-link, .navbar-toggler{
-    color: #FFF !important;
-}
-
 .displayViewContent{
     position: absolute;
     width:90%;
