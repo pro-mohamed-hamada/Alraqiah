@@ -44,7 +44,7 @@
         
         "faqs_filters"=>"فلترة الاسئلة الشائعة",
         "create_faq"=>"انشاء FAQ",
-        "equestion"=>"السؤال",
+        "question"=>"السؤال",
         "answer"=>"الاجابة",
 
         "rates_filters"=>"فلترة التقيمات",

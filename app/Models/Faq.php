@@ -11,7 +11,7 @@ class Faq extends Model
     use HasFactory, Filterable;
 
     protected $fillable = [
-        'equestion',
+        'question',
         'answer',
         'is_active',
     ];

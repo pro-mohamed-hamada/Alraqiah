@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
-            $table->string('equestion');
+            $table->string('question');
             $table->string('answer');
             $table->boolean('is_active')->default(ActivationStatusEnum::ACTIVE);
             $table->timestamps();

@@ -22,7 +22,7 @@ class FaqUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'equestion'=>'required|string',
+            'question'=>'required|string',
             'answer'=>'required|string',
             'is_active'=>'nullable|string',
         ];

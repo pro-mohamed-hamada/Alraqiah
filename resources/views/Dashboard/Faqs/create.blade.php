@@ -14,9 +14,9 @@
                             <div class="row mb-3 g-3">
                                 
                                 <div class="col-lg-4">
-                                    <label>{{ __('lang.equestion') }} *</label>
-                                    <input type="text" name="equestion" class="form-control">
-                                    @error('equestion')
+                                    <label>{{ __('lang.question') }} *</label>
+                                    <input type="text" name="question" class="form-control">
+                                    @error('question')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>

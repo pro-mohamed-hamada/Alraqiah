@@ -44,7 +44,7 @@
         
         "faqs_filters"=>"Faqs filters",
         "create_faq"=>"Create faq",
-        "equestion"=>"Equestion",
+        "question"=>"Question",
         "answer"=>"Answer",
 
         "rates_filters"=>"Rates filters",

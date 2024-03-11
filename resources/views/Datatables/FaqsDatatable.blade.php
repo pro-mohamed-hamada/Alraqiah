@@ -29,7 +29,7 @@
                 <table class="faqsTable  table text-center table-bordered  table-hover">
                     <thead>
                         <th>{{ __('lang.id') }}</th>
-                        <th>{{ __('lang.equestion') }}</th>
+                        <th>{{ __('lang.question') }}</th>
                         <th>{{ __('lang.answer') }}</th>
                         <th>{{ __('lang.is_active') }}</th>
                         <th>{{ __('lang.actions') }}</th>
@@ -39,7 +39,7 @@
                         @foreach ($faqs as $faq)
                         <tr>
                             <td>{{ $faq->id }}</td>
-                            <td>{{ $faq->equestion }}</td>
+                            <td>{{ $faq->question }}</td>
                             <td>{{ $faq->answer }}</td>
                             <td>{{ $faq->is_active }}</td>
                             <td>

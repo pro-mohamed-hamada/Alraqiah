@@ -14,12 +14,12 @@ class FaqsSeeder extends Seeder
     public function run(): void
     {
         $faq1 = Faq::create([
-            'equestion'=>'equestion 1',
+            'question'=>'question 1',
             'answer'=>'answer 1',
             'is_active'=>1,
         ]);
         $faq2 = Faq::create([
-            'equestion'=>'equestion 2',
+            'question'=>'question 2',
             'answer'=>'answer 2',
             'is_active'=>1,
         ]);
