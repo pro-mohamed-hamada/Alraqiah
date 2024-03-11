@@ -40,6 +40,7 @@
                         <th>{{ __('lang.national_number') }}</th>
                         <th>{{ __('lang.location') }}</th>
                         <th>{{ __('lang.city') }}</th>
+                        <th>{{ __('lang.supervisor') }}</th>
                         <th>{{ __('lang.actions') }}</th>
                         
                     </thead>
@@ -58,6 +59,7 @@
                             <td>{{ $client->national_number }}</td>
                             <td><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{$client->lat}},{{$client->lng}}"><i class="fa fa-map-o"></i></a></td>
                             <td>{{ $client->city }}</td>
+                            <td>{{ $client->supervisor->name }}</td>
                             <td>
                                 <ul class="list-group list-group-horizontal">
                                     <li class="list-group-item">

@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Enum\ActivationStatusEnum;
+use App\Enum\UserTypeEnum;
 use Illuminate\Http\Request;
 use App\Services\ClientService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\ClientStoreRequest;
 use App\Http\Requests\Web\ClientUpdateRequest;
+use App\Services\UserService;
 
 class ClientsController extends Controller
 {
-    public function __construct(private ClientService $clientService)
+    public function __construct(
+        private ClientService $clientService,
+        private UserService $userService
+        )
     {
 
     }
@@ -34,13 +40,21 @@ class ClientsController extends Controller
         {
             return redirect()->back()->with("message", __('lang.not_found'));
         }
-        return view('Dashboard.Clients.edit', compact('client'));
+        $supervisorsFilters['is_active'] = ActivationStatusEnum::ACTIVE;
+        $supervisorsFilters['type'] = UserTypeEnum::SUPERVISOR;
+
+        $supervisors = $this->userService->getAll(filters: $supervisorsFilters);
+        return view('Dashboard.Clients.edit', compact('client', 'supervisors'));
     }//end of create
 
     public function create(Request $request)
     {
         userCan(request: $request, permission: 'create_client');
-        return view('Dashboard.Clients.create');
+        $supervisorsFilters['is_active'] = ActivationStatusEnum::ACTIVE;
+        $supervisorsFilters['type'] = UserTypeEnum::SUPERVISOR;
+
+        $supervisors = $this->userService->getAll(filters: $supervisorsFilters);
+        return view('Dashboard.Clients.create', compact('supervisors'));
     }//end of create
 
     public function store(ClientStoreRequest $request)

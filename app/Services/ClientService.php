@@ -75,6 +75,7 @@ class ClientService extends BaseService
         $clientData['gender'] = $data['gender'];
         $clientData['national_number'] = $data['national_number'];
         $clientData['city'] = $data['city'];
+        $clientData['supervisor_id'] = $data['supervisor_id'];
         return $clientData;
     }
 

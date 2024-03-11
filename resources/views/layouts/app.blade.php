@@ -23,6 +23,7 @@
     
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 </head>
 <body>
     <div id="app">
@@ -59,7 +60,11 @@
         <script src="{{asset('js/rtl.js')}}"></script>
         @endif
         <script src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
-</body>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+    </body>
 @yield('script')
 <script>
     $(document).ready(function(){

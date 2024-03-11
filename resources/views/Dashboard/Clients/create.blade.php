@@ -98,13 +98,13 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.supervisor') }} *</label>
-                                    <select class="form-control selectpicker" data-live-search="true">
-                                        <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
-                                        <option data-tokens="mustard">Burger, Shake and a Smile</option>
-                                        <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                    <select name="supervisor_id" class="form-control selectpicker" data-live-search="true">
+                                        <option disabled selected>{{ __('choose') }}</option>
+                                        @foreach ($supervisors as $supervisor)
+                                        <option value="{{ $supervisor->id }}">{{ $supervisor->name }}</option>
+                                        @endforeach
                                     </select>
-                                      
-                                    @error("relatives_gender[]")
+                                    @error("supervisor_id")
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>

@@ -37,6 +37,7 @@ class ClientUpdateRequest extends FormRequest
             'gender'=>'required|string',
             'national_number'=>'required|string',
             'city'=>'required|string',
+            'supervisor_id'=>'required|integer|exists:users,id',
             'relatives_name'=>'nullable|array',
             'relatives_name.*'=>'required|string',
             'relatives_gender'=>'nullable|array',
