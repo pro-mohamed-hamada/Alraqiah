@@ -70,7 +70,9 @@ body{
 /**start media query**/
 @media(max-width:767px){/*mobile and tablet*/
     
-    
+    .navbar-nav{
+        width:100%;
+    }
     
     
 
