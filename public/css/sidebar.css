@@ -24,7 +24,7 @@
 }
 
 
-.sideBar .user-img{
+.sideBar .logo{
     width:50%;
     margin:10px;
 }
@@ -43,7 +43,7 @@
 @media(min-width:768px) and (max-width:991px){
     /*small screen*/
     
-    .sideBar .user-img{
+    .sideBar .logo{
         width:100%;
     }
     

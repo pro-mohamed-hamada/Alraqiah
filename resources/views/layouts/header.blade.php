@@ -4,7 +4,6 @@
                 <div class="navbar-brand">
                     <i class="sideBar-button navbar-brand fa fa-align-left d-md-none"></i>
                     <a  class="navbar-brand" href="{{ url('/') }}">
-                        <img style="width:20px" class="img-responsive" src="{{ asset('images/alraqiah_logo.jpeg') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -74,6 +73,7 @@
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img style="width:20px" class=" img-responsive img-circle img-thumbnail" src="{{ empty(Auth::user()->getFirstMediaUrl('users')) ? asset('images/default-image.jpg'):Auth::user()->getFirstMediaUrl('users')}}">
                                     {{ Auth::user()->name }}
                                 </a>
 

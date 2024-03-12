@@ -7,7 +7,7 @@
                 <li>
                         <a class="user-data text-center list-group-item">
                                 @auth
-                                <img class="user-img img-responsive img-circle img-thumbnail" src="{{ empty(Auth::user()->getFirstMediaUrl('users')) ? asset('images/default-image.jpg'):Auth::user()->getFirstMediaUrl('users')}}">
+                                <img class="logo img-responsive img-circle img-thumbnail" src="{{ asset('images/alraqiah_logo.jpeg') }}">
                                 <h4><span>{{ Auth::user()->name }}</span></h4>
                                 @endauth
                         </a>
