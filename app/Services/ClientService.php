@@ -153,6 +153,7 @@ class ClientService extends BaseService
         $client->update($clientData);
 
         $userData = $this->prepareUserData(data: $data);
+        $userData['password'] = bcrypt($userData['password']);
         $user = $client->user()->update($userData);
         $relativesData = $this->prepareRelativesData(data: $data);
         $client->relatives()->delete();
