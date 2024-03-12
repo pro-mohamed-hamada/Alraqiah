@@ -132,7 +132,7 @@
                             </div>
                             <div class="row mb-3 g-3">
                                 <div class="">
-                                    <button id="d" type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.create')}}</button>
+                                    <button id="client_submit_burron" type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.create')}}</button>
                                     <a href="{{ url()->previous() }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> {{__('lang.go_back')}}</a>
                                 </div>
                             </div>
@@ -211,32 +211,32 @@
             var element = $(this).parents('.relative')
             element.remove();
         });
-        // $('#d').click(function(e){
-        //     e.preventDefault();
-        //     var url = $('#client_form').attr("action");
-        //     var data = $('#client_form').serialize();
-        //     $.ajax({
-        //         url:url,
-        //         method:"post",
-        //         data:data,
-        //         beforeSend:function(){
-        //             $(".load_content").css("display","block");
-        //         },
-        //         success:function(responsetext){
-        //             $(".load_content").css("display","none");
-        //             //$(location).attr('href', "{{ route('clients.index') }}");
-        //         },
-        //         error: function(data_error, exception){
-        //             $(".load_content").css("display","none");
-        //             if(exception == "error"){
-        //                 $(".errors ul").text("");
-        //                 $.each(data_error.responseJSON.errors, function(key, value) {
-        //                     $(".errors ul").append("<li>" + key + ": " + value + "</li>");
-        //                 });
-        //             }
-        //         }
-        //     });
-        // });
+        $('#client_submit_burron').click(function(e){
+            e.preventDefault();
+            var url = $('#client_form').attr("action");
+            var data = $('#client_form').serialize();
+            $.ajax({
+                url:url,
+                method:"post",
+                data:data,
+                beforeSend:function(){
+                    $(".load_content").css("display","block");
+                },
+                success:function(responsetext){
+                    $(".load_content").css("display","none");
+                    //$(location).attr('href', "{{ route('clients.index') }}");
+                },
+                error: function(data_error, exception){
+                    $(".load_content").css("display","none");
+                    if(exception == "error"){
+                        $(".errors ul").text("");
+                        $.each(data_error.responseJSON.errors, function(key, value) {
+                            $(".errors ul").append("<li>" + key + ": " + value + "</li>");
+                        });
+                    }
+                }
+            });
+        });
 
     });
 </script>
