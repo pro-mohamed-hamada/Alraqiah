@@ -3,14 +3,18 @@
 namespace App\Services;
 
 use App\Enum\ActivationStatusEnum;
+use App\Enum\UserTypeEnum;
+use App\Events\PushEvent;
 use App\Exceptions\NotFoundException;
 use App\Models\Complaint;
 use App\Models\ComplaintReplay;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Faq;
+use App\Models\FcmMessage;
 use App\QueryFilters\ComplaintsFilter;
 use App\QueryFilters\FaqsFilter;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class ComplaintReplayService extends BaseService
 {
@@ -32,6 +36,15 @@ class ComplaintReplayService extends BaseService
             return false ;
         $complaint->is_active = ActivationStatusEnum::ACTIVE;
         $complaint->save();
+
+        //notify the users the complaint created
+        $userType = Auth::user()->type;
+        if($userType != UserTypeEnum::CLIENT)
+        {
+            $users[0] = Auth::user();
+            event(new PushEvent( users: $users, action: FcmMessage::SUPERVISOR_REPLIED_ON_COMPLAINT));
+        }
+        
         return $complaintReplay;
     } //end of store
 

@@ -13,7 +13,6 @@ class FcmEventsNames
 
     public static array $FCMACTIONS = [
         'CREAET_NEW_COMPLAINT'            => 'create_new_complaint',
-        'CLIENT_REPLIED_ON_COMPLAINT'     => 'client_replied_on_complaint',
         'SUPERVISOR_REPLIED_ON_COMPLAINT' => 'supervisor_replied_on_complaint',
     ];
 
