@@ -9,13 +9,15 @@ use App\Services\ClientService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\ClientStoreRequest;
 use App\Http\Requests\Web\ClientUpdateRequest;
+use App\Services\SiteService;
 use App\Services\UserService;
 
 class ClientsController extends Controller
 {
     public function __construct(
         private ClientService $clientService,
-        private UserService $userService
+        private UserService $userService,
+        private SiteService $siteService
         )
     {
 
@@ -44,7 +46,8 @@ class ClientsController extends Controller
         $supervisorsFilters['type'] = UserTypeEnum::SUPERVISOR;
 
         $supervisors = $this->userService->getAll(filters: $supervisorsFilters);
-        return view('Dashboard.Clients.edit', compact('client', 'supervisors'));
+        $sites = $this->siteService->getAll();
+        return view('Dashboard.Clients.edit', compact('client', 'supervisors', 'sites'));
     }//end of create
 
     public function create(Request $request)
@@ -54,7 +57,8 @@ class ClientsController extends Controller
         $supervisorsFilters['type'] = UserTypeEnum::SUPERVISOR;
 
         $supervisors = $this->userService->getAll(filters: $supervisorsFilters);
-        return view('Dashboard.Clients.create', compact('supervisors'));
+        $sites = $this->siteService->getAll();
+        return view('Dashboard.Clients.create', compact('supervisors', 'sites'));
     }//end of create
 
     public function store(ClientStoreRequest $request)

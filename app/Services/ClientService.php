@@ -14,6 +14,7 @@ use App\Exceptions\BadRequestHttpException;
 use App\Models\User;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class ClientService extends BaseService
@@ -49,6 +50,9 @@ class ClientService extends BaseService
         $user = $client->user()->create($userData);
         $relativesData = $this->prepareRelativesData(data: $data);
         $client->relatives()->createMany($relativesData);
+
+        if(isset($data['sites']))
+            $client->sites()->sync($data['sites']);
         DB::commit();
         return $client;
 
@@ -153,6 +157,9 @@ class ClientService extends BaseService
         $relativesData = $this->prepareRelativesData(data: $data);
         $client->relatives()->delete();
         $client->relatives()->createMany($relativesData);
+
+        if(isset($data['sites']))
+            $client->sites()->sync($data['sites']);
         DB::commit();
         return $client;
     }

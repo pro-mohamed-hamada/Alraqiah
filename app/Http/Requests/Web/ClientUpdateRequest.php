@@ -48,6 +48,8 @@ class ClientUpdateRequest extends FormRequest
             'relatives_seat_number.*'=>'required|string',
             'relatives_city'=>'nullable|array',
             'relatives_city.*'=>'required|string',
+            'sites'=>'nullable|array',
+            'sites.*'=>'required|integer|exists:sites,id',
         ];
     }
 }

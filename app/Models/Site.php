@@ -16,4 +16,9 @@ class Site extends Model
         'is_active',
     ];
 
+    public function clients(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Client::class,  ClientSite::class)->withTimestamps();
+    }
+
 }

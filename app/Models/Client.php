@@ -54,5 +54,10 @@ class Client extends Model
     {
         return $this->hasMany(Relative::class,  'client_id');
     }
+
+    public function sites(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Site::class,  ClientSite::class)->withTimestamps();
+    }
     
 }

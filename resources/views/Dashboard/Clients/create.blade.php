@@ -108,6 +108,20 @@
                             </div>
                             <hr>
                             <div class="row mb-3 g-3">
+                                {{-- sites --}}
+                                <h3>{{ __('lang.sites') }}</h3>
+                                @foreach($sites as $site)
+                                    <div class="col-lg-4">
+                                        <div class="form-check checkbox checkbox-primary mb-0">
+                                            <input class="form-check-input" name="sites[]" value="{{$site->id}}" id="checkbox-primary-{{$site->id}}" type="checkbox" data-bs-original-title="" title="{{ $site->title }}">
+                                            <label class="form-check-label" for="checkbox-primary-{{$site->id}}">{{ $site->title }}</label>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                {{-- end sites --}}
+                            </div>
+                            <hr>
+                            <div class="row mb-3 g-3">
                                 {{-- start the client relatives --}}
                                 <div class="mb-3  client-relatives">
                                     <div class="mb-3">
@@ -197,32 +211,32 @@
             var element = $(this).parents('.relative')
             element.remove();
         });
-        $('#d').click(function(e){
-            e.preventDefault();
-            var url = $('#client_form').attr("action");
-            var data = $('#client_form').serialize();
-            $.ajax({
-                url:url,
-                method:"post",
-                data:data,
-                beforeSend:function(){
-                    $(".load_content").css("display","block");
-                },
-                success:function(responsetext){
-                    $(".load_content").css("display","none");
-                    $(location).attr('href', "{{ route('clients.index') }}");
-                },
-                error: function(data_error, exception){
-                    $(".load_content").css("display","none");
-                    if(exception == "error"){
-                        $(".errors ul").text("");
-                        $.each(data_error.responseJSON.errors, function(key, value) {
-                            $(".errors ul").append("<li>" + key + ": " + value + "</li>");
-                        });
-                    }
-                }
-            });
-        });
+        // $('#d').click(function(e){
+        //     e.preventDefault();
+        //     var url = $('#client_form').attr("action");
+        //     var data = $('#client_form').serialize();
+        //     $.ajax({
+        //         url:url,
+        //         method:"post",
+        //         data:data,
+        //         beforeSend:function(){
+        //             $(".load_content").css("display","block");
+        //         },
+        //         success:function(responsetext){
+        //             $(".load_content").css("display","none");
+        //             //$(location).attr('href', "{{ route('clients.index') }}");
+        //         },
+        //         error: function(data_error, exception){
+        //             $(".load_content").css("display","none");
+        //             if(exception == "error"){
+        //                 $(".errors ul").text("");
+        //                 $.each(data_error.responseJSON.errors, function(key, value) {
+        //                     $(".errors ul").append("<li>" + key + ": " + value + "</li>");
+        //                 });
+        //             }
+        //         }
+        //     });
+        // });
 
     });
 </script>

@@ -113,6 +113,30 @@
                             </div>
                             <hr>
                             <div class="row mb-3 g-3">
+                                {{-- sites --}}
+                                <h3>{{ __('lang.sites') }}</h3>
+                                @foreach ($sites as $site)
+                                        @if($client->sites->contains('id', $site->id))
+                                            <div class="col-lg-4">
+                                                <div class="form-check checkbox checkbox-primary mb-0">
+                                                    <input class="form-check-input" name="sites[]" value="{{$site->id}}" id="checkbox-primary-{{$site->id}}" type="checkbox" data-bs-original-title="" title="{{ $site->title }}" checked>
+                                                    <label class="form-check-label" for="checkbox-primary-{{$site->id}}">{{ $site->title }}</label>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <div class="col-lg-4">
+                                                <div class="form-check checkbox checkbox-primary mb-0">
+                                                    <input class="form-check-input" name="sites[]" value="{{$site->id}}" id="checkbox-primary-{{$site->id}}" type="checkbox" data-bs-original-title="" title="{{ $site->title }}">
+                                                    <label class="form-check-label" for="checkbox-primary-{{$site->id}}">{{ $site->title }}</label>
+                                                </div>
+                                            </div>
+                                        @endif
+                                                
+                                    @endforeach
+                                {{-- end sites --}}
+                            </div>
+                            <hr>
+                            <div class="row mb-3 g-3">
                                 {{-- start the client relatives --}}
                                 <div class="mb-3  client-relatives">
                                     <div class="mb-3">
