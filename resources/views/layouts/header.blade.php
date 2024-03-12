@@ -4,6 +4,7 @@
                 <div class="navbar-brand">
                     <i class="sideBar-button navbar-brand fa fa-align-left d-md-none"></i>
                     <a  class="navbar-brand" href="{{ url('/') }}">
+                        <img style="width:20px" class="img-responsive" src="{{ asset('images/alraqiah_logo.jpeg') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
