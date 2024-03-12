@@ -18,14 +18,17 @@ class AuthService extends BaseService
 
     public function loginWithPhone(string $phone, string $deviceToken = null, bool $remember = false) :User|Model
     {
-        $password = '123456';
-        $credential = ['phone'=>$phone, 'password'=>$password, 'type'=>[UserTypeEnum::CLIENT, UserTypeEnum::SUPERVISOR]];
-        if (!auth()->attempt(credentials: $credential, remember: $remember))
-            return throw new NotFoundException(__('lang.login_failed'));
-        $user = User::where('phone', $phone)->first();
-        $user->device_token = $deviceToken;
-        $user->save();
-        return $user;
+        $user = User::where('phone', $phone)->whereIn('type', [UserTypeEnum::CLIENT, UserTypeEnum::SUPERVISOR])->first();
+
+        if ($user) {
+            // Log the user in
+            Auth::login(user: $user, remember: $remember);
+            $user->device_token = $deviceToken;
+            $user->save();
+            return $user;
+        }
+
+        return throw new NotFoundException(__('lang.login_failed'));
     }
 
     public function userTarget() //:User|Model|bool
