@@ -99,18 +99,6 @@ class ClientService extends BaseService
         return $relativesData;
     }
 
-
-    public function location(array $data = []): bool
-    {
-        $user = auth('sanctum')->user();
-        $user->client->update([
-            'lat'=>$data['lat'],
-            'lng'=>$data['lng']
-        ]);
-        
-        return true;
-    } //end of location
-
     public function subscribe(array $data = []): bool
     {
         $user = auth('sanctum')->user();

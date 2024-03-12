@@ -67,6 +67,17 @@ class UserService extends BaseService
     } //end of store
 
 
+    public function location(array $data = []): bool
+    {
+        $user = auth('sanctum')->user();
+        $user->update([
+            'lat'=>$data['lat'],
+            'lng'=>$data['lng']
+        ]);
+        
+        return true;
+    } //end of location
+    
     public function changeStatus($id)
     {
         $user = $this->findById($id);

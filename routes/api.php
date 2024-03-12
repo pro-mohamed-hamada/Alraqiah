@@ -44,9 +44,9 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
 
     Route::get('home', HomeController::class);
     Route::get('faq', FaqsController::class);
-    Route::get('users', UsersController::class);// get the supervisors data
+    Route::get('users', [UsersController::class, 'getSupervisors']);// get the supervisors data
     Route::get('sites', SitesController::class);
-    Route::post('location', [ClientsController::class, 'location']);
+    Route::post('location', [UsersController::class, 'location']);
     Route::post('subscribe', [ClientsController::class, 'subscribe']);
     Route::get('notifications', [NotificationsController::class, 'index']);
     Route::delete('notifications/{id}', [NotificationsController::class, 'destroy']);

@@ -26,8 +26,6 @@ class ClientsResource extends JsonResource
             "profile_image"=>$this->whenLoaded('defaultLogo', $this->DefaultLogo, asset('images/default-image.jpg')),
             "gender"=>$this->gender,
             "national_number"=>$this->national_number,
-            "lat"=>$this->lat,
-            "lng"=>$this->lng,
             "city"=>$this->city,
             "relaives"=>$this->whenLoaded('relatives', RelativesResource::collection($this->relatives)),
             "supervisor"=> new UsersResource($this->supervisor),

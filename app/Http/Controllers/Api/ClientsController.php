@@ -19,20 +19,6 @@ class ClientsController extends Controller
 
     }
 
-    public function location(LocationRequest $request)
-    {
-        try{
-            $status = $this->clientService->location(data: $request->Validated());
-            if(!$status)
-                return apiResponse(message: __('lang.something_went_wrong'), code: 442);
-            return apiResponse(message: __('lang.success_operation'));
-    
-        }catch(Exception $e){
-            return apiResponse(message: __('lang.something_went_wrong'), code: 442);
-        }
-        
-    }//end of location
-
     public function subscribe(SubscribeRequest $request)
     {
         // try{

@@ -18,8 +18,6 @@ class Client extends Model
         'seat_number',
         'gender',
         'national_number',
-        'lat',
-        'lng',
         'city',
         'parent_id',
         'supervisor_id',

@@ -22,8 +22,6 @@ class ClientsSeeder extends Seeder
             'seat_number'=>'10',
             'gender'=>'male',
             'national_number'=>'327389293047347',
-            'lat'=>'34.43434',
-            'lng'=>'5454545.454',
             'city'=>'city one',
             'parent_id'=>null,
             'supervisor_id'=>2,
@@ -36,8 +34,6 @@ class ClientsSeeder extends Seeder
             'seat_number'=>'12',
             'gender'=>'female',
             'national_number'=>'43743445453434',
-            'lat'=>'34.43434',
-            'lng'=>'5454545.454',
             'city'=>'city two',
             'parent_id'=>null,
             'supervisor_id'=>2,
@@ -49,6 +45,8 @@ class ClientsSeeder extends Seeder
             'password'=>'123456',
             'type'=>3,
             'is_active'=>1,
+            'lat'=>'34.43434',
+            'lng'=>'5454545.454',
         ]);
         $client2->user()->create([
             'name'=>'Client 2',
@@ -56,6 +54,8 @@ class ClientsSeeder extends Seeder
             'password'=>'123456',
             'type'=>3,
             'is_active'=>1,
+            'lat'=>'34.43434',
+            'lng'=>'5454545.454',
         ]);
 
     }
