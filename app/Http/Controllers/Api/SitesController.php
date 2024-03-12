@@ -19,9 +19,10 @@ class SitesController extends Controller
     public function __invoke(Request $request)
     {
         try{
+            $user = auth('sanctum')->user();
             $filters = $request->all();
             $filters['is_active'] = ActivationStatusEnum::ACTIVE;
-            $sites = $this->siteService->getAll(filters: $filters);
+            $sites = $user->client->sites;
             return apiResponse(data: SitesResource::collection($sites));
     
         }catch(Exception $e){
