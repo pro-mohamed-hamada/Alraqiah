@@ -23,7 +23,7 @@ class ClientsResource extends JsonResource
             "seat_number"=>$this->seat_number,
             "name"=>$this->user?->name,
             "phone"=>$this->user?->phone,
-            "profile_image"=>$this->whenLoaded('defaultLogo', $this->DefaultLogo, asset('images/default-image.jpg')),
+            'profile_image' =>$this->user->getFirstMediaUrl('users') !=""?$this->getFirstMediaUrl('users') : asset('images/default-image.jpg'),
             "gender"=>$this->gender,
             "national_number"=>$this->national_number,
             "lat"=>$this->user->lat,
