@@ -31,6 +31,16 @@ class AuthService extends BaseService
         return throw new NotFoundException(__('lang.login_failed'));
     }
 
+    public function checkPhone(string $phone) :bool
+    {
+        $user = User::where('phone', $phone)->whereIn('type', [UserTypeEnum::CLIENT, UserTypeEnum::SUPERVISOR])->first();
+
+        if ($user) 
+            return true;
+
+        return false;
+    }
+
     public function userTarget() //:User|Model|bool
     {
         $user = auth::user();

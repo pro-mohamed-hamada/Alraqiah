@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Exceptions\NotFoundException;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\CheckPhoneRequest;
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\UpdateProfileLogoRequest;
 use App\Http\Resources\AuthUserResource;
@@ -24,6 +25,17 @@ class AuthController extends Controller
             if(!$user->is_active)
                 return apiResponse(message: __('lang.unauthorized'), code: 403);
             return apiResponse(data: new AuthUserResource($user), message: __('lang.success_operation'));
+        } catch (Exception|NotFoundException $e) {
+            return apiResponse(message: $e->getMessage(), code:442);
+        }
+    }
+
+    public function checkPhone(CheckPhoneRequest $request)
+    {
+        try {
+            $status = $this->authService->checkPhone(phone: $request->phone);
+            $data = ['is_found'=>$status];
+            return apiResponse(data: $data, message: __('lang.success_operation'));
         } catch (Exception|NotFoundException $e) {
             return apiResponse(message: $e->getMessage(), code:442);
         }

@@ -25,6 +25,7 @@ use App\Http\Controllers\Api\UsersController;
 */
 
 Route::post('login', [AuthController::class, 'login']);
+Route::post('check-phone', [AuthController::class, 'checkPhone']);
 
 Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::post('logout',      [AuthController::class, 'logout']);
