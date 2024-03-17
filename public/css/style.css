@@ -35,7 +35,7 @@ body{
     top:12%;
     right: 20px;
 }
-.load_content, #show_photo{
+.load_content, #show_photo, .confirm_content{
     position: fixed;
     top:0;
     left:0;
@@ -52,6 +52,14 @@ body{
     left:45%;
     
 }
+.confirm_alert{
+    position: absolute;
+    width:40%;
+    top:40%;
+    left:30%;
+
+}
+
 
 .alert_message{
     position: fixed !important;

@@ -19,7 +19,7 @@
                         </select>
                     </div>
                     <div class="col-sm-7 col-lg-10">
-                        <input name="searchTxt" type="text" class="form-control" placeholder="{{__('lang.search')}}">
+                        <input id="search_text" data-href={{ route('faqs.index') }} type="text" class="form-control" placeholder="{{__('lang.search')}}">
                     </div>
                 </div>
             </div>

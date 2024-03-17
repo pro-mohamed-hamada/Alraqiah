@@ -13,7 +13,7 @@ $(document).ready(function(){
     $(".displayView").on("click", ".close", function(){
         $(".displayView").css("display","none");
     });
-    $('.alert_message').delay(2000).fadeOut().hide(0);
+    
     // $("body").on("click", "a[name='delete']",function(e){
     //     e.preventDefault();
     //     var _token = $("#_token").val();
@@ -43,31 +43,6 @@ $(document).ready(function(){
         
     // });
     
-
-    $("#search").on("click",function(){
-        var search_text = $("#search_text").val();
-        var url = $(this).parents('form:first').attr("action");
-        var _token = $("#_token").val();
-        $.ajax({
-            url:url,
-            method:"post",
-            data:{"_token":_token,"search_text":search_text},
-            beforeSend:function(){
-                $(".load_content").css("display","block");
-            },
-            success:function(responsetext){
-                $(".load_content").css("display","none");
-                $("#table_body").html(responsetext);
-            },
-            error: function(data_error, exception){
-                $(".load_content").css("display","none");
-                if(exception == "error"){
-                    $("#alert_message").text("تحقق من البيانات المدخله وحاول مره اخرى").fadeIn().delay(2000).fadeOut();
-                }
-            }
-        });
-    });
-
   
     
     //get department's categories
