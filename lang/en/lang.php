@@ -125,6 +125,10 @@
         "created_at"=>"Created at",
         "country"=>"Country",
         "city"=>"City",
+        "sites_filters"=>"Sites filters",
+        "create_site"=>"Create site",
+        "url"=>"Url",
+        "edit_site"=>"Edit site",
 
         //////////////////////////////////////////// end create
 	]
