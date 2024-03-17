@@ -18,8 +18,9 @@ class RelativesResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'gender' => $this->gender,
-            'national_number' => $this->national_number,
+            'identity_number' => $this->identity_number,
             'seat_number'=>$this->seat_number,
+            'country'=>$this->country,
             'city'=>$this->city,
         ];
     }

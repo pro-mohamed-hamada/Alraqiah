@@ -13,8 +13,9 @@ class Relative extends Model
     protected $fillable = [
         'name',
         'gender',
-        'national_number',
+        'identity_number',
         'seat_number',
+        'country',
         'city',
         'client_id'
     ];

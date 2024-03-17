@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('gender');
-            $table->string('national_number');
+            $table->string('identity_number');
             $table->string('seat_number');
+            $table->string('country');
             $table->string('city');
             $table->foreignIdFor(\App\Models\Client::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

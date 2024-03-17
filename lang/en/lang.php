@@ -35,7 +35,7 @@
         "launch_date"=>"Launch date",
         "seat_number"=>"Seat number",
         "gender"=>"Gender",
-        "national_number"=>"National number",
+        "identity_number"=>"Identity number",
         "location"=>"Location",
         
         "videos_filters"=>"Videos filter",
@@ -123,6 +123,8 @@
         "replay"=>"Replay",
         "sender"=>"Sender",
         "created_at"=>"Created at",
+        "country"=>"Country",
+        "city"=>"City",
 
         //////////////////////////////////////////// end create
 	]

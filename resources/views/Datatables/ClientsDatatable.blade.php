@@ -37,7 +37,7 @@
                         <th>{{ __('lang.launch_date') }}</th>
                         <th>{{ __('lang.seat_number') }}</th>
                         <th>{{ __('lang.gender') }}</th>
-                        <th>{{ __('lang.national_number') }}</th>
+                        <th>{{ __('lang.identity_number') }}</th>
                         <th>{{ __('lang.location') }}</th>
                         <th>{{ __('lang.city') }}</th>
                         <th>{{ __('lang.supervisor') }}</th>
@@ -56,7 +56,7 @@
                             <td>{{ $client->launch_date }}</td>
                             <td>{{ $client->seat_number }}</td>
                             <td>{{ $client->gender }}</td>
-                            <td>{{ $client->national_number }}</td>
+                            <td>{{ $client->identity_number }}</td>
                             <td><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{$client->user->lat}},{{$client->user->lng}}"><i class="fa fa-map-o"></i></a></td>
                             <td>{{ $client->city }}</td>
                             <td>{{ $client->supervisor->name }}</td>

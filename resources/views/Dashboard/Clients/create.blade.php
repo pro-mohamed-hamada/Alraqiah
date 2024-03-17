@@ -79,9 +79,16 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg-4">
-                                    <label>{{ __('lang.national_number') }} *</label>
-                                    <input type="number" name="national_number" value="{{ old('national_number') }}" class="form-control">
-                                    @error('national_number')
+                                    <label>{{ __('lang.identity_number') }} *</label>
+                                    <input type="number" name="identity_number" value="{{ old('identity_number') }}" class="form-control">
+                                    @error('identity_number')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.country') }} *</label>
+                                    <input type="text" name="country" value="{{ old('country') }}" class="form-control">
+                                    @error('country')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -169,9 +176,9 @@
                         @enderror
                     </div>
                     <div class="col-lg-4">
-                        <label>{{ __('lang.national_number') }} *</label>
-                        <input type="text" name="relatives_national_number[]" class="form-control">
-                        @error("relatives_national_number[]")
+                        <label>{{ __('lang.identity_number') }} *</label>
+                        <input type="text" name="relatives_identity_number[]" class="form-control">
+                        @error("relatives_identity_number[]")
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>
@@ -179,6 +186,13 @@
                         <label>{{ __('lang.seat_number') }} *</label>
                         <input type="text" name="relatives_seat_number[]" class="form-control">
                         @error("relatives_seat_number[]")
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-lg-4">
+                        <label>{{ __('lang.country') }} *</label>
+                        <input type="text" name="relatives_country[]" class="form-control">
+                        @error("relatives_country[]")
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>

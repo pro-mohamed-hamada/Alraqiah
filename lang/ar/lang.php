@@ -35,7 +35,7 @@
         "launch_date"=>"تاريخ الانطلاق",
         "seat_number"=>"رقم المقعد",
         "gender"=>"النوع",
-        "national_number"=>"الرقم القومى",
+        "identity_number"=>"رقم الهوية",
         "location"=>"الموقع",
         
         "videos_filters"=>"فلترة الفيديوهات",
@@ -123,6 +123,8 @@
         "replay"=>"رد",
         "sender"=>"المرسل",
         "created_at"=>"إنشاء فى",
+        "country"=>"الدولة",
+        "city"=>"المدينة",
 
         //////////////////////////////////////////// end create
 	]

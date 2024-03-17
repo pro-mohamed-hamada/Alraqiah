@@ -12,7 +12,7 @@
                         <th>{{ __('lang.id') }}</th>
                         <th>{{ __('lang.name') }}</th>
                         <th>{{ __('lang.gender') }}</th>
-                        <th>{{ __('lang.national_number') }}</th>
+                        <th>{{ __('lang.identity_number') }}</th>
                         <th>{{ __('lang.seat_number') }}</th>
                         <th>{{ __('lang.city') }}</th>
                         <th>{{ __('lang.created_at') }}</th>
@@ -24,7 +24,7 @@
                             <td>{{ $relative->id }}</td>
                             <td>{{ $relative->name }}</td>
                             <td>{{ $relative->gender }}</td>
-                            <td>{{ $relative->national_number }}</td>
+                            <td>{{ $relative->identity_number }}</td>
                             <td>{{ $relative->seat_number }}</td>
                             <td>{{ $relative->city }}</td>
                             <td>{{ $relative->created_at }}</td>
