@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\DataTables\FaqsDataTable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\FaqStoreRequest;
@@ -16,12 +17,11 @@ class FaqsController extends Controller
 
     }
 
-    public function index(Request $request)
+    public function index(FaqsDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_faq');
         $filters =  $request->all();
-        $faqs = $this->faqService->getAll(['filters'=>$filters]);
-        return View('Dashboard.Faqs.index', compact(['faqs']));
+        return $dataTable->with(['filters'=>$filters])->render('Dashboard.Faqs.index');
     }//end of index
 
     public function edit(Request $request, $id)

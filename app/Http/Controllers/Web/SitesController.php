@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\DataTables\SitesDataTable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\SiteStoreRequest;
@@ -16,12 +17,11 @@ class SitesController extends Controller
 
     }
 
-    public function index(Request $request)
+    public function index(SitesDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_site');
         $filters =  $request->all();
-        $sites = $this->siteService->getAll(['filters'=>$filters]);
-        return View('Dashboard.Sites.index', compact(['sites']));
+        return $dataTable->with(['filters'=>$filters])->render('Dashboard.Sites.index');
     }//end of index
 
     public function edit(Request $request, $id)

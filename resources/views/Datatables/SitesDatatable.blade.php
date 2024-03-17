@@ -26,54 +26,7 @@
 
             <div class="datatable table-responsive">
                 
-                <table class="sitesTable  table text-center table-bordered  table-hover">
-                    <thead>
-                        <th>{{ __('lang.id') }}</th>
-                        <th>{{ __('lang.title') }}</th>
-                        <th>{{ __('lang.url') }}</th>
-                        <th>{{ __('lang.is_active') }}</th>
-                        <th>{{ __('lang.actions') }}</th>
-                        
-                    </thead>
-                    <tbody>
-                        @foreach ($sites as $site)
-                        <tr>
-                            <td>{{ $site->id }}</td>
-                            <td>{{ $site->title }}</td>
-                            <td>{{ $site->url }}</td>
-                            <td>{{ $site->is_active }}</td>
-                            <td>
-                                
-                                <ul class="list-group list-group-horizontal">
-                                    <li class="list-group-item">
-                                        <form method="post" action="{{route('sites.destroy', $site->id)}}">
-                                            @csrf
-                                            @method('delete')
-                                            <button name="delete" type="submit" class=" btn btn-danger"><i class="fa fa-trash"></i></button>
-                                        </form>
-                                    </li>
-                                    <li class="list-group-item"><a href="{{ route('sites.edit', $site->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr class=" displayView">
-                            <td colspan="10">
-                                <div class="displayViewContent">
-                                    {{-- @include('Datatables.ClientVisitsDatatable') --}}
-                                </div>
-                                <button class="close btn btn-danger">X</button>     
-                            </td>
-                        </tr>
-                        @endforeach 
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="10">
-                                {{-- {{ $sites->links() }}                  --}}
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+                {!! $dataTable->table(['class' => 'table-data table table-bordered text-nowrap border-bottom']) !!}
             </div>
             
         </div>

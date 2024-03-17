@@ -65,14 +65,15 @@
             </div>
         
         <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+        <script src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
         <script src="{{asset('js/js.js')}}"></script>
         @if(app()->isLocale('ar'))
         <script src="{{asset('js/rtl.js')}}"></script>
         @endif
-        <script src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+        {{-- @stack('scripts') --}}
     </body>
 @yield('script')
 <script>
@@ -105,6 +106,7 @@
                     $(".load_content").hide();
                     $(".alert_message").text('{{ __("lang.success_operation") }}');
                     $(".alert_message").fadeIn().delay(2000).fadeOut();
+                    $('.table-data').DataTable().ajax.reload(null, false);
                 },
                 error: function(data_error, exception){
                     $(".load_content").hide();

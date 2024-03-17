@@ -13,6 +13,10 @@ $(document).ready(function(){
     $(".displayView").on("click", ".close", function(){
         $(".displayView").css("display","none");
     });
+
+    // start datatable
+    // $('input[type="search"]').removeClass('form-control-sm');
+    // end datatable
     
     // $("body").on("click", "a[name='delete']",function(e){
     //     e.preventDefault();
