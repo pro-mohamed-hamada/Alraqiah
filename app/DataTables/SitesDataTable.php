@@ -24,7 +24,7 @@ class SitesDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
         ->addColumn('action', function(Site $model){
-            return view('dashboard.Sites.actions',compact('model'))->render();
+            return view('Dashboard.Sites.actions',compact('model'))->render();
         })
             ->setRowId('id');
     }

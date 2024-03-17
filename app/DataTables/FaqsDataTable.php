@@ -24,7 +24,7 @@ class FaqsDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function(Faq $model){
-                return view('dashboard.Faqs.actions',compact('model'))->render();
+                return view('Dashboard.Faqs.actions',compact('model'))->render();
             })
             ->setRowId('id');
     }
