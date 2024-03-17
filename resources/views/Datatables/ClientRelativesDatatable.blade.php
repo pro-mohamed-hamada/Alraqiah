@@ -14,6 +14,7 @@
                         <th>{{ __('lang.gender') }}</th>
                         <th>{{ __('lang.identity_number') }}</th>
                         <th>{{ __('lang.seat_number') }}</th>
+                        <th>{{ __('lang.country') }}</th>
                         <th>{{ __('lang.city') }}</th>
                         <th>{{ __('lang.created_at') }}</th>
                         
@@ -26,6 +27,7 @@
                             <td>{{ $relative->gender }}</td>
                             <td>{{ $relative->identity_number }}</td>
                             <td>{{ $relative->seat_number }}</td>
+                            <td>{{ $relative->country }}</td>
                             <td>{{ $relative->city }}</td>
                             <td>{{ $relative->created_at }}</td>
                             <td>

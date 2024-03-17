@@ -39,6 +39,7 @@
                         <th>{{ __('lang.gender') }}</th>
                         <th>{{ __('lang.identity_number') }}</th>
                         <th>{{ __('lang.location') }}</th>
+                        <th>{{ __('lang.country') }}</th>
                         <th>{{ __('lang.city') }}</th>
                         <th>{{ __('lang.supervisor') }}</th>
                         <th>{{ __('lang.actions') }}</th>
@@ -58,6 +59,7 @@
                             <td>{{ $client->gender }}</td>
                             <td>{{ $client->identity_number }}</td>
                             <td><a target="_blank" href="https://www.google.com/maps/search/?api=1&query={{$client->user->lat}},{{$client->user->lng}}"><i class="fa fa-map-o"></i></a></td>
+                            <td>{{ $client->country }}</td>
                             <td>{{ $client->city }}</td>
                             <td>{{ $client->supervisor->name }}</td>
                             <td>
