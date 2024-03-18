@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use App\Exceptions\NotFoundException;
 use App\Enum\UserTypeEnum;
+use App\Events\PushEvent;
+use App\Models\FcmMessage;
 use Carbon\Carbon;
 
 use function Laravel\Prompts\password;
@@ -25,6 +27,11 @@ class AuthService extends BaseService
             Auth::login(user: $user, remember: $remember);
             $user->device_token = $deviceToken;
             $user->save();
+            
+            //notify the users the complaint created
+            $users[0] = $user;
+            event(new PushEvent( users: $users, action: FcmMessage::CLIENT_LOGIN));
+
             return $user;
         }
 

@@ -13,6 +13,7 @@ class FcmMessage extends Model
 
     public const CREAET_NEW_COMPLAINT            = 'CREAET_NEW_COMPLAINT';
     public const SUPERVISOR_REPLIED_ON_COMPLAINT = 'SUPERVISOR_REPLIED_ON_COMPLAINT';
+    public const CLIENT_LOGIN = 'CLIENT_LOGIN';
 
     protected $fillable = [
         'title',

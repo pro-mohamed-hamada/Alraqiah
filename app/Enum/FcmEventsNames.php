@@ -14,6 +14,7 @@ class FcmEventsNames
     public static array $FCMACTIONS = [
         'CREAET_NEW_COMPLAINT'            => 'create_new_complaint',
         'SUPERVISOR_REPLIED_ON_COMPLAINT' => 'supervisor_replied_on_complaint',
+        'CLIENT_LOGIN' => 'client_login',
     ];
 
     public static array $FLAGS = [
@@ -29,6 +30,6 @@ class FcmEventsNames
 
     public static array $CHANNELS = [
         'fcm'=>'fcm',
-        'mail'=>'mail',
+        // 'mail'=>'mail',
     ];
 }
