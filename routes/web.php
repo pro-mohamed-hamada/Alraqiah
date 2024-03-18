@@ -45,8 +45,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);
+    Route::get('client-relatives/{id}', [ClientsController::class, 'clientRelatives'])->name('client.relatives');
     Route::delete('relatives/{id}', [RelativesController::class, 'destroy'])->name('relatives.destroy');
     Route::resource('users', UsersController::class);
+    Route::get('supervisor-clients/{id}', [UsersController::class, 'supervisorClients'])->name('supervisor.clients');
     Route::get('profile', [UsersController::class, 'profileView'])->name('profile.view');
     Route::put('profile', [UsersController::class, 'profile'])->name('profile.update');
     Route::resource('videos', VideosController::class);
@@ -61,6 +63,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::delete('complaints/{id}', [ComplaintsController::class, 'destroy'])->name('complaints.destroy');
     Route::post('complaints/{id}', [ComplaintsController::class, 'status'])->name('complaints.status');
     Route::post('complaint-replies', [ComplaintReplayController::class, 'store'])->name('complaint-replies.store');
+    Route::get('complaint-replies/{id}', [ComplaintsController::class, 'complaintReplies'])->name('complaint.replies');
     Route::put('complaint-replies/{id}', [ComplaintReplayController::class, 'update'])->name('complaint-replies.update');
     Route::delete('complaint-replies/{id}', [ComplaintReplayController::class, 'destroy'])->name('complaint-replies.destroy');
     Route::resource('fcm-messages', FcmMessagesController::class);

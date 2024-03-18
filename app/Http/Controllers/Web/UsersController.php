@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\DataTables\UsersDataTable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\UserProfileRequest;
@@ -18,7 +19,7 @@ class UsersController extends Controller
 
     }
 
-    public function index(Request $request)
+    public function index(UsersDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_user');
         $filters = array_filter($request->get('filters', []), function ($value) {
@@ -26,7 +27,7 @@ class UsersController extends Controller
         });
         $withRelations = [];
         $users = $this->userService->getAll(['filters'=>$filters, 'withRelations'=>$withRelations, 'perPage'=>1]);
-        return View('Dashboard.Users.index', compact(['users']));
+        return $dataTable->with(['filters'=>$filters])->render('Dashboard.Users.index');
     }//end of index
 
     
@@ -58,6 +59,17 @@ class UsersController extends Controller
             $permissions = Permission::all();
             $permissions = $permissions->groupBy('category');
             return view('Dashboard.Users.edit', compact('user', 'permissions'));
+        }catch(Exception $e){
+            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+        }
+        
+    }//end of create
+
+    public function supervisorClients(Request $request, $id)
+    {
+        try{
+            $user = $this->userService->findById(id: $id);
+            return view('Datatables.SupervisorClients', compact('user'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('lang.something_went_wrong'));
         }

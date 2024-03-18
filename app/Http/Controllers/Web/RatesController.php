@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\DataTables\RatesDataTable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\RateService;
@@ -14,12 +15,11 @@ class RatesController extends Controller
 
     }
 
-    public function index(Request $request)
+    public function index(RatesDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_rate');
         $filters =  $request->all();
-        $rates = $this->rateService->getAll(['filters'=>$filters]);
-        return View('Dashboard.Rates.index', compact(['rates']));
+        return $dataTable->with(['filters'=>$filters])->render('Dashboard.Rates.index');
     }//end of index
 
     public function destroy(Request $request, $id)

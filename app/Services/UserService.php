@@ -21,12 +21,13 @@ class UserService extends BaseService
 
     public function getAll(array $filters = [] , array $withRelations =[], $perPage = 10 ): \Illuminate\Contracts\Pagination\CursorPaginator
     {
-        $filters['type'] = UserTypeEnum::SUPERVISOR;
+        
         return $this->queryGet(filters: $filters,withRelations: $withRelations)->cursorPaginate($perPage);
     }
 
     public function queryGet(array $filters = [] , array $withRelations = []) :builder
     {
+        $filters['type'] = UserTypeEnum::SUPERVISOR;
         $services = $this->getModel()->query()->with($withRelations);
         return $services->filter(new UsersFilter($filters));
     }

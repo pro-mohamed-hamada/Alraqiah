@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\DataTables\ClientsDataTable;
 use App\Enum\ActivationStatusEnum;
 use App\Enum\UserTypeEnum;
 use Illuminate\Http\Request;
@@ -23,15 +24,14 @@ class ClientsController extends Controller
 
     }
 
-    public function index(Request $request)
+    public function index(ClientsDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_client');
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
         $withRelations = ['relatives'];
-        $clients = $this->clientService->getAll(['filters'=>$filters, 'withRelations'=>$withRelations, 'perPage'=>25]);
-        return View('Dashboard.Clients.index', compact(['clients']));
+        return $dataTable->with(['filters'=>$filters, 'withRelations'=>$withRelations])->render('Dashboard.Clients.index');
     }//end of index
 
     public function edit(Request $request, $id)
@@ -48,6 +48,15 @@ class ClientsController extends Controller
         $supervisors = $this->userService->getAll(filters: $supervisorsFilters);
         $sites = $this->siteService->getAll();
         return view('Dashboard.Clients.edit', compact('client', 'supervisors', 'sites'));
+    }//end of create
+    public function clientRelatives(Request $request, $id)
+    {
+        $client = $this->clientService->findById(id: $id, withRelations:['user', 'relatives']);
+        if (!$client)
+        {
+            return redirect()->back()->with("message", __('lang.not_found'));
+        }
+        return view('Datatables.ClientRelativesDatatable', compact('client'));
     }//end of create
 
     public function create(Request $request)

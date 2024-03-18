@@ -63,17 +63,23 @@
             <div style="display: none" class="alert_message alert alert-success" role="alert">
                 
             </div>
+            <div class=" displayView">
+                <div class="displayViewContent">
+                    
+                </div>
+                <button class="close btn btn-danger">X</button>     
+            </div>
         
         <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
         <script src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
         <script src="{{asset('js/js.js')}}"></script>
         @if(app()->isLocale('ar'))
         <script src="{{asset('js/rtl.js')}}"></script>
         @endif
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-        {{-- @stack('scripts') --}}
+
     </body>
 @yield('script')
 <script>
@@ -131,16 +137,13 @@
                 url:url,
                 method:"post",
                 data:{"_token": "{{ csrf_token() }}"},
-                beforeSend:function(){
-                    $(".load_content").show();
-                },
                 success:function(responsetext){
-                    $(".load_content").hide();
+                    $('.table-data').DataTable().ajax.reload(null, false);
                 },
                 error: function(data_error, exception){
-                    $(".load_content").hide();
                     if(exception == "error"){
-                        // $("#alert_message").text(data_error.responseJSON.message).fadeIn().delay(2000).fadeOut();
+                        $(".alert_message").text(data_error.responseJSON.message);
+                        $(".alert_message").fadeIn().delay(2000).fadeOut();
                     }
                 }
             });

@@ -20,18 +20,18 @@ class FcmMessageService extends BaseService
         return $this->model;
     }
 
-    public function queryGet(array $where_condition = [], $withRelation = []): Builder
+    public function queryGet(array $filters = [], $withRelation = []): Builder
     {
         $fcmMessage = $this->getModel()->query()->with($withRelation);
-        return $fcmMessage->filter(new FcmMessagesFilter($where_condition));
+        return $fcmMessage->filter(new FcmMessagesFilter($filters));
     }
 
     public function getAll(array $filters = [], array $withRelation = [], $perPage = null): \Illuminate\Contracts\Pagination\CursorPaginator|\Illuminate\Database\Eloquent\Builder
     {
         if($perPage)
-            return $this->queryGet(where_condition: $filters, withRelation: $withRelation)->cursorPaginate($perPage);
+            return $this->queryGet(filters: $filters, withRelation: $withRelation)->cursorPaginate($perPage);
         else
-            return $this->queryGet(where_condition: $filters, withRelation: $withRelation);
+            return $this->queryGet(filters: $filters, withRelation: $withRelation);
     }
 
 

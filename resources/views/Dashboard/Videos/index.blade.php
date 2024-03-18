@@ -37,4 +37,7 @@
             {{-- end Datatable --}}
         </div>
         @endsection
+        @section("script")
+        @include('layouts.datatables-scripts')
+        @endsection
    

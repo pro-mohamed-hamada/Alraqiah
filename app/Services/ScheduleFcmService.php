@@ -19,15 +19,15 @@ class ScheduleFcmService extends BaseService
         return $this->model;
     }
 
-    public function queryGet(array $where_condition = [], $withRelation = []): Builder
+    public function queryGet(array $filters = [], $withRelation = []): Builder
     {
         $scheduleFcm = $this->getModel()->query()->with($withRelation);
-        return $scheduleFcm->filter(new ScheduleFcmFilter($where_condition));
+        return $scheduleFcm->filter(new ScheduleFcmFilter($filters));
     }
 
     public function getAll(array $filters = [], array $withRelation = [], $perPage = 15): \Illuminate\Contracts\Pagination\CursorPaginator
     {
-        return $this->queryGet(where_condition: $filters, withRelation: $withRelation)->cursorPaginate($perPage);
+        return $this->queryGet(filters: $filters, withRelation: $withRelation)->cursorPaginate($perPage);
     }
 
     public function store(array $data = [])

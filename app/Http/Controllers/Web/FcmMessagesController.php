@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\DataTables\FcmMessagesDataTable;
 use App\Enum\FcmEventsNames;
 use App\Http\Requests\Web\FcmMessageStoreRequest;
 use App\Http\Requests\Web\FcmMessageUpdateRequest;
@@ -22,16 +23,14 @@ class FcmMessagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(FcmMessagesDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_fcm_message');
         try{
             $filters = array_filter($request->all(), function ($value) {
                 return ($value !== null && $value !== false && $value !== '');
             });
-            $perPage = $request->get('per_page') ?? 25;
-            $fcmMessages = $this->fcmMessageService->getAll(filters: $filters, perPage: $perPage);
-            return View('Dashboard.FcmMessages.index', compact(['fcmMessages']));
+            return $dataTable->with(['filters'=>$filters])->render('Dashboard.FcmMessages.index');
         }catch(Exception $e){
             return redirect()->back()->with("message", $e->getMessage());
         }

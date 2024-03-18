@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\DataTables\ComplaintsDataTable;
 use App\Enum\ActivationStatusEnum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,13 +16,12 @@ class ComplaintsController extends Controller
 
     }
 
-    public function index(Request $request)
+    public function index(ComplaintsDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_complaint');
         $filters =  $request->all();
         $filters['is_active'] = ActivationStatusEnum::ACTIVE;
-        $complaints = $this->complaintService->getAll(filters: $filters);
-        return View('Dashboard.Complaints.index', compact(['complaints']));
+        return $dataTable->with(['filters'=>$filters])->render('Dashboard.Complaints.index');
     }//end of index
 
     public function destroy(Request $request, $id)
@@ -36,6 +36,16 @@ class ComplaintsController extends Controller
             return redirect()->back()->with("message", $e->getMessage());
         }
     } //end of destroy
+
+    public function complaintReplies(Request $request, $id)
+    {
+        $complaint = $this->complaintService->findById(id: $id);
+        if (!$complaint)
+        {
+            return redirect()->back()->with("message", __('lang.not_found'));
+        }
+        return view('Datatables.ComplaintRepliesDatatable', compact('complaint'));
+    }//end of create
 
     /**
      * @param Request $request

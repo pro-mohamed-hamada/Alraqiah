@@ -3,11 +3,23 @@ $(document).ready(function(){
         $(".sideBar").toggle(300);
     });
     // $("body").niceScroll();
-    $(".sideBar").niceScroll();
+    // $(".sideBar").niceScroll();
 
-    $(".has-data tr").on("dblclick", function(e){
+    $("body").on("click", ".has-data", function(e){
         e.preventDefault();
-        $(this).next(".displayView").css("display", "block");
+        $.ajax({
+            url: $(this).attr('href'),
+            method:"get",
+            beforeSend:function(){
+                $(".load_content").show();
+            },
+            success:function(responsetext){
+                $(".load_content").hide();
+                $(".displayViewContent").html(responsetext);            
+                $(".displayView").css("display", "block");            
+            },
+        });
+        
         // $(".displayView").css("display", "block");
     });
     $(".displayView").on("click", ".close", function(){
@@ -15,7 +27,7 @@ $(document).ready(function(){
     });
 
     // start datatable
-    // $('input[type="search"]').removeClass('form-control-sm');
+    $('.dataTables_filter input').hide();
     // end datatable
     
     // $("body").on("click", "a[name='delete']",function(e){

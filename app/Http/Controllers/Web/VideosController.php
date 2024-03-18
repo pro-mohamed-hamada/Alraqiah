@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\DataTables\VideosDataTable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\VideoStoreRequest;
@@ -16,12 +17,11 @@ class VideosController extends Controller
 
     }
 
-    public function index(Request $request)
+    public function index(VideosDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_video');
         $filters =  $request->all();
-        $videos = $this->videoService->getAll(['filters'=>$filters]);
-        return View('Dashboard.Videos.index', compact(['videos']));
+        return $dataTable->with(['filters'=>$filters])->render('Dashboard.Videos.index');
     }//end of index
 
     public function edit(Request $request, $id)

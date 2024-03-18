@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\DataTables\ScheduleFcmDataTable;
 use App\Enum\FcmEventsNames;
 use App\Http\Requests\Web\ScheduleFcmStoreRequest;
 use App\Http\Requests\Web\ScheduleFcmUpdateRequest;
@@ -22,13 +23,12 @@ class ScheduleFcmController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(ScheduleFcmDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_schedule_fcm');
         try{
             $filters =  $request->all();
-            $allScheduleFcm = $this->scheduleFcmService->getAll(filters: $filters);
-            return View('Dashboard.ScheduleFcm.index', compact(['allScheduleFcm']));
+            return $dataTable->with(['filters'=>$filters])->render('Dashboard.ScheduleFcm.index');
         }catch(Exception $e){
             return redirect()->back()->with("message", $e->getMessage());
         }
