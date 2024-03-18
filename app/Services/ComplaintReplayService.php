@@ -41,7 +41,7 @@ class ComplaintReplayService extends BaseService
         $userType = Auth::user()->type;
         if($userType != UserTypeEnum::CLIENT)
         {
-            $users[0] = Auth::user();
+            $users[0] = $complaint->user;
             event(new PushEvent( users: $users, action: FcmMessage::SUPERVISOR_REPLIED_ON_COMPLAINT));
         }
         
