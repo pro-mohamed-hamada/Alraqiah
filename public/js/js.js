@@ -27,7 +27,20 @@ $(document).ready(function(){
     });
 
     // start datatable
-    $('.dataTables_filter input').hide();
+    $('.dataTables_filter input').removeClass('form-control-sm');
+    $('.dataTables_filter input').css('width', "98%");
+    $('.dataTables_filter label').contents().filter(function() {
+        return this.nodeType === 3; // Node type 3 is a text node
+    }).remove();
+    $('.dataTables_filter label').css('width', "100%");
+    $('.dataTables_filter').parents("div:first").removeClass("col-md-6").addClass("col-md-10");
+    $('.dataTables_length select').removeClass('form-select-sm');
+    $('.dataTables_length select').css('width', "98%");
+    $('.dataTables_length label').contents().filter(function() {
+        return this.nodeType === 3; // Node type 3 is a text node
+    }).remove();
+    $('.dataTables_length label').css('width', "100%");
+    $('.dataTables_length').parents("div:first").removeClass("col-md-6").addClass("col-md-2");
     // end datatable
     
     // $("body").on("click", "a[name='delete']",function(e){
