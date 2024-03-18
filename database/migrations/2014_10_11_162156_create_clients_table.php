@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('reservation_number');
-            $table->string('reservation_status');
             $table->string('package');
             $table->date('launch_date');
             $table->string('seat_number');

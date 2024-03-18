@@ -16,7 +16,6 @@ class ClientsSeeder extends Seeder
     {
         $client1 = Client::create([
             'reservation_number'=>123,
-            'reservation_status'=>'pending',
             'package'=>'343',
             'launch_date'=>Carbon::now()->addDays(10),
             'seat_number'=>'10',
@@ -29,7 +28,6 @@ class ClientsSeeder extends Seeder
         ]);
         $client2 = Client::create([
             'reservation_number'=>123,
-            'reservation_status'=>'pending',
             'package'=>'343',
             'launch_date'=>Carbon::now()->addDays(20),
             'seat_number'=>'12',

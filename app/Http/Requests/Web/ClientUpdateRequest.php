@@ -30,7 +30,6 @@ class ClientUpdateRequest extends FormRequest
             'phone'=>'required|string|unique:users,phone,'.$client->user->id,
             'is_active'=>'nullable|string',
             'reservation_number'=>'required|integer',
-            'reservation_status'=>'required|string',
             'package'=>'required|string',
             'launch_date'=>'required|date|after_or_equal:'.Carbon::now(),
             'seat_number'=>'required|string',

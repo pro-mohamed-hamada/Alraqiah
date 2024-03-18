@@ -12,7 +12,6 @@ class Client extends Model
 
     protected $fillable = [
         'reservation_number',
-        'reservation_status',
         'package',
         'launch_date',
         'seat_number',

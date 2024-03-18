@@ -72,12 +72,12 @@ class ClientService extends BaseService
     private function prepareClientData(array $data): array
     {
         $clientData['reservation_number'] = $data['reservation_number'];
-        $clientData['reservation_status'] = $data['reservation_status'];
         $clientData['package'] = $data['package'];
         $clientData['launch_date'] = $data['launch_date'];
         $clientData['seat_number'] = $data['seat_number'];
         $clientData['gender'] = $data['gender'];
-        $clientData['national_number'] = $data['national_number'];
+        $clientData['identity_number'] = $data['identity_number'];
+        $clientData['country'] = $data['country'];
         $clientData['city'] = $data['city'];
         $clientData['supervisor_id'] = $data['supervisor_id'];
         return $clientData;
@@ -91,8 +91,9 @@ class ClientService extends BaseService
             {
                 $relativesData[$i]['name'] = $data['relatives_name'][$i];
                 $relativesData[$i]['gender'] = $data['relatives_gender'][$i];
-                $relativesData[$i]['national_number'] = $data['relatives_national_number'][$i];
+                $relativesData[$i]['identity_number'] = $data['relatives_identity_number'][$i];
                 $relativesData[$i]['seat_number'] = $data['relatives_seat_number'][$i];
+                $relativesData[$i]['country'] = $data['relatives_country'][$i];
                 $relativesData[$i]['city'] = $data['relatives_city'][$i];
             }
         

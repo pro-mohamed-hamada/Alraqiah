@@ -45,13 +45,6 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg-4">
-                                    <label>{{ __('lang.reservation_status') }} *</label>
-                                    <input type="text" name="reservation_status" value="{{ $client->reservation_status }}" class="form-control">
-                                    @error('reservation_status')
-                                        <span class="error">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="col-lg-4">
                                     <label>{{ __('lang.package') }} *</label>
                                     <input type="text" name="package" value="{{ $client->package }}" class="form-control">
                                     @error('package')

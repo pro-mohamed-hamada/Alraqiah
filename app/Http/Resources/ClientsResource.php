@@ -17,7 +17,6 @@ class ClientsResource extends JsonResource
         return [
             "id"=>$this->id,
             "reservation_number"=>$this->reservation_number,
-            "reservation_status"=>$this->reservation_status,
             "package"=>$this->package,
             "launch_date"=>$this->launch_date,
             "seat_number"=>$this->seat_number,

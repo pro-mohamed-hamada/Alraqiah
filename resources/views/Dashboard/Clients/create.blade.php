@@ -40,13 +40,6 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg-4">
-                                    <label>{{ __('lang.reservation_status') }} *</label>
-                                    <input type="text" name="reservation_status" value="{{ old('reservation_status') }}" class="form-control">
-                                    @error('reservation_status')
-                                        <span class="error">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="col-lg-4">
                                     <label>{{ __('lang.package') }} *</label>
                                     <input type="text" name="package" value="{{ old('package') }}" class="form-control">
                                     @error('package')
@@ -139,7 +132,7 @@
                             </div>
                             <div class="row mb-3 g-3">
                                 <div class="">
-                                    <button id="client_submit_burron" type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.create')}}</button>
+                                    <button id="client_submit_button" type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.create')}}</button>
                                     <a href="{{ url()->previous() }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> {{__('lang.go_back')}}</a>
                                 </div>
                             </div>
@@ -225,7 +218,7 @@
             var element = $(this).parents('.relative')
             element.remove();
         });
-        $('#client_submit_burron').click(function(e){
+        $('#client_submit_button').click(function(e){
             e.preventDefault();
             var url = $('#client_form').attr("action");
             var data = $('#client_form').serialize();
@@ -234,14 +227,16 @@
                 method:"post",
                 data:data,
                 beforeSend:function(){
-                    $(".load_content").css("display","block");
+                    $(".load_content").show();
                 },
                 success:function(responsetext){
-                    $(".load_content").css("display","none");
-                    //$(location).attr('href', "{{ route('clients.index') }}");
+                    $(".load_content").hide();
+                    $(".alert_message").text('{{ __("lang.success_operation") }}');
+                    $(".alert_message").fadeIn().delay(2000).fadeOut();
+                    $(location).attr('href', "{{ route('clients.index') }}");
                 },
                 error: function(data_error, exception){
-                    $(".load_content").css("display","none");
+                    $(".load_content").hide();
                     if(exception == "error"){
                         $(".errors ul").text("");
                         $.each(data_error.responseJSON.errors, function(key, value) {
