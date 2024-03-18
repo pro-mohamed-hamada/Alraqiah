@@ -31,7 +31,7 @@
                 <li><a class="list-group-item" href="{{route('sites.index')}}"></span> <span class="fa fa-map"></span> <span>{{ __("lang.sites") }}</a></li>
                 @endcan
                 @can('view_complaint')
-                <li><a class="list-group-item" href="{{route('complaints.index')}}"></span> <i class="fa fa-circle-xmark"></i> <span>{{ __("lang.complaints") }}</a></li>
+                <li><a class="list-group-item" href="{{route('complaints.index')}}"></span> <i class="fa fa-circle-xmark"></i> <span>{{ __("lang.complaints") }} <span class="badge bg-danger">{{app('activeComplaints')}}</span></a></li>
                 @endcan
                 @can('view_fcm_message')
                 <li><a class="list-group-item" href="{{route('fcm-messages.index')}}"></span> <span class="fa fa-envelope"></span> <span>{{ __("lang.fcm_messages") }}</a></li>

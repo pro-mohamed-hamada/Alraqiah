@@ -26,11 +26,14 @@ class ComplaintsDataTable extends DataTable
             ->addColumn('action', function(Complaint $model){
                 return view('Dashboard.Complaints.actions',compact('model'))->render();
             })
-            ->editColumn('client_id', function(Complaint $model){
+            ->addColumn('client', function(Complaint $model){
                 return $model->user->name;
             })
             ->addColumn('phone', function(Complaint $model){
                 return $model->user->phone;
+            })
+            ->editColumn('created_at', function(Complaint $model){
+                return $model->created_at->format('Y-m-d h:i:s A');
             })
             ->setRowId('id');
     }
@@ -80,9 +83,10 @@ class ComplaintsDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('complaint'),
-            Column::make('client_id')->title('client'),
+            Column::make('client'),
             Column::make('phone'),
             Column::make('is_active'),
+            Column::make('created_at'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

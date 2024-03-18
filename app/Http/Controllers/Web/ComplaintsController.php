@@ -20,7 +20,6 @@ class ComplaintsController extends Controller
     {
         userCan(request: $request, permission: 'view_complaint');
         $filters =  $request->all();
-        $filters['is_active'] = ActivationStatusEnum::ACTIVE;
         return $dataTable->with(['filters'=>$filters])->render('Dashboard.Complaints.index');
     }//end of index
 

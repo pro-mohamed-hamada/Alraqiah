@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Enum\ActivationStatusEnum;
+use App\Services\ComplaintService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton('activeComplaints', function ($app) {
+            // Perform the heavy operation or fetch the data here. Example:
+            $activeComplaints = app()->make(ComplaintService::class)->queryGet(filters: ["is_active"=>ActivationStatusEnum::ACTIVE])->count();
+
+            return $activeComplaints;
+        });
     }
 
     /**
