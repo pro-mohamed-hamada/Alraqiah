@@ -28,7 +28,7 @@ class HomeController extends Controller
         if($user->type == UserTypeEnum::CLIENT)
         {
             $data['user_data'] = new UsersResource($user);
-            $data['client_data'] = ClientsResource::collection($this->clientService->getAll(filters: ['id'=> $user->client_id], withRelations: ['relatives']));
+            $data['client_data'] = ClientsResource::collection($this->clientService->getAll(filters: ['id'=> $user->client_id], withRelations: ['relatives', 'sites']));
             $data['subscrcibers'] = ClientsResource::collection($this->clientService->getAll(filters: ['parent_id' =>$user->client_id], withRelations: ['user']));
             $data['videos'] = VideosResource::collection($this->videoService->getAll(filters: ['is_active' =>ActivationStatusEnum::ACTIVE]));
             $data['company_data'] = SettingsResource::collection($this->settingService->getAll());

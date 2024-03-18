@@ -31,6 +31,7 @@ class ClientsResource extends JsonResource
             "country"=>$this->country,
             "city"=>$this->city,
             "relaives"=>$this->whenLoaded('relatives', RelativesResource::collection($this->relatives)),
+            "sites"=>$this->whenLoaded('sites', SitesResource::collection($this->sites)),
             "supervisor"=> new UsersResource($this->supervisor),
         ];
     }
