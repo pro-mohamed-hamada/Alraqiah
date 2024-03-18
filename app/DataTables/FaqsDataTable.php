@@ -72,15 +72,16 @@ class FaqsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
-            Column::make('question'),
-            Column::make('answer'),
-            Column::make('is_active'),
+            Column::make('id')->title(__('lang.id')),
+            Column::make('question')->title(__('lang.question')),
+            Column::make('answer')->title(__('lang.answer')),
+            Column::make('is_active')->title(__('lang.is_active')),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->title(__('lang.actions'))
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

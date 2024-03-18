@@ -81,17 +81,18 @@ class ComplaintsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
-            Column::make('complaint'),
-            Column::make('client'),
-            Column::make('phone'),
-            Column::make('is_active'),
-            Column::make('created_at'),
+            Column::make('id')->title(__('lang.id')),
+            Column::make('complaint')->title(__('lang.complaint')),
+            Column::make('client')->title(__('lang.client')),
+            Column::make('phone')->title(__('lang.phone')),
+            Column::make('is_active')->title(__('lang.is_active')),
+            Column::make('created_at')->title(__('lang.created_at')),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->title(__('lang.actions'))
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

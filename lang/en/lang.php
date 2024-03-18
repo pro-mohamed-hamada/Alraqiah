@@ -124,12 +124,14 @@
         "sender"=>"Sender",
         "created_at"=>"Created at",
         "country"=>"Country",
-        "city"=>"City",
+        "city"=>"Incoming city",
         "sites_filters"=>"Sites filters",
         "create_site"=>"Create site",
         "url"=>"Url",
         "edit_site"=>"Edit site",
-
+        "are_you_sure"=>"Are you sure",
+        "yes"=>"Yes",
+        "no"=>"No",
         //////////////////////////////////////////// end create
 	]
 ?>

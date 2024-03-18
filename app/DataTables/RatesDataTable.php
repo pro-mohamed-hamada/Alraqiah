@@ -75,16 +75,17 @@ class RatesDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
-            Column::make('client_id')->title('client'),
-            Column::make('rate_number'),
-            Column::make('comment'),
-            Column::make('is_active'),
+            Column::make('id')->title(__('lang.id')),
+            Column::make('client_id')->title(__('lang.client')),
+            Column::make('rate_number')->title(__('lang.rate_number')),
+            Column::make('comment')->title(__('lang.comment')),
+            Column::make('is_active')->title(__('lang.is_active')),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->title(__('lang.actions'))
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

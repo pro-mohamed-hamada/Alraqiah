@@ -85,25 +85,25 @@ class ClientsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
-            Column::make('name'),
-            Column::make('phone'),
-            Column::make('reservation_number'),
-            Column::make('reservation_status'),
-            Column::make('package'),
-            Column::make('launch_date'),
-            Column::make('seat_number'),
-            Column::make('gender'),
-            Column::make('identity_number'),
-            Column::make('location'),
-            Column::make('country'),
-            Column::make('city'),
-            Column::make('supervisor_id')->title('supervisor'),
+            Column::make('id')->title(__('lang.id')),
+            Column::make('name')->title(__('lang.name')),
+            Column::make('phone')->title(__('lang.phone')),
+            Column::make('reservation_number')->title(__('lang.reservation_number')),
+            Column::make('package')->title(__('lang.package')),
+            Column::make('launch_date')->title(__('lang.launch_date')),
+            Column::make('seat_number')->title(__('lang.seat_number')),
+            Column::make('gender')->title(__('lang.gender')),
+            Column::make('identity_number')->title(__('lang.identity_number')),
+            Column::make('location')->title(__('lang.location')),
+            Column::make('country')->title(__('lang.country')),
+            Column::make('city')->title(__('lang.city')),
+            Column::make('supervisor_id')->title(__('lang.supervisor')),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->title(__('lang.actions'))
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

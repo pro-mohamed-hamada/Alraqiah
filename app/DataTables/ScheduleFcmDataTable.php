@@ -74,17 +74,18 @@ class ScheduleFcmDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
-            Column::make('title'),
-            Column::make('content'),
-            Column::make('trigger'),
-            Column::make('notification_via'),
-            Column::make('is_active'),
+            Column::make('id')->title(__('lang.id')),
+            Column::make('title')->title(__('lang.title')),
+            Column::make('content')->title(__('lang.content')),
+            Column::make('trigger')->title(__('lang.trigger')),
+            Column::make('notification_via')->title(__('lang.notification_via')),
+            Column::make('is_active')->title(__('lang.is_active')),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+                ->title(__('lang.actions'))
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 
