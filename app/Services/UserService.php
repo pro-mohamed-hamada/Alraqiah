@@ -27,7 +27,6 @@ class UserService extends BaseService
 
     public function queryGet(array $filters = [] , array $withRelations = []) :builder
     {
-        $filters['type'] = UserTypeEnum::SUPERVISOR;
         $services = $this->getModel()->query()->with($withRelations);
         return $services->filter(new UsersFilter($filters));
     }

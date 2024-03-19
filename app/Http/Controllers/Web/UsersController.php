@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\DataTables\UsersDataTable;
+use App\Enum\UserTypeEnum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\UserProfileRequest;
@@ -25,6 +26,7 @@ class UsersController extends Controller
         $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
+        $filters['type'] = UserTypeEnum::SUPERVISOR;
         $withRelations = [];
         $users = $this->userService->getAll(['filters'=>$filters, 'withRelations'=>$withRelations, 'perPage'=>1]);
         return $dataTable->with(['filters'=>$filters])->render('Dashboard.Users.index');

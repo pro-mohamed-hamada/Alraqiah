@@ -4,17 +4,24 @@ namespace App\Http\Controllers\Web;
 
 use App\DataTables\FcmMessagesDataTable;
 use App\Enum\FcmEventsNames;
+use App\Enum\UserTypeEnum;
 use App\Http\Requests\Web\FcmMessageStoreRequest;
 use App\Http\Requests\Web\FcmMessageUpdateRequest;
 use App\Services\FcmMessageService;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Web\LiveFcmMessageRequest;
+use App\Models\User;
+use App\Services\UserService;
 
 class FcmMessagesController extends Controller
 {
 
-    public function __construct(protected FcmMessageService $fcmMessageService)
+    public function __construct(
+        protected FcmMessageService $fcmMessageService,
+        protected UserService $userService
+    )
     {
     }
 
@@ -65,6 +72,32 @@ class FcmMessagesController extends Controller
         userCan(request: $request, permission: 'create_fcm_message');
         try {
             $this->fcmMessageService->store(data: $request->validated());
+            return redirect()->route('fcm-messages.index')->with('message', __('lang.success_operation'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with("message", $e->getMessage());
+        }
+    }
+
+    public function liveFcmMessageView(Request $request)
+    {
+        userCan(request: $request, permission: 'create_live_fcm_message');
+        try {
+            $flags = FcmEventsNames::$FLAGS;
+            $fcm_channels = FcmEventsNames::$CHANNELS;
+            $users = app()->make(UserService::class)->queryGet(filters: ['type'=>UserTypeEnum::CLIENT])->get();
+            return view('Dashboard.FcmMessages.live_fcm', compact('users', 'flags', 'fcm_channels'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with("message", $e->getMessage());
+        }
+    }
+
+    public function liveFcmMessage(LiveFcmMessageRequest $request)
+    {
+        userCan(request: $request, permission: 'create_live_fcm_message');
+        try {
+            $status = $this->fcmMessageService->liveFcm(data: $request->validated());
+            if(!$status)
+                return redirect()->back()->with("message", __('lang.something_went_wrong'));
             return redirect()->route('fcm-messages.index')->with('message', __('lang.success_operation'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());

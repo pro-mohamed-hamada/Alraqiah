@@ -36,6 +36,9 @@
                 @can('view_fcm_message')
                 <li><a class="list-group-item" href="{{route('fcm-messages.index')}}"></span> <span class="fa fa-envelope"></span> <span>{{ __("lang.fcm_messages") }}</a></li>
                 @endcan
+                @can('create_live_fcm_message')
+                <li><a class="list-group-item" href="{{route('fcm.liveFcmMessageView')}}"></span> <span class="fa fa-envelope"></span> <span>{{ __("lang.live_fcm") }}</a></li>
+                @endcan
                 @can('view_schedule_fcm')        
                 <li><a class="list-group-item" href="{{route('schedule-fcm.index')}}"></span> <span class="fa fa-envelope"></span> <span>{{ __("lang.schedule_fcm") }}</a></li>
                 @endcan

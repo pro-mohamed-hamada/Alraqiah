@@ -90,6 +90,7 @@ class PermissionsTableSeeder extends Seeder
             //start fcm_messages permissions
             'fcm_messages'=>[
                 'create_fcm_message',
+                'create_live_fcm_message',
                 'edit_fcm_message',
                 'delete_fcm_message',
                 'view_fcm_message',

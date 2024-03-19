@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\FcmMessage;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\QueryFilters\FcmMessagesFilter;
@@ -40,6 +41,36 @@ class FcmMessageService extends BaseService
         $data['is_active'] = isset($data['is_active'])  ? 1 :  0;
         $fcm_message = $this->getModel()->create($data);
         return $fcm_message;
+    } //end of 
+    
+    public function liveFcm(array $data = [])
+    {
+        foreach($data['users'] as $user_id)
+        {
+            $user = User::find($user_id);
+            if($user)
+            {
+                $title = $data['title'];
+                $body = $data['content'];
+                $replaced_values = [
+                    '@USER_NAME@'=>$user->name,
+                    '@USER_PHONE@'=>$user->phone,
+                    '@RESERVATION_NUMBER@'=>$user->client?->reservation_number,
+                    '@RESERVATION_STATUS@'=>$user->client?->reservation_status,
+                    '@PACKAGE@'=>$user->client?->package,
+                    '@LAUNCH_DATE@'=>$user->client?->launch_date,
+                    '@GENDER@'=>$user->client?->gender,
+                    '@NATIONAL_NUMBER@'=>$user->client?->national_number,
+                ];
+                $body = replaceFlags($body,$replaced_values);
+                $tokens[0] = $user->device_token;
+                app()->make(NotificationService::class)->sendToTokens(title: $title,body: $body,tokens: $tokens);
+    
+            }
+    
+        }
+        
+        return true;
     } //end of store
 
     public function update(int $id, array $data=[])
