@@ -22,6 +22,9 @@ class SettingsResource extends JsonResource
             'about_us'=>$this->about_us,
             'terms_and_conditions'=>$this->terms_and_condtions,
             'rate'=>$this->rate,
+            'elhamla_male_doctor_number'=>'54545434',
+            'elhamla_femal_doctor_number'=>'4545345',
+            'mufti_number'=>'545454545',
         ];
     }
 }
