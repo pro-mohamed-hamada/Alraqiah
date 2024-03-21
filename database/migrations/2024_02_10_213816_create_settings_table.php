@@ -19,6 +19,9 @@ return new class extends Migration
             $table->text('about_us')->nullable();
             $table->text('terms_and_conditions')->nullable();
             $table->float('rate')->default(0.0);
+            $table->string('elhamla_male_doctor_number');
+            $table->string('elhamla_femal_doctor_number');
+            $table->string('mufti_number');
             $table->timestamps();
         });
     }
