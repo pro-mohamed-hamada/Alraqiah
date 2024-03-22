@@ -132,6 +132,14 @@
         "are_you_sure"=>"Are you sure",
         "yes"=>"Yes",
         "no"=>"No",
+        "settings"=>"Settings",
+        "primary_phone"=>"Primary phone",
+        "whatsapp_phone"=>"Whatsapp phone",
+        "elhamla_male_doctor_number"=>"Elhamla male doctor number",
+        "elhamla_female_doctor_number"=>"Elhamla female doctor number",
+        "mufti_number"=>"Mufti number",
+        "about_us"=>"About us",
+        "terms_and_conditions"=>"Terms and conditions",
         //////////////////////////////////////////// end create
 	]
 ?>

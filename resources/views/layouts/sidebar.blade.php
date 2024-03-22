@@ -42,5 +42,8 @@
                 @can('view_schedule_fcm')        
                 <li><a class="list-group-item" href="{{route('schedule-fcm.index')}}"></span> <span class="fa fa-envelope"></span> <span>{{ __("lang.schedule_fcm") }}</a></li>
                 @endcan
+                @can('view_settings')        
+                <li><a class="list-group-item" href="{{route('settings.index')}}"></span> <span class="fa fa-envelope"></span> <span>{{ __("lang.settings") }}</a></li>
+                @endcan
         </ul>
 </section>

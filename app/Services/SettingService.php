@@ -33,11 +33,11 @@ class SettingService extends BaseService
         return $this->queryGet(filters: $filters,withRelations: $withRelations)->cursorPaginate($perPage);
     }
 
-    public function store(array $data = []):Video|Model|bool
+    public function update(string $id, array $data = []):Setting|Model|bool
     {
-        $this->getModel()->delete();
-        $setting = $this->getModel()->create($data);
-        if (!$setting)
+        $setting = $this->findById(id: $id);
+        $status = $setting->update($data);
+        if (!$status)
             return false ;
         return $setting;
     } //end of store

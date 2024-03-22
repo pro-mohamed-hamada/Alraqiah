@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\LocalizationController;
 use App\Http\Controllers\Web\RatesController;
 use App\Http\Controllers\Web\RelativesController;
 use App\Http\Controllers\Web\ScheduleFcmController;
+use App\Http\Controllers\Web\SettingsController;
 use App\Http\Controllers\Web\VideosController;
 use App\Http\Controllers\Web\UsersController;
 use App\Models\ScheduleFcm;
@@ -53,6 +54,9 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::put('profile', [UsersController::class, 'profile'])->name('profile.update');
     Route::resource('videos', VideosController::class);
     Route::resource('faqs', FaqsController::class);
+
+    Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::put('settings/{id}', [SettingsController::class, 'update'])->name('settings.update');
     
     Route::get('rates', [RatesController::class, 'index'])->name('rates.index');
     Route::delete('rates/{id}', [RatesController::class, 'destroy'])->name('rates.destroy');

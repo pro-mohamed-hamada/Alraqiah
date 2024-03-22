@@ -17,7 +17,7 @@ class Setting extends Model
         'terms_and_conditions',
         'rate',
         'elhamla_male_doctor_number',
-        'elhamla_femal_doctor_number',
+        'elhamla_female_doctor_number',
         'mufti_number',
     ];
 }

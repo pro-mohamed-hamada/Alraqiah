@@ -21,7 +21,7 @@ class SettingsSeeder extends Seeder
             'terms_and_conditions'=>'this is the terms and condtions',
             'rate'=>'0.0',
             'elhamla_male_doctor_number'=>'54545434',
-            'elhamla_femal_doctor_number'=>'4545345',
+            'elhamla_female_doctor_number'=>'4545345',
             'mufti_number'=>'545454545',
         ]);
     }

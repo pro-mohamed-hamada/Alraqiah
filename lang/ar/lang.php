@@ -132,6 +132,14 @@
         "are_you_sure"=>"هل انت متأكد",
         "yes"=>"نعم",
         "no"=>"لا",
+        "settings"=>"الأعدادات",
+        "primary_phone"=>"الهاتف الأساسى",
+        "whatsapp_phone"=>"هاتف الواتساب",
+        "elhamla_male_doctor_number"=>"هاتف دكتور الحمله",
+        "elhamla_female_doctor_number"=>"هاتف دكتورة الحمله",
+        "mufti_number"=>"هاتق المفتى",
+        "about_us"=>"من نحن",
+        "terms_and_conditions"=>"الشروط والأحكام",
         //////////////////////////////////////////// end create
 	]
 ?>
