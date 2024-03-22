@@ -5,9 +5,9 @@ namespace App\Enum;
 class FcmEventsNames
 {
     public static array $EVENTS = [
-        'ONE_DAY_BEFORE_LAUNCH_DATE'   => 'one_day_pefore_launch_date',
-        'TWO_DAY_BEFORE_LAUNCH_DATE'   => 'two_day_pefore_launch_date',
-        'SEVEN_DAY_BEFORE_LAUNCH_DATE' => 'seven_day_pefore_launch_date',
+        'ONE_DAY_BEFORE_LAUNCH_DATE'   => 'ONE_DAY_BEFORE_LAUNCH_DATE',
+        'TWO_DAY_BEFORE_LAUNCH_DATE'   => 'TWO_DAY_BEFORE_LAUNCH_DATE',
+        'SEVEN_DAY_BEFORE_LAUNCH_DATE' => 'SEVEN_DAY_BEFORE_LAUNCH_DATE',
 
     ];
 

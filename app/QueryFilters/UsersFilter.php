@@ -37,4 +37,12 @@ class UsersFilter extends QueryFilter
         return $this->builder->where('email',$term);
     }
 
+    public function launch_date($term)
+    {
+        return $this->builder->whereHas('client', function ($query) use ($term) {
+            $query->where('launch_date', $term);
+        });
+    }
+
+
 }
