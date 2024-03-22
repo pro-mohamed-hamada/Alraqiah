@@ -78,7 +78,7 @@ class SitesController extends Controller
     public function show(Request $request, $id)
     {
         try{
-            $site = $this->siteService->findById(id: $id, withRelations:['attachments']);
+            $site = $this->siteService->findById(id: $id);
             return view('Dashboard.Sites.show', compact('site'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('lang.something_went_wrong'));

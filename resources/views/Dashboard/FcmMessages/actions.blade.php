@@ -7,5 +7,5 @@
         </form>
     </li>
     <li class="list-group-item"><a href="{{ route('fcm-messages.edit', $model->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></li>
-    <li class="list-group-item"><a href="{{ route('fcm-messages.show', $model->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a></li>
+    {{-- <li class="list-group-item"><a href="{{ route('fcm-messages.show', $model->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a></li> --}}
 </ul>

@@ -81,7 +81,7 @@ class VideosController extends Controller
     {
         userCan(request: $request, permission: 'view_video');
         try{
-            $video = $this->videoService->findById(id: $id, withRelations:['attachments']);
+            $video = $this->videoService->findById(id: $id);
             return view('Dashboard.Videos.show', compact('video'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('lang.something_went_wrong'));

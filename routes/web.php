@@ -70,10 +70,10 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::get('complaint-replies/{id}', [ComplaintsController::class, 'complaintReplies'])->name('complaint.replies');
     Route::put('complaint-replies/{id}', [ComplaintReplayController::class, 'update'])->name('complaint-replies.update');
     Route::delete('complaint-replies/{id}', [ComplaintReplayController::class, 'destroy'])->name('complaint-replies.destroy');
-    Route::resource('fcm-messages', FcmMessagesController::class);
+    Route::resource('fcm-messages', FcmMessagesController::class)->except('show');
     Route::get('live-fcm', [FcmMessagesController::class, 'liveFcmMessageView'])->name('fcm.liveFcmMessageView');
     Route::post('live-fcm', [FcmMessagesController::class, 'liveFcmMessage'])->name('fcm.liveFcmMessage');
-    Route::resource('schedule-fcm', ScheduleFcmController::class);
+    Route::resource('schedule-fcm', ScheduleFcmController::class)->except('show');
 
     Route::get('lang/{locale}',LocalizationController::class)->name('lang');
 });

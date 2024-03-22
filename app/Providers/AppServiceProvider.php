@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Enum\ActivationStatusEnum;
+use App\Models\Rate;
+use App\Observers\refreshRateObserver;
 use App\Services\ComplaintService;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Rate::observe(refreshRateObserver::class);
     }
 }

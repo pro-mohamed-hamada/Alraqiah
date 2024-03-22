@@ -104,16 +104,15 @@ class FcmMessagesController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
-    }
+        try{
+            $fcmMessage = $this->fcmMessageService->findById(id: $id);
+            return view('Dashboard.FcmMessages.show', compact('fcmMessage'));
+        }catch(Exception $e){
+            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+        }
+    } //end of show
 
     /**
      * Show the form for editing the specified resource.

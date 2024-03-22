@@ -12,6 +12,7 @@ use App\Http\Requests\Web\ClientStoreRequest;
 use App\Http\Requests\Web\ClientUpdateRequest;
 use App\Services\SiteService;
 use App\Services\UserService;
+use Exception;
 
 class ClientsController extends Controller
 {
@@ -105,28 +106,18 @@ class ClientsController extends Controller
         }
     } //end of destroy
 
-    // public function show(Request $request, $id)
-    // {
-    //     userCan(request: $request, permission: 'view_category');
-    //     $category = $this->categoryService->find($id);
-    //     if (!$category)
-    //     {
-    //         $toast = ['type' => 'error', 'title' => trans('lang.error'), 'message' => trans('lang.category_not_found')];
-    //         return back()->with('toast', $toast);
-    //     }
-    //    return view('dashboard.categories.show', compact('category'));
-    // } //end of show
+    public function show(Request $request, $id)
+    {
+        try{
+            $client = $this->clientService->findById(id: $id);
+            $supervisorsFilters['is_active'] = ActivationStatusEnum::ACTIVE;
+            $supervisorsFilters['type'] = UserTypeEnum::SUPERVISOR;
 
-    // public function changeStatus(Request $request)
-    // {
-    //     try {
-    //         $result =  $this->categoryService->changeStatus($request->id);
-    //         if (!$result)
-    //             return apiResponse(message: trans('lang.not_found'), code: 404);
-    //         return apiResponse(message: trans('lang.success'));
-    //     } catch (\Exception $exception) {
-    //         return apiResponse(message: $exception->getMessage(), code: 422);
-    //     }
-
-    // } //end of changeStatus
+            $supervisors = $this->userService->getAll(filters: $supervisorsFilters);
+            $sites = $this->siteService->getAll();
+            return view('Dashboard.Clients.show', compact('client', 'supervisors', 'sites'));
+        }catch(Exception $e){
+            return redirect()->back()->with("message", __('lang.something_went_wrong'));
+        }
+    } //end of show
 }

@@ -5,7 +5,7 @@
         <div class="content col-md-9 col-lg-10 offset-md-3 offset-lg-2">
             <div class="mb-3">
                 <div class="card">
-                    <div class="card-header">{{ __('lang.create_video') }}</div>
+                    <div class="card-header">{{ __('lang.edit_video') }}</div>
 
                     <div class="card-body">
                         {{-- start create form --}}
@@ -29,7 +29,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg-12">
-                                    <h2>{{ __('lang.current_video') }} *</h2>
+                                    <h2>{{ __('lang.current_video') }}</h2>
                                     <video width="320" height="240" controls>
                                         <source src="{{ $video->getFirstMediaUrl('media') }}" type="video/mp4">
                                         <source src="{{ $video->getFirstMediaUrl('media') }}" type="video/ogg">

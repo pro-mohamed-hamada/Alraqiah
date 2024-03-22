@@ -142,6 +142,11 @@
         "mufti_number"=>"Mufti number",
         "about_us"=>"About us",
         "terms_and_conditions"=>"Terms and conditions",
+        "relatives"=>"Relatives",
+        "show_client"=>"Show client",
+        "show_faq"=>"Show faq",
+        "show_video"=>"Show video",
+
         //////////////////////////////////////////// end create
 	]
 ?>

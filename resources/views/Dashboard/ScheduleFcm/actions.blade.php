@@ -7,5 +7,5 @@
         </form>
     </li>
     <li class="list-group-item"><a href="{{ route('schedule-fcm.edit', $model->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></li>
-    <li class="list-group-item"><a href="{{ route('schedule-fcm.show', $model->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a></li>
+    {{-- <li class="list-group-item"><a href="{{ route('schedule-fcm.show', $model->id) }}" class="btn btn-primary"><i class="fa fa-eye"></i></a></li> --}}
 </ul>
