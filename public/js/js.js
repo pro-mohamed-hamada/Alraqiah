@@ -1,9 +1,9 @@
-$(document).ready(function(){
-    $(".sideBar-button").click(function(){
+// $(document).ready(function(){
+    $(".sideBar-button").on("click",function(){
         $(".sideBar").toggle(300);
     });
     // $("body").niceScroll();
-    // $(".sideBar").niceScroll();
+    $(".sideBar").niceScroll();
 
     $("body").on("click", ".has-data", function(e){
         e.preventDefault();
@@ -72,36 +72,7 @@ $(document).ready(function(){
         
     // });
     
-  
-    
-    //get department's categories
-    $("body").on("change", "select[name='depart_number']", function(){
-        var department_number = $(this).val();
-        var _token =$("#_token").val();
-        $.ajax({
-            url:"/get/department/categories",
-            method:"post", 
-            data:{"_token":_token, "department_number":department_number},
-            success: function(responsetext){
-                $("select[name='category_number']").html(responsetext);
-            }
-        });
-    });
-
-    //get category products
-    $(document).on("change", "select[name='category_number']", function(){
-        var category_number = $(this).val();
-        var _token =$("#_token").val();
-        $.ajax({
-            url:"/get/category/products",
-            method:"post", 
-            data:{"_token":_token, "category_number":category_number},
-            success: function(responsetext){
-                $("select[name='product_number']").html(responsetext);
-            }
-        });
-    });
-});
+// });
 
 
 
