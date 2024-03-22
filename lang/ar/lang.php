@@ -142,6 +142,18 @@
         "mufti_number"=>"هاتق المفتى",
         "about_us"=>"من نحن",
         "terms_and_conditions"=>"الشروط والأحكام",
+        "relatives"=>"الأقارب",
+        "show_client"=>"عرض العميل",
+        "show_faq"=>"عرض FAQ",
+        "show_video"=>"عرض الفيديوا",
+        "total_users"=>"إجمالى المستخدمين",
+        "total_clients"=>"إجمالى العملاء",
+        "total_complaints"=>"إجمالى الشكاوى",
+        "active_complaints"=>"إجمالى الشكاوى الفعالة",
+        "not_active_complaints"=>"إجمالى الشكاوى الغير فعالة",
+        "total_videos"=>"إجمالى الفيديوهات",
+        "total_faqs"=>"إجمالى Faq",
+        "total_sites"=>"إجمالى المواقع",
         //////////////////////////////////////////// end create
 	]
 ?>

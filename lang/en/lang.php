@@ -146,6 +146,14 @@
         "show_client"=>"Show client",
         "show_faq"=>"Show faq",
         "show_video"=>"Show video",
+        "total_users"=>"Total users",
+        "total_clients"=>"Total clients",
+        "total_complaints"=>"Total complaints",
+        "active_complaints"=>"Total active complaints",
+        "not_active_complaints"=>"Total not active complaints",
+        "total_videos"=>"Total videos",
+        "total_faqs"=>"Total faqs",
+        "total_sites"=>"Total sites",
 
         //////////////////////////////////////////// end create
 	]
