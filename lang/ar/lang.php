@@ -66,8 +66,6 @@
         "create_schedule_fcm"=>"إنشاء FCM مجدولة",
         "trigger"=>"الحدث",
         
-        "english"=>"الانجليزى",
-        "arabic"=>"العربى",
         "create"=>"إنشاء",
         "go_back"=>"عوده",
         "success_operation"=>"عملية ناجحة",
@@ -132,6 +130,10 @@
         "are_you_sure"=>"هل انت متأكد",
         "yes"=>"نعم",
         "no"=>"لا",
+        "live_fcm"=>"FCM مباشرة",
+        "create_live_fcm_message"=>"إنشاء رسالة FCM مباشرة",
+        "check_all"=>"تحديد الكل",
+
         "settings"=>"الأعدادات",
         "primary_phone"=>"الهاتف الأساسى",
         "whatsapp_phone"=>"هاتف الواتساب",

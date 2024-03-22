@@ -66,8 +66,6 @@
         "create_schedule_fcm"=>"Create schedule FCM",
         "trigger"=>"Trigger",
         
-        "english"=>"English",
-        "arabic"=>"Arabic",
         "create"=>"Create",
         "go_back"=>"Go back",
         "success_operation"=>"Success operation",
@@ -132,6 +130,10 @@
         "are_you_sure"=>"Are you sure",
         "yes"=>"Yes",
         "no"=>"No",
+        "live_fcm"=>"Live FCM",
+        "create_live_fcm_message"=>"Create live FCM message",
+        "check_all"=>"Check all",
+
         "settings"=>"Settings",
         "primary_phone"=>"Primary phone",
         "whatsapp_phone"=>"Whatsapp phone",

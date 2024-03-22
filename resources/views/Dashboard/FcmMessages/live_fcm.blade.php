@@ -6,7 +6,7 @@
             <form method="POST" action="{{ route('fcm.liveFcmMessage') }}">
             <div class="mb-3">
                 <div class="card">
-                    <div class="card-header">{{ __('lang.create_fcm_message') }}</div>
+                    <div class="card-header">{{ __('lang.create_live_fcm_message') }}</div>
 
                     <div class="card-body">
                         {{-- start create form --}}
@@ -59,17 +59,25 @@
             {{-- start users --}}
             <div class="mb-3">
                 <div class="card">
-                    <div class="card-header">{{ __('lang.create_fcm_message') }}</div>
+                    <div class="card-header">{{ __('lang.users') }}</div>
 
                     <div class="card-body">
+                        <div class="row mb-3 g-3">
+                            <div class="col-md-12">
+                                <div class="form-check checkbox checkbox-primary mb-0">
+                                    <input class="form-check-input" id="checkbox-primary-check-all" type="checkbox" data-bs-original-title="" title="{{ __('lang.check_all') }}">
+                                    <label class="form-check-label" for="checkbox-primary-check-all">{{ __('lang.check_all') }}</label>
+                                </div>
+                            </div>
                         @foreach($users as $user)
-                            <div class="mb-3 m-t-15">
+                            <div class="col-md-4">
                                 <div class="form-check checkbox checkbox-primary mb-0">
                                     <input class="form-check-input" name="users[]" value="{{$user->id}}" id="checkbox-primary-{{$user->id}}" type="checkbox" data-bs-original-title="" title="{{ $user->name }}">
                                     <label class="form-check-label" for="checkbox-primary-{{$user->id}}">{{ $user->name }}</label>
                                 </div>
                             </div>
                         @endforeach
+                        </div>
                         @error('users')
                             <span class="error">{{ $message }}</span>
                         @enderror
@@ -87,7 +95,13 @@
         </div>
         @endsection
         @section('script')
-        @section('script')
+        <script>
+            $(document).ready(function(){
+                $('#checkbox-primary-check-all').on('change', function(){
+                    $('input:checkbox').not(this).prop('checked', this.checked);
+                })
+            });
+        </script>
         <script>
             function copyToClipboard(text) {
                 var sampleTextarea = document.createElement("textarea");
