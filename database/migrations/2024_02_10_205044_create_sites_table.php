@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('sites', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('url');
+            $table->text('url');
             $table->boolean('is_active')->default(ActivationStatusEnum::ACTIVE);
             $table->timestamps();
         });
