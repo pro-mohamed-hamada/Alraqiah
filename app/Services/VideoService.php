@@ -4,12 +4,17 @@ namespace App\Services;
 
 use App\Enum\ImageTypeEnum;
 use App\Exceptions\NotFoundException;
+use App\Jobs\StoreVideoJob;
+use App\Jobs\UpdateVideoJob;
 use Illuminate\Database\Eloquent\Builder;
 use App\Models\Media;
 use App\Models\Video;
 use App\QueryFilters\MediaFilter;
 use App\QueryFilters\VideosFilter;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VideoService extends BaseService
 {
@@ -40,7 +45,8 @@ class VideoService extends BaseService
             return false ;
         if (isset($data['video_file']))
         {
-            $video->addMediaFromRequest('video_file')->toMediaCollection('media');
+            $path = Request()->file('video_file')->store('temporary_videos');
+            StoreVideoJob::dispatch($video, $path);
         }
         return $video;
     } //end of store
@@ -50,8 +56,8 @@ class VideoService extends BaseService
         $video = $this->findById($id);
         if (isset($data['video_file']))
         {
-            $video->clearMediaCollection('media');
-            $video->addMediaFromRequest('video_file')->toMediaCollection('media');
+            $path = Request()->file('video_file')->store('temporary_videos');
+            UpdateVideoJob::dispatch($video, $path);
         }
         return $video->update($data);
     }
