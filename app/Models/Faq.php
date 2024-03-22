@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Filterable;
+use App\Traits\IsActiveTrait;
 
 class Faq extends Model
 {
-    use HasFactory, Filterable;
+    use HasFactory, Filterable, IsActiveTrait;
 
     protected $fillable = [
         'question',

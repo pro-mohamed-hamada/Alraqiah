@@ -28,6 +28,13 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-check form-switch">
+                                        <input name="is_active" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" {{ $video->getRawOriginal('is_active') ? "checked":"" }}>
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">{{ __('lang.is_active') }}</label>
+                                    </div>
+                                </div>
+
                                 <div class="col-lg-12">
                                     <h2>{{ __('lang.current_video') }}</h2>
                                     <video width="320" height="240" controls>

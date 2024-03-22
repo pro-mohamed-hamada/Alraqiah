@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enum\ActivationStatusEnum;
 use App\Enum\ImageTypeEnum;
 use App\Exceptions\NotFoundException;
 use App\Jobs\StoreVideoJob;
@@ -40,6 +41,7 @@ class VideoService extends BaseService
 
     public function store(array $data = []):Video|Model|bool
     {
+        $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
         $video = $this->getModel()->create($data);
         if (!$video)
             return false ;
@@ -54,6 +56,7 @@ class VideoService extends BaseService
     public function update(int $id, array $data=[])
     {
         $video = $this->findById($id);
+        $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
         if (isset($data['video_file']))
         {
             $path = Request()->file('video_file')->store('temporary_videos');
