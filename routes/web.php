@@ -53,6 +53,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::get('profile', [UsersController::class, 'profileView'])->name('profile.view');
     Route::put('profile', [UsersController::class, 'profile'])->name('profile.update');
     Route::resource('videos', VideosController::class);
+    Route::post('videos/{id}', [VideosController::class, 'status'])->name('videos.status');
     Route::resource('faqs', FaqsController::class);
 
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');

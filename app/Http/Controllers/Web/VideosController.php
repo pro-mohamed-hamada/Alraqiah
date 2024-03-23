@@ -88,4 +88,16 @@ class VideosController extends Controller
         }
     } //end of show
 
+    public function status(int $id)
+    {
+        try {
+            $result = $this->videoService->status(id: $id);
+            if (!$result)
+                return apiResponse(message: __('lang.something_went_wrong'), code: 442);
+            return apiResponse(message: __('lang.success_operation'));
+        } catch (\Exception $e) {
+            return apiResponse(message: $e->getMessage(), code: 442);
+        }
+    } //end of status
+
 }

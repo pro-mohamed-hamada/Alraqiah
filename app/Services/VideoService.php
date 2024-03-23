@@ -78,7 +78,7 @@ class VideoService extends BaseService
     public function status($id)
     {
         $video = $this->findById($id);
-        $video->is_active = !$video->is_active;
+        $video->is_active = !$video->getRawOriginal('is_active');
         return $video->save();
 
     }//end of status
