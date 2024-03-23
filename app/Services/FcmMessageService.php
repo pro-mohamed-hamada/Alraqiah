@@ -65,7 +65,7 @@ class FcmMessageService extends BaseService
                 $body = replaceFlags($body,$replaced_values);
                 $tokens[0] = $user->device_token;
                 app()->make(NotificationService::class)->sendToTokens(title: $title,body: $body,tokens: $tokens);
-    
+                $user->notify(new \App\Notifications\GeneralNotification(title: $title, content: $body));
             }
     
         }
