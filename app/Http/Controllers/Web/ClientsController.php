@@ -32,7 +32,9 @@ class ClientsController extends Controller
             return ($value !== null && $value !== false && $value !== '');
         });
         $withRelations = ['relatives'];
-        return $dataTable->with(['filters'=>$filters, 'withRelations'=>$withRelations])->render('Dashboard.Clients.index');
+        $supervisorsFilters['type'] = UserTypeEnum::SUPERVISOR;
+        $supervisors = $this->userService->getAll(filters: $supervisorsFilters);
+        return $dataTable->with(['filters'=>$filters, 'withRelations'=>$withRelations])->render('Dashboard.Clients.index', compact('supervisors'));
     }//end of index
 
     public function edit(Request $request, $id)

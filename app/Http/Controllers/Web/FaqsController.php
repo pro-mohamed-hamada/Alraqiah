@@ -20,7 +20,9 @@ class FaqsController extends Controller
     public function index(FaqsDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_faq');
-        $filters =  $request->all();
+        $filters = array_filter($request->all(), function ($value) {
+            return ($value !== null && $value !== false && $value !== '');
+        });
         return $dataTable->with(['filters'=>$filters])->render('Dashboard.Faqs.index');
     }//end of index
 

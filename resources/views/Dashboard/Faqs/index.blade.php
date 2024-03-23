@@ -8,23 +8,23 @@
                     <div class="card-header">{{ __('lang.faqs_filters') }}</div>
 
                     <div class="card-body">
-                        <form method="get" action="{{ route('faqs.index') }}">
+                        <form class="datatables_parameters">
                             <div class="filters">
                                 <div class="row mb-3 g-3">
                                     <div class="col-lg-4">
-                                        <label>is_active</label>
-                                        <input type="text" name="is_active" class="form-control" placeholder="First name" aria-label="First name">
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>fdfd</label>
-                                        <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                        <label>{{ __('lang.is_active') }}</label>
+                                        <select name="is_active" class="form-control">
+                                            <option>{{ __('lang.choose') }}</option>
+                                            <option value="{{ \App\Enum\ActivationStatusEnum::ACTIVE }}">{{ __('lang.active') }}</option>
+                                            <option value="{{ \App\Enum\ActivationStatusEnum::NOT_ACTIVE }}">{{ __('lang.not_active') }}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div  class="filters-buttons">
                                 <div class="">
-                                    <button class=" btn btn-primary"><i class="fa fa-search"></i> {{__('lang.search')}}</button>
-                                    <button class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.reset')}}</button>
+                                    <button class="search_datatable btn btn-primary"><i class="fa fa-search"></i> {{__('lang.search')}}</button>
+                                    <button class="reset_form_data btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.reset')}}</button>
                                 </div>
                             </div>
                         </form>

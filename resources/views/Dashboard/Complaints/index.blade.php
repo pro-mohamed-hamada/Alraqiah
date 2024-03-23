@@ -12,12 +12,20 @@
                         <div class="filters">
                             <div class="row mb-3 g-3">
                                 <div class="col-lg-4">
-                                    <label>fdfd</label>
-                                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                                    <label>{{ __('lang.is_active') }}</label>
+                                    <select name="is_active" class="form-control">
+                                        <option>{{ __('lang.choose') }}</option>
+                                        <option value="{{ \App\Enum\ActivationStatusEnum::ACTIVE }}">{{ __('lang.active') }}</option>
+                                        <option value="{{ \App\Enum\ActivationStatusEnum::NOT_ACTIVE }}">{{ __('lang.not_active') }}</option>
+                                    </select>
                                 </div>
                                 <div class="col-lg-4">
-                                    <label>fdfd</label>
-                                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                    <label>{{ __('lang.client_phone') }}</label>
+                                    <input type="tel" name="client_phone" class="form-control" placeholder="{{ __('lang.client_phone') }}">
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.created_at') }}</label>
+                                    <input type="date" name="created_at" class="form-control" placeholder="{{ __('lang.created_at') }}">
                                 </div>
                             </div>
                         </div>

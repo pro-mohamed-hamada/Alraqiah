@@ -12,13 +12,34 @@
                         <div class="filters">
                             <div class="row mb-3 g-3">
                                 <div class="col-lg-4">
-                                    <label>fdfd</label>
-                                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                                    <label>{{ __('lang.supervisor') }} *</label>
+                                    <select name="supervisor_id" class="form-control selectpicker" data-live-search="true">
+                                        <option disabled selected>{{ __('choose') }}</option>
+                                        @foreach ($supervisors as $supervisor)
+                                        <option value="{{ $supervisor->id }}">{{ $supervisor->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error("supervisor_id")
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-lg-4">
-                                    <label>fdfd</label>
-                                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                                    <label>{{ __('lang.phone') }}</label>
+                                    <input type="tel" name="phone" class="form-control" placeholder="{{ __('lang.phone') }}">
                                 </div>
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.gender') }}</label>
+                                    <select name="gender" class="form-control">
+                                        <option>{{ __('lang.choose') }}</option>
+                                        <option value="male">{{ __('lang.male') }}</option>
+                                        <option value="female">{{ __('lang.female') }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.launch_date') }}</label>
+                                    <input type="date" name="launch_date" class="form-control" placeholder="{{ __('lang.launch_date') }}">
+                                </div>
+                                
                             </div>
                         </div>
                         <div  class="filters-buttons">
