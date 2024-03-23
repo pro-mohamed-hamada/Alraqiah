@@ -1,4 +1,4 @@
-body{
+/* body{
     padding-top:50px;
     padding-bottom: 50px;
     background-color: #00f;
@@ -8,5 +8,7 @@ body{
 .login-logo-container{
     padding-top: 20px;
     padding-bottom:10px;
+} */
+.card-header, .card, .form-control, .table, thead, tbody, tfoot, tr, td, th {
+    background-color:#FFF !important;
 }
-

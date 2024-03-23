@@ -12,11 +12,9 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Almarai&display=swap" rel="stylesheet">
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -96,14 +94,7 @@
             </div>
         </main>
         
-        <div class="load_content form-group text-center">
-            <img class="load_image" src="{{asset('images/load_image.jpg')}}">
-            </div>
-            {{-- start show photo section --}}
-            <div id="show_photo" class="text-center col-xs-12">
-            
-            </div>
-        </div>        
+    </div>        
 </body>
 </html>
 
