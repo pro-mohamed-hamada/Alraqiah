@@ -7,6 +7,7 @@ use App\Enum\UserTypeEnum;
 use App\Models\Client;
 use App\Models\Complaint;
 use App\Models\Faq;
+use App\Models\Setting;
 use App\Models\Site;
 use App\Models\User;
 use App\Models\Video;
@@ -39,6 +40,7 @@ class HomeController extends Controller
         $total_videos = Video::count();
         $total_faqs = Faq::count();
         $total_sites = Site::count();
-        return view('home', compact('total_users', 'total_clients', 'total_complaints', 'active_complaints', 'not_active_complaints', 'total_videos', 'total_faqs', 'total_sites'));
+        $rate = Setting::first()->rate;
+        return view('home', compact('total_users', 'total_clients', 'total_complaints', 'active_complaints', 'not_active_complaints', 'total_videos', 'total_faqs', 'total_sites', 'rate'));
     }
 }

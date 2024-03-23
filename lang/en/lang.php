@@ -154,6 +154,7 @@
         "total_videos"=>"Total videos",
         "total_faqs"=>"Total faqs",
         "total_sites"=>"Total sites",
+        "rate"=>"Rate",
 
         //////////////////////////////////////////// end create
 	]

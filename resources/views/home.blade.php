@@ -84,6 +84,16 @@
                                         </div>
                                 </div>
                         </div>
+                        <div class="col-lg-4">
+                                
+                                <div class="card">
+
+                                        <div class="card-body">
+                                                <label>{{ __('lang.rate') }}</label>
+                                                <h2>{{ $rate }}</h2>
+                                        </div>
+                                </div>
+                        </div>
             </div>            
         </div>
         @endsection
