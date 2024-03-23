@@ -47,7 +47,7 @@ class RateService extends BaseService
     public function status($id)
     {
         $rate = $this->findbyId($id);
-        $rate->is_active = !$rate->is_active;
+        $rate->is_active = !$rate->getRawOriginal('is_active');
         return $rate->save();
 
     }//end of status

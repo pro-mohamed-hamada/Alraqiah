@@ -12,13 +12,14 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Traits\EscapeUnicodeJson;
 use App\Traits\Filterable;
+use App\Traits\IsActiveTrait;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements HasMedia
 {
-    use HasRoles, HasApiTokens, HasFactory, Notifiable, Filterable, EscapeUnicodeJson, InteractsWithMedia;
+    use HasRoles, HasApiTokens, HasFactory, Notifiable, Filterable, EscapeUnicodeJson, InteractsWithMedia, IsActiveTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -65,16 +66,6 @@ class User extends Authenticatable implements HasMedia
     public function getId()
     {
         return $this->id;
-    }
-
-    // public function targets(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    // {
-    //     return $this->belongsToMany(Target::class, 'user_targets')->withPivot(['target_value', 'meeting_date', 'target_done']);
-    // }
-
-    public function getISActiveAttribute()
-    {
-        return $this->getRawOriginal('is_active') ? __('lang.active'):__('lang.not_active');
     }
 
     public function client(): \Illuminate\Database\Eloquent\Relations\belongsTo

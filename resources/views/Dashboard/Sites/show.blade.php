@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-check form-switch">
-                                        <input name="is_active" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" {{ $site->is_active ? "checked":"" }}>
+                                        <input name="is_active" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" {{ $site->getRawOriginal('is_active') ? "checked":"" }}>
                                         <label class="form-check-label" for="flexSwitchCheckChecked">{{ __('lang.is_active') }}</label>
                                     </div>
                                 </div>
