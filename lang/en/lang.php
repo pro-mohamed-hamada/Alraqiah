@@ -155,6 +155,9 @@
         "total_faqs"=>"Total faqs",
         "total_sites"=>"Total sites",
         "rate"=>"Rate",
+        "import"=>"Import",
+        "download_template"=>"Download template",
+        "file"=>"File",
 
         //////////////////////////////////////////// end create
 	]

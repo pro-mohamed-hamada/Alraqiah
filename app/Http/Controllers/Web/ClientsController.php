@@ -10,10 +10,12 @@ use App\Services\ClientService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\ClientStoreRequest;
 use App\Http\Requests\Web\ClientUpdateRequest;
+use App\Http\Requests\Web\ImportClientRequest;
 use App\Services\SiteService;
 use App\Services\UserService;
 use Exception;
-
+use App\Imports\ClientsImport;
+use Maatwebsite\Excel\Facades\Excel;
 class ClientsController extends Controller
 {
     public function __construct(
@@ -122,4 +124,41 @@ class ClientsController extends Controller
             return redirect()->back()->with("message", __('lang.something_went_wrong'));
         }
     } //end of show
+
+    public function importView(Request $request) 
+    {
+        userCan(request: $request, permission: 'import_client');
+        $supervisorsFilters['is_active'] = ActivationStatusEnum::ACTIVE;
+        $supervisorsFilters['type'] = UserTypeEnum::SUPERVISOR;
+
+        $supervisors = $this->userService->getAll(filters: $supervisorsFilters);
+
+        return View('Dashboard.Clients.import', compact('supervisors'));
+    }
+
+    public function import(ImportClientRequest $request) 
+    {
+        try{
+            $import = new ClientsImport($request->supervisor_id);
+
+            // Use the import object with the request data
+            Excel::import($import, $request->file('file'));
+        
+            return redirect()->route('clients.index')->with('message', __('lang.success_operation'));
+    
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            
+            foreach ($failures as $failure) {
+                $failure->row(); // row that went wrong
+                $failure->attribute(); // either heading key (if using heading row concern) or column index
+                $failure->errors(); // Actual error messages from Laravel validator
+                $failure->values(); // The values of the row that has failed.
+            }
+            return redirect()->back()->with(compact('failures'));
+       } catch (Exception $e) {
+            return redirect()->back()->with("message", $e->getMessage());
+        }
+
+    }
 }

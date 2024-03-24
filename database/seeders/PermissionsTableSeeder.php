@@ -33,7 +33,8 @@ class PermissionsTableSeeder extends Seeder
                 'create_client',
                 'edit_client',
                 'delete_client',
-                'view_client'
+                'view_client',
+                'import_client'
             ],
             //end client permissions
 
