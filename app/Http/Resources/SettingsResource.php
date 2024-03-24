@@ -20,7 +20,7 @@ class SettingsResource extends JsonResource
             'email'=>$this->email,
             'whatsapp_phone'=>$this->whatsapp_phone,
             'about_us'=>$this->about_us,
-            'terms_and_conditions'=>$this->terms_and_condtions,
+            'terms_and_conditions'=>$this->terms_and_conditions,
             'rate'=>$this->rate,
             'elhamla_male_doctor_number'=>$this->elhamla_male_doctor_number,
             'elhamla_female_doctor_number'=>$this->elhamla_female_doctor_number,
