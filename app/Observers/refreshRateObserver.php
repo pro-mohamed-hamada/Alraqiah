@@ -13,7 +13,7 @@ class refreshRateObserver
     public function created(Rate $rate): void
     {
         $rates = Rate::selectRaw('COUNT(*) as ratesCount, SUM(rate_number) as totalRateNumber')->first();
-        $finaleRate = $rates->totalRateNumber / $rates->ratesCount;
+        $finaleRate = round(($rates->totalRateNumber / $rates->ratesCount) * 2) / 2;
         $setting = Setting::first();
         $setting->update(['rate'=>$finaleRate]);
     }
@@ -24,7 +24,7 @@ class refreshRateObserver
     public function updated(Rate $rate): void
     {
         $rates = Rate::selectRaw('COUNT(*) as ratesCount, SUM(rate_number) as totalRateNumber')->first();
-        $finaleRate = $rates->totalRateNumber / $rates->ratesCount;
+        $finaleRate = round(($rates->totalRateNumber / $rates->ratesCount) * 2) / 2;
         $setting = Setting::first();
         $setting->update(['rate'=>$finaleRate]);
 
@@ -36,7 +36,7 @@ class refreshRateObserver
     public function deleted(Rate $rate): void
     {
         $rates = Rate::selectRaw('COUNT(*) as ratesCount, SUM(rate_number) as totalRateNumber')->first();
-        $finaleRate = $rates->totalRateNumber / $rates->ratesCount;
+        $finaleRate = round(($rates->totalRateNumber / $rates->ratesCount) * 2) / 2;
         $setting = Setting::first();
         $setting->update(['rate'=>$finaleRate]);
 
