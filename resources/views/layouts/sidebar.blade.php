@@ -34,16 +34,16 @@
                 <li><a class="list-group-item" href="{{route('complaints.index')}}"></span> <i class="fa fa-exclamation"></i> <span>{{ __("lang.complaints") }} <span class="badge bg-danger">{{app('activeComplaints')}}</span></a></li>
                 @endcan
                 @can('view_fcm_message')
-                <li><a class="list-group-item" href="{{route('fcm-messages.index')}}"></span> <span class="fa fa-envelope"></span> <span>{{ __("lang.fcm_messages") }}</a></li>
+                <li><a class="list-group-item" href="{{route('fcm-messages.index')}}"></span> <span class="fa fa-comment"></span> <span>{{ __("lang.fcm_messages") }}</a></li>
                 @endcan
                 @can('create_live_fcm_message')
                 <li><a class="list-group-item" href="{{route('fcm.liveFcmMessageView')}}"></span> <span class="fa fa-send"></span> <span>{{ __("lang.live_fcm") }}</a></li>
                 @endcan
                 @can('view_schedule_fcm')        
-                <li><a class="list-group-item" href="{{route('schedule-fcm.index')}}"></span> <span class="fa fa-regular fa-stopwatch"></span> <span>{{ __("lang.schedule_fcm") }}</a></li>
+                <li><a class="list-group-item" href="{{route('schedule-fcm.index')}}"></span> <span class="fa fa-regular fa-bell"></span> <span>{{ __("lang.schedule_fcm") }}</a></li>
                 @endcan
                 @can('view_settings')        
-                <li><a class="list-group-item" href="{{route('settings.index')}}"></span> <span class="fa fa-envelope"></span> <span>{{ __("lang.settings") }}</a></li>
+                <li><a class="list-group-item" href="{{route('settings.index')}}"></span> <span class="fa fa-gears"></span> <span>{{ __("lang.settings") }}</a></li>
                 @endcan
         </ul>
 </section>
