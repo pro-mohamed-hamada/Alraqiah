@@ -34,7 +34,7 @@ class FcmMessagesController extends Controller
     {
         userCan(request: $request, permission: 'view_fcm_message');
         try{
-            $filters = array_filter($request->all(), function ($value) {
+            $filters = array_filter($request->get('filters', []), function ($value) {
                 return ($value !== null && $value !== false && $value !== '');
             });
             return $dataTable->with(['filters'=>$filters])->render('Dashboard.FcmMessages.index');

@@ -53,19 +53,19 @@ function objectifyForm(formArray) {
 var table = $(".table-data");
 $('.search_datatable').on('click', function (event) {
   event.preventDefault();
-  table.on('preXhr.dt', function (e, settings, data) {
+  $(".table-data").on('preXhr.dt', function (e, settings, data) {
     data.filters = objectifyForm($('.datatables_parameters').serializeArray());
   });
-  table.DataTable().ajax.reload();
+  $(".table-data").DataTable().ajax.reload();
   return false;
 });
 $('.reset_form_data').on('click', function (event) {
   event.preventDefault();
-  table.on('preXhr.dt', function (e, settings, data) {
+  $(".table-data").on('preXhr.dt', function (e, settings, data) {
     $('.datatables_parameters')[0].reset();
     data.filters = [];
   });
-  table.DataTable().ajax.reload();
+  $(".table-data").DataTable().ajax.reload();
   return false;
 });
 

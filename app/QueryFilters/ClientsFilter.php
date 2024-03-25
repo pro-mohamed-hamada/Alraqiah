@@ -27,14 +27,26 @@ class ClientsFilter extends QueryFilter
         return $this->builder->where('parent_id',$term);
     }
 
-    public function name($term)
-    {
-        return $this->builder->where('name',$term);
-    }
-
     public function phone($term)
     {
-        return $this->builder->where('phone', $term);
+        return $this->builder->whereHas('user', function ($query) use ($term) {
+            $query->where('phone', $term);
+        });
+    }
+    
+    public function supervisor_id($term)
+    {
+        return $this->builder->where('supervisor_id',$term);
+    }
+
+    public function launch_date($term)
+    {
+        return $this->builder->where('launch_date',$term);
+    }
+
+    public function gender($term)
+    {
+        return $this->builder->where('gender',$term);
     }
 
     public function keyword($term)

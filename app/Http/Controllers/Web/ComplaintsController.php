@@ -19,7 +19,9 @@ class ComplaintsController extends Controller
     public function index(ComplaintsDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_complaint');
-        $filters =  $request->all();
+        $filters = array_filter($request->get('filters', []), function ($value) {
+            return ($value !== null && $value !== false && $value !== '');
+        });
         return $dataTable->with(['filters'=>$filters])->render('Dashboard.Complaints.index');
     }//end of index
 

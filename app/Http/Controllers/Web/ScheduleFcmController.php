@@ -27,7 +27,9 @@ class ScheduleFcmController extends Controller
     {
         userCan(request: $request, permission: 'view_schedule_fcm');
         try{
-            $filters =  $request->all();
+            $filters = array_filter($request->get('filters', []), function ($value) {
+                return ($value !== null && $value !== false && $value !== '');
+            });
             return $dataTable->with(['filters'=>$filters])->render('Dashboard.ScheduleFcm.index');
         }catch(Exception $e){
             return redirect()->back()->with("message", $e->getMessage());

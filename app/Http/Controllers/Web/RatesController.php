@@ -18,7 +18,9 @@ class RatesController extends Controller
     public function index(RatesDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_rate');
-        $filters =  $request->all();
+        $filters = array_filter($request->get('filters', []), function ($value) {
+            return ($value !== null && $value !== false && $value !== '');
+        });
         return $dataTable->with(['filters'=>$filters])->render('Dashboard.Rates.index');
     }//end of index
 

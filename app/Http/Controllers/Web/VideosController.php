@@ -20,7 +20,9 @@ class VideosController extends Controller
     public function index(VideosDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_video');
-        $filters =  $request->all();
+        $filters = array_filter($request->get('filters', []), function ($value) {
+            return ($value !== null && $value !== false && $value !== '');
+        });
         return $dataTable->with(['filters'=>$filters])->render('Dashboard.Videos.index');
     }//end of index
 

@@ -9,6 +9,7 @@ use App\Http\Requests\Web\FaqStoreRequest;
 use App\Http\Requests\Web\FaqUpdateRequest;
 use App\Services\FaqService;
 use Exception;
+use Illuminate\Support\Arr;
 
 class FaqsController extends Controller
 {
@@ -20,7 +21,7 @@ class FaqsController extends Controller
     public function index(FaqsDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_faq');
-        $filters = array_filter($request->all(), function ($value) {
+        $filters = array_filter($request->get('filters', []), function ($value) {
             return ($value !== null && $value !== false && $value !== '');
         });
         return $dataTable->with(['filters'=>$filters])->render('Dashboard.Faqs.index');

@@ -28,7 +28,6 @@ class UsersController extends Controller
         });
         $filters['type'] = UserTypeEnum::SUPERVISOR;
         $withRelations = [];
-        $users = $this->userService->getAll(['filters'=>$filters, 'withRelations'=>$withRelations, 'perPage'=>1]);
         return $dataTable->with(['filters'=>$filters])->render('Dashboard.Users.index');
     }//end of index
 

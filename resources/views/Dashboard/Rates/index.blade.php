@@ -8,33 +8,34 @@
                     <div class="card-header">{{ __('lang.rates_filters') }}</div>
 
                     <div class="card-body">
-                        
-                        <div class="filters">
-                            <div class="row mb-3 g-3">
-                                <div class="col-lg-4">
-                                    <label>{{ __('lang.is_active') }}</label>
-                                    <select name="is_active" class="form-control">
-                                        <option>{{ __('lang.choose') }}</option>
-                                        <option value="{{ \App\Enum\ActivationStatusEnum::ACTIVE }}">{{ __('lang.active') }}</option>
-                                        <option value="{{ \App\Enum\ActivationStatusEnum::NOT_ACTIVE }}">{{ __('lang.not_active') }}</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-4">
-                                    <label>{{ __('lang.rate_number_greater_than') }}</label>
-                                    <input type="number" name="rate_number_greater_than" class="form-control" placeholder="{{ __('lang.rate_number_greater_than') }}">
-                                </div>
-                                <div class="col-lg-4">
-                                    <label>{{ __('lang.rate_number_less_than') }}</label>
-                                    <input type="number" name="rate_number_less_than" class="form-control" placeholder="{{ __('lang.rate_number_less_than') }}">
+                        <form class="datatables_parameters">
+                            <div class="filters">
+                                <div class="row mb-3 g-3">
+                                    <div class="col-lg-4">
+                                        <label>{{ __('lang.is_active') }}</label>
+                                        <select name="is_active" class="form-control">
+                                            <option>{{ __('lang.choose') }}</option>
+                                            <option value="{{ \App\Enum\ActivationStatusEnum::ACTIVE }}">{{ __('lang.active') }}</option>
+                                            <option value="{{ \App\Enum\ActivationStatusEnum::NOT_ACTIVE }}">{{ __('lang.not_active') }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>{{ __('lang.rate_number_greater_than') }}</label>
+                                        <input type="number" name="rate_number_greater_than" class="form-control" placeholder="{{ __('lang.rate_number_greater_than') }}">
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>{{ __('lang.rate_number_less_than') }}</label>
+                                        <input type="number" name="rate_number_less_than" class="form-control" placeholder="{{ __('lang.rate_number_less_than') }}">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div  class="filters-buttons">
-                            <div class="">
-                                <button class="btn btn-primary"><i class="fa fa-search"></i> {{__('lang.search')}}</button>
-                                <button class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.reset')}}</button>
+                            <div  class="filters-buttons">
+                                <div class="">
+                                    <button class="search_datatable btn btn-primary"><i class="fa fa-search"></i> {{__('lang.search')}}</button>
+                                    <button class="reset_form_data btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.reset')}}</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
 
                     </div>
                 </div>

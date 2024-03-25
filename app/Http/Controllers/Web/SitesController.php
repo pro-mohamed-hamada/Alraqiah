@@ -20,7 +20,9 @@ class SitesController extends Controller
     public function index(SitesDataTable $dataTable, Request $request)
     {
         userCan(request: $request, permission: 'view_site');
-        $filters =  $request->all();
+        $filters = array_filter($request->get('filters', []), function ($value) {
+            return ($value !== null && $value !== false && $value !== '');
+        });
         return $dataTable->with(['filters'=>$filters])->render('Dashboard.Sites.index');
     }//end of index
 
