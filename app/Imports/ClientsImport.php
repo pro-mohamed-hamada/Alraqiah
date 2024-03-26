@@ -59,7 +59,12 @@ class ClientsImport implements ToModel, SkipsEmptyRows, WithValidation, WithHead
             'phone'=>['required', 'unique:users,phone'],
             'reservation_number'=>['required', 'integer'],
             'package'=>['required'],
-            'launch_date'=>['required'],
+            'launch_date'=>function($attribute, $value, $onFailure) {
+                $date = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value))->format('Y-m-d');
+                if ($date < Carbon::now()->format('Y-m-d')) {
+                     $onFailure(__('lang.should_be_equal_or_greater_than: '.Carbon::now()->format('Y-m-d')));
+                }
+            },
             'seat_number'=>['required'],
             'gender'=>['required', 'string'],
             'identity_number'=>['required'],
