@@ -34,9 +34,9 @@
                                 <ul class="list-group list-group-horizontal">
                                     <li class="list-group-item">
                                         <form method="post" action="{{route('relatives.destroy', $relative->id)}}">
+                                            @method('delete')
                                             @csrf
-                                            
-                                            <button name="delete" type="submit" class=" btn btn-danger"><i class="fa fa-trash"></i></button>
+                                            <button type="submit" class=" btn btn-danger"><i class="fa fa-trash"></i></button>
                                         </form>
                                     </li>
                                     <li class="list-group-item"><a href="{{ route('clients.edit', $client->id) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></li>

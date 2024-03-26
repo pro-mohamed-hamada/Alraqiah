@@ -15,6 +15,7 @@ use App\Services\SiteService;
 use App\Services\UserService;
 use Exception;
 use App\Imports\ClientsImport;
+use App\Imports\ClientsWithRelativesImport;
 use Maatwebsite\Excel\Facades\Excel;
 class ClientsController extends Controller
 {
@@ -139,7 +140,7 @@ class ClientsController extends Controller
     public function import(ImportClientRequest $request) 
     {
         try{
-            $import = new ClientsImport($request->supervisor_id);
+            $import = new ClientsWithRelativesImport($request->supervisor_id);
 
             // Use the import object with the request data
             Excel::import($import, $request->file('file'));
