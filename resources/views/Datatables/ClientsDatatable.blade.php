@@ -9,7 +9,7 @@
                 @endif
                 @can('import_client')
                 <a role="button" class="btn btn-primary " href="{{route('clients.import_view')}}"><i class="fa fa-upload"></i> {{__('lang.import')}}</a>
-                <a role="button" target="_blanck" class="btn btn-primary " href="{{asset('imports/Clients_with_relatives.xlsx')}}"><i class="fa fa-upload"></i> {{__('lang.download_template')}}</a>
+                <a role="button" target="_blanck" class="btn btn-primary " href="{{asset('imports/Clients_with_relatives.xlsx')}}"><i class="fa fa-download"></i> {{__('lang.download_template')}}</a>
                 @endif
             </div>
             
