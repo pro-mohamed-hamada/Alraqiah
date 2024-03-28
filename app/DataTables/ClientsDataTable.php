@@ -38,6 +38,16 @@ class ClientsDataTable extends DataTable
             ->editColumn('supervisor_id', function(Client $model){
                 return $model->supervisor->name;
             })
+            ->filterColumn('name', function($query, $keyword) {
+                $query->whereHas('user', function($query) use ($keyword) {
+                    $query->where('name', 'like', "%{$keyword}%");
+                });
+            })
+            ->filterColumn('phone', function($query, $keyword) {
+                $query->whereHas('user', function($query) use ($keyword) {
+                    $query->where('phone', 'like', "%{$keyword}%");
+                });
+            })
             ->rawColumns(['action', 'location'])
             ->setRowId('id');
     }
