@@ -12,7 +12,6 @@
                         <th>{{ __('lang.name') }}</th>
                         <th>{{ __('lang.phone') }}</th>
                         <th>{{ __('lang.reservation_number') }}</th>
-                        <th>{{ __('lang.reservation_status') }}</th>
                         <th>{{ __('lang.package') }}</th>
                         <th>{{ __('lang.launch_date') }}</th>
                         <th>{{ __('lang.seat_number') }}</th>
@@ -30,7 +29,6 @@
                             <td>{{ $client->user->name }}</td>
                             <td>{{ $client->user->phone }}</td>
                             <td>{{ $client->reservation_number }}</td>
-                            <td>{{ $client->reservation_status }}</td>
                             <td>{{ $client->package }}</td>
                             <td>{{ $client->launch_date }}</td>
                             <td>{{ $client->seat_number }}</td>
