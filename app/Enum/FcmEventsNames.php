@@ -21,11 +21,10 @@ class FcmEventsNames
         '@USER_NAME@'=>'@USER_NAME@',
         '@USER_PHONE@'=>'@USER_PHONE@',
         '@RESERVATION_NUMBER@'=>'@RESERVATION_NUMBER@',
-        '@RESERVATION_STATUS@'=>'@RESERVATION_STATUS@',
         '@PACKAGE@'=>'@PACKAGE@',
         '@LAUNCH_DATE@'=>'@LAUNCH_DATE@',
         '@GENDER@'=>'@GENDER@',
-        '@NATIONAL_NUMBER@'=>'@NATIONAL_NUMBER@',
+        '@IDENTITY_NUMBER@'=>'@IDENTITY_NUMBER@',
     ];
 
     public static array $CHANNELS = [

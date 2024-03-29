@@ -91,11 +91,10 @@ class User extends Authenticatable implements HasMedia
                 '@USER_NAME@'=>$user->name,
                 '@USER_PHONE@'=>$user->phone,
                 '@RESERVATION_NUMBER@'=>$user->client?->reservation_number,
-                '@RESERVATION_STATUS@'=>$user->client?->reservation_status,
                 '@PACKAGE@'=>$user->client?->package,
                 '@LAUNCH_DATE@'=>$user->client?->launch_date,
                 '@GENDER@'=>$user->client?->gender,
-                '@NATIONAL_NUMBER@'=>$user->client?->national_number,
+                '@IDENTITY_NUMBER@'=>$user->client?->identity_number,
             ];
             $body = replaceFlags($body,$replaced_values);
             $tokens[0] = $user->device_token;

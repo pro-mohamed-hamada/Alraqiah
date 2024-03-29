@@ -84,8 +84,7 @@ class FcmMessagesController extends Controller
         try {
             $flags = FcmEventsNames::$FLAGS;
             $fcm_channels = FcmEventsNames::$CHANNELS;
-            $users = app()->make(UserService::class)->queryGet(filters: ['type'=>UserTypeEnum::CLIENT])->get();
-            return view('Dashboard.FcmMessages.live_fcm', compact('users', 'flags', 'fcm_channels'));
+            return view('Dashboard.FcmMessages.live_fcm', compact('flags', 'fcm_channels'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());
         }

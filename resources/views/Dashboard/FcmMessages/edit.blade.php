@@ -92,7 +92,8 @@
                 sampleTextarea.select(); //select textarea contenrs
                 document.execCommand("copy");
                 document.body.removeChild(sampleTextarea);
-                toastr.info('Copy to Clipboard')
+                $(".alert_message").text('Copy to Clipboard');
+                $(".alert_message").fadeIn().delay(1000).fadeOut();
             }
         </script>
         @endsection

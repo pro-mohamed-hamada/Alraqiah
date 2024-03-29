@@ -29,9 +29,7 @@ class LiveFcmMessageRequest extends FormRequest
             'title' => 'required|string',
             'content' => 'required|string',
             'notification_via'=>'required',
-            'users'=>'nullable|required_without:file|array',
-            'users.*'=>'required|integer|exists:users,id',
-            'file'=>'nullable|required_without:users|file|mimes:xls,xlsx',
+            'file'=>'required|file|mimes:xls,xlsx',
         ];
     }
 }
