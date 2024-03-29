@@ -3,7 +3,7 @@
 
         @section('content')
         <div class="content col-md-9 col-lg-10 offset-md-3 offset-lg-2">
-            <form method="POST" action="{{ route('fcm.liveFcmMessage') }}">
+            <form method="POST" action="{{ route('fcm.liveFcmMessage') }}" enctype="multipart/form-data">
             <div class="mb-3">
                 <div class="card">
                     <div class="card-header">{{ __('lang.create_live_fcm_message') }}</div>
@@ -62,6 +62,30 @@
                     <div class="card-header">{{ __('lang.users') }}</div>
 
                     <div class="card-body">
+                        @if(session()->has('failures'))
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach (session('failures') as $failure)
+                                        @foreach ($failure->errors() as $error)
+                                            <li>Row {{ $failure->row() }}: {{ $error }}</li>
+                                        @endforeach
+
+                                        {{-- @foreach ($failure->values() as $attribute => $value)
+                                            <li>In [{{ $attribute }}] with value [{{ $value }}]</li>
+                                        @endforeach --}}
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <div class="row mb-3 g-3">
+                            <div class="col-lg-4">
+                                <label>{{ __('lang.file') }} *</label>
+                                <input type="file" name="file" value="{{ old('file') }}" class="form-control">
+                                @error('file')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="row mb-3 g-3">
                             <div class="col-md-12">
                                 <div class="form-check checkbox checkbox-primary mb-0">
@@ -83,8 +107,9 @@
                         @enderror
                         <div class="row mb-3 g-3">
                             <div class="">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"></i> {{__('lang.create')}}</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.create')}}</button>
                                 <a href="{{ url()->previous() }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> {{__('lang.go_back')}}</a>
+                                <a href="{{ asset('imports/live_fcm_template.xlsx') }}"  class="btn btn-primary"><i class="fa fa-arrow-upload"></i> {{__('lang.download_template')}}</a>
                             </div>
                         </div>
                     </div>

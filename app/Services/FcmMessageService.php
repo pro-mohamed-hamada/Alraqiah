@@ -2,11 +2,14 @@
 
 namespace App\Services;
 
+use App\Imports\LiveFcmImport;
 use App\Models\FcmMessage;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use App\QueryFilters\FcmMessagesFilter;
+use Exception;
+use Maatwebsite\Excel\Facades\Excel;
 
 class FcmMessageService extends BaseService
 {
@@ -45,32 +48,43 @@ class FcmMessageService extends BaseService
     
     public function liveFcm(array $data = [])
     {
-        foreach($data['users'] as $user_id)
+        if(isset($data['file']))
         {
-            $user = User::find($user_id);
-            if($user)
-            {
-                $title = $data['title'];
-                $body = $data['content'];
-                $replaced_values = [
-                    '@USER_NAME@'=>$user->name,
-                    '@USER_PHONE@'=>$user->phone,
-                    '@RESERVATION_NUMBER@'=>$user->client?->reservation_number,
-                    '@RESERVATION_STATUS@'=>$user->client?->reservation_status,
-                    '@PACKAGE@'=>$user->client?->package,
-                    '@LAUNCH_DATE@'=>$user->client?->launch_date,
-                    '@GENDER@'=>$user->client?->gender,
-                    '@NATIONAL_NUMBER@'=>$user->client?->national_number,
-                ];
-                $body = replaceFlags($body,$replaced_values);
-                $tokens[0] = $user->device_token;
-                app()->make(NotificationService::class)->sendToTokens(title: $title,body: $body,tokens: $tokens);
-                $user->notify(new \App\Notifications\GeneralNotification(title: $title, content: $body));
-            }
+                $import = new LiveFcmImport($data);
     
+                // Use the import object with the request data
+                Excel::import($import, $data['file']);
+            
+                return true;
+        }else{
+            foreach($data['users'] as $user_id)
+            {
+                $user = User::find($user_id);
+                if($user)
+                {
+                    $title = $data['title'];
+                    $body = $data['content'];
+                    $replaced_values = [
+                        '@USER_NAME@'=>$user->name,
+                        '@USER_PHONE@'=>$user->phone,
+                        '@RESERVATION_NUMBER@'=>$user->client?->reservation_number,
+                        '@RESERVATION_STATUS@'=>$user->client?->reservation_status,
+                        '@PACKAGE@'=>$user->client?->package,
+                        '@LAUNCH_DATE@'=>$user->client?->launch_date,
+                        '@GENDER@'=>$user->client?->gender,
+                        '@NATIONAL_NUMBER@'=>$user->client?->national_number,
+                    ];
+                    $body = replaceFlags($body,$replaced_values);
+                    $tokens[0] = $user->device_token;
+                    app()->make(NotificationService::class)->sendToTokens(title: $title,body: $body,tokens: $tokens);
+                    $user->notify(new \App\Notifications\GeneralNotification(title: $title, content: $body));
+                }
+        
+            }
+            return true;
         }
         
-        return true;
+        
     } //end of store
 
     public function update(int $id, array $data=[])

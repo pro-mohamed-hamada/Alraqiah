@@ -99,6 +99,9 @@ class FcmMessagesController extends Controller
             if(!$status)
                 return redirect()->back()->with("message", __('lang.something_went_wrong'));
             return redirect()->route('fcm-messages.index')->with('message', __('lang.success_operation'));
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            return redirect()->back()->with(compact('failures'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());
         }
