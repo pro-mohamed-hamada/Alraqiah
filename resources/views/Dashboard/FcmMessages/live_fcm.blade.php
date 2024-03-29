@@ -109,7 +109,7 @@
                             <div class="">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> {{__('lang.create')}}</button>
                                 <a href="{{ url()->previous() }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> {{__('lang.go_back')}}</a>
-                                <a href="{{ asset('imports/live_fcm_template.xlsx') }}"  class="btn btn-primary"><i class="fa fa-arrow-upload"></i> {{__('lang.download_template')}}</a>
+                                <a href="{{ asset('imports/live_fcm_template.xlsx') }}"  class="btn btn-primary"><i class="fa fa-upload"></i> {{__('lang.download_template')}}</a>
                             </div>
                         </div>
                     </div>
