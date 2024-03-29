@@ -14,7 +14,7 @@
                                     <div class="col-lg-4">
                                         <label>{{ __('lang.is_active') }}</label>
                                         <select name="is_active" class="form-control">
-                                            <option>{{ __('lang.choose') }}</option>
+                                            <option value="">{{ __('lang.choose') }}</option>
                                             <option value="{{ \App\Enum\ActivationStatusEnum::ACTIVE }}">{{ __('lang.active') }}</option>
                                             <option value="{{ \App\Enum\ActivationStatusEnum::NOT_ACTIVE }}">{{ __('lang.not_active') }}</option>
                                         </select>
