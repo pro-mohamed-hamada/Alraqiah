@@ -54,9 +54,9 @@ class FcmMessageService extends BaseService
     
                 // Use the import object with the request data
                 Excel::import($import, $data['file']);
-            
-                return true;
-        }else{
+        }
+        if(isset($data['users']))
+        {
             foreach($data['users'] as $user_id)
             {
                 $user = User::find($user_id);
@@ -81,9 +81,8 @@ class FcmMessageService extends BaseService
                 }
         
             }
-            return true;
         }
-        
+        return true;
         
     } //end of store
 
