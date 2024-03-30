@@ -46,6 +46,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);
+    Route::put('clients-reassign/{id}', [ClientsController::class, 'reassignClients'])->name('clients.reassign');
     Route::get('clients-import', [ClientsController::class, 'importView'])->name('clients.import_view');
     Route::post('clients-import', [ClientsController::class, 'import'])->name('clients.import');
     Route::get('client-relatives/{id}', [ClientsController::class, 'clientRelatives'])->name('client.relatives');

@@ -24,7 +24,8 @@ class PermissionsTableSeeder extends Seeder
                 'create_user',
                 'edit_user',
                 'delete_user',
-                'view_user'
+                'view_user',
+                'reassign_clients'
             ],
             //end employee permissions
 

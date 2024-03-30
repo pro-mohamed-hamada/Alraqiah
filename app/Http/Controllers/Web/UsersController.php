@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\DataTables\UsersDataTable;
+use App\Enum\ActivationStatusEnum;
 use App\Enum\UserTypeEnum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -70,7 +71,11 @@ class UsersController extends Controller
     {
         try{
             $user = $this->userService->findById(id: $id);
-            return view('Datatables.SupervisorClients', compact('user'));
+            $supervisorsFilters['is_active'] = ActivationStatusEnum::ACTIVE;
+            $supervisorsFilters['type'] = UserTypeEnum::SUPERVISOR;
+    
+            $supervisors = $this->userService->getAll(filters: $supervisorsFilters);
+                return view('Datatables.SupervisorClients', compact('user', 'supervisors'));
         }catch(Exception $e){
             return redirect()->back()->with("message", __('lang.something_went_wrong'));
         }

@@ -3,7 +3,34 @@
         <div class="card-header">{{ __('lang.clients') }}</div>
 
         <div class="card-body">
-
+            @can('reassign_clients')
+                {{-- start update client supervisor --}}
+                <form method="post" action="{{ route('clients.reassign', $user->id) }}">
+                    @method('put')
+                    @csrf
+                    <div class="row mb-3 g-3">
+                        <div class="col-lg-4">
+                            <label>{{ __('lang.supervisor') }} *</label>
+                            <select name="supervisor_id" class="form-control">
+                                <option disabled selected>{{ __('choose') }}</option>
+                                @foreach ($supervisors as $supervisor)
+                                <option value="{{ $supervisor->id }}">{{ $supervisor->name }}</option>
+                                @endforeach
+                            </select>
+                            @error("supervisor_id")
+                                <span class="error">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="col-lg-12">
+                            <div>
+                                <button class="btn btn-primary">{{ __('lang.reassign') }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                {{-- end update client supervisor --}}
+            @endcan
+            
             <div class="datatable table-responsive">
                 
                 <table class="clientsTable  table text-center table-bordered  table-hover">

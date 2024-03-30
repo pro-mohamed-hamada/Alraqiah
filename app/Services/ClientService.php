@@ -113,6 +113,14 @@ class ClientService extends BaseService
         return true;
     } //end of location
 
+    public function reassignClients($id, array $data = []): bool
+    {
+        $status = $this->getModel()->where('supervisor_id', $id)->update(['supervisor_id'=> $data['supervisor_id']]);
+        if(!$status)
+            throw new NotFoundException(__('lang.something_went_wrong'));        
+        return true;
+    } //end of location
+
     public function changeStatus(int $id, array $data):bool
     {
         $client = $this->findById($id);

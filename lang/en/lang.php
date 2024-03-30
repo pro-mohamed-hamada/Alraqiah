@@ -158,6 +158,8 @@
         "import"=>"Import",
         "download_template"=>"Download template",
         "file"=>"File",
+        "reassign_clients"=>"Reassign clients",
+        "reassign"=>"Reassign",
 
         //////////////////////////////////////////// end create
 	]

@@ -8,6 +8,7 @@ use App\Enum\UserTypeEnum;
 use Illuminate\Http\Request;
 use App\Services\ClientService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Web\ClientsReassignRequest;
 use App\Http\Requests\Web\ClientStoreRequest;
 use App\Http\Requests\Web\ClientUpdateRequest;
 use App\Http\Requests\Web\ImportClientRequest;
@@ -93,6 +94,17 @@ class ClientsController extends Controller
         try {
             $this->clientService->update($id, $request->validated());
             return redirect()->route('clients.index')->with('message', __('lang.success_operation'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with("message", $e->getMessage());
+        }
+    } //end of update
+
+    public function reassignClients(ClientsReassignRequest $request, $id)
+    {
+        userCan(request: $request, permission: 'reassign_clients');
+        try {
+            $this->clientService->reassignClients($id, $request->validated());
+            return redirect()->route('users.index')->with('message', __('lang.success_operation'));
         } catch (\Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());
         }

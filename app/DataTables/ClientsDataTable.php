@@ -36,7 +36,7 @@ class ClientsDataTable extends DataTable
                 return '<a target="_blank" href="https://www.google.com/maps/search/?api=1&query='.$model->user->lat.','.$model->user->lng.'"><i class="fa fa-map-o"></i></a>';
             })
             ->editColumn('supervisor_id', function(Client $model){
-                return $model->supervisor->name;
+                return $model->supervisor?->name;
             })
             ->filterColumn('name', function($query, $keyword) {
                 $query->whereHas('user', function($query) use ($keyword) {
