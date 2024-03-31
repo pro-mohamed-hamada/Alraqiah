@@ -26,7 +26,6 @@ class ImportClientRequest extends FormRequest
     {
         return [
             'file'=>'required|file|mimes:xls,xlsx',
-            'supervisor_id'=>'required|integer|exists:users,id',
         ];
     }
 }

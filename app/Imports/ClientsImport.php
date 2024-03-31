@@ -15,12 +15,10 @@ use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 class ClientsImport implements ToModel, SkipsEmptyRows, WithValidation, WithHeadingRow
 {
 
-    protected $supervisor_id;
-
     // Add a constructor to accept the request
-    public function __construct(int $supervisor_id)
+    public function __construct()
     {
-        $this->supervisor_id = $supervisor_id;
+        //
     }
     /**
     * @param array $row
@@ -29,6 +27,7 @@ class ClientsImport implements ToModel, SkipsEmptyRows, WithValidation, WithHead
     */
     public function model(array $row)
     {
+        $supervisor = User::where('phone', $row['supervisor_phone'])->first();
         $client = Client::create([
             'reservation_number'=> $row['reservation_number'],
             'package'=> $row['package'],
@@ -38,7 +37,7 @@ class ClientsImport implements ToModel, SkipsEmptyRows, WithValidation, WithHead
             'identity_number'=> $row['identity_number'],
             'country'=> $row['country'],
             'city'=> $row['incoming_city'],
-            'supervisor_id'=> $this->supervisor_id,
+            'supervisor_id'=> $supervisor->id,
          ]);
          $client->user()->create([
             'name'=> $row['name'],
@@ -62,7 +61,7 @@ class ClientsImport implements ToModel, SkipsEmptyRows, WithValidation, WithHead
             'launch_date'=>function($attribute, $value, $onFailure) {
                 $date = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($value))->format('Y-m-d');
                 if ($date < Carbon::now()->format('Y-m-d')) {
-                     $onFailure(__('lang.should_be_equal_or_greater_than: '.Carbon::now()->format('Y-m-d')));
+                     $onFailure(__('lang.launch_date_should_be_equal_or_greater_than: '.Carbon::now()->format('Y-m-d')));
                 }
             },
             'seat_number'=>['required'],
@@ -70,6 +69,7 @@ class ClientsImport implements ToModel, SkipsEmptyRows, WithValidation, WithHead
             'identity_number'=>['required'],
             'country'=>['required', 'string'],
             'incoming_city'=>['required', 'string'],
+            'supervisor_phone'=>['required', 'exists:users,phone'],
         ];
     }
 

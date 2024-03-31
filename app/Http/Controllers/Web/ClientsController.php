@@ -152,7 +152,7 @@ class ClientsController extends Controller
     public function import(ImportClientRequest $request) 
     {
         try{
-            $import = new ClientsWithRelativesImport($request->supervisor_id);
+            $import = new ClientsWithRelativesImport();
 
             // Use the import object with the request data
             Excel::import($import, $request->file('file'));

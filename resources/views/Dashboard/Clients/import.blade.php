@@ -29,18 +29,6 @@
                             <div class="row mb-3 g-3">
                                 
                                 <div class="col-lg-4">
-                                    <label>{{ __('lang.supervisor') }} *</label>
-                                    <select name="supervisor_id" class="form-control selectpicker" data-live-search="true">
-                                        <option disabled selected>{{ __('choose') }}</option>
-                                        @foreach ($supervisors as $supervisor)
-                                        <option value="{{ $supervisor->id }}" {{ $supervisor->id == old('supervisor_id') ? "selected":"" }}>{{ $supervisor->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error("supervisor_id")
-                                        <span class="error">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="col-lg-4">
                                     <label>{{ __('lang.file') }} *</label>
                                     <input type="file" name="file" value="{{ old('file') }}" class="form-control">
                                     @error('file')
