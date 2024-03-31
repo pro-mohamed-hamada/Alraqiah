@@ -7,6 +7,7 @@ use App\Enum\UserTypeEnum;
 use App\Exceptions\NotFoundException;
 use App\Models\User;
 use App\QueryFilters\UsersFilter;
+use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -91,6 +92,9 @@ class UserService extends BaseService
     public function destroy($id)
     {
         $user = $this->findById($id);
+        $userClients = $user->supervisorClients;
+        if(!empty($userClients))
+            throw new Exception(__('lang.user_has_clients'));
         $user->clearMediaCollection('users');
         return $user->delete();
     } //end of delete

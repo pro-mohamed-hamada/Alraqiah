@@ -161,6 +161,7 @@
         "reassign_clients"=>"Reassign clients",
         "reassign"=>"Reassign",
         "launch_date_should_be_equal_or_greater_than"=>"Launch date should be equal or greater than",
+        "user_has_clients"=>"User has clients",
 
         //////////////////////////////////////////// end create
 	]

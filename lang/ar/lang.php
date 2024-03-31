@@ -161,6 +161,7 @@
         "reassign_clients"=>"إعادة تعيين العملاء",
         "reassign"=>"إعادة تعيين",
         "launch_date_should_be_equal_or_greater_than"=>"تاريخ الإنطلاق يجب ان يكون مساوى او اكبر من",
+        "user_has_clients"=>"المستخدم لديه عملاء",
         //////////////////////////////////////////// end create
 	]
 ?>
