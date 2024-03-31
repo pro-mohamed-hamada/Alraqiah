@@ -8,12 +8,16 @@ use App\Enum\UserTypeEnum;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\UserProfileRequest;
+use App\Http\Requests\Web\UsersImportRequest;
 use App\Http\Requests\Web\UserStoreRequest;
 use App\Http\Requests\Web\UserUpdateRequest;
+use App\Imports\UsersImport;
 use App\Services\UserService;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Permission;
+use Maatwebsite\Excel\Facades\Excel;
+
 class UsersController extends Controller
 {
     public function __construct(private UserService $userService)
@@ -128,5 +132,36 @@ class UsersController extends Controller
             return redirect()->back()->with("message", $e->getMessage());
         }
     } //end of destroy
+
+
+    public function importView(Request $request) 
+    {
+        userCan(request: $request, permission: 'import_client');
+        $supervisorsFilters['is_active'] = ActivationStatusEnum::ACTIVE;
+        $supervisorsFilters['type'] = UserTypeEnum::SUPERVISOR;
+        $permissions = Permission::all();
+        $permissions = $permissions->groupBy('category');
+        return View('Dashboard.Users.import', compact('permissions'));
+    }
+
+    public function import(UsersImportRequest $request) 
+    {
+        try{
+            $import = new UsersImport(permissions: $request->permissions);
+
+            // Use the import object with the request data
+            Excel::import($import, $request->file('file'));
+        
+            return redirect()->route('users.index')->with('message', __('lang.success_operation'));
+    
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            $failures = $e->failures();
+            
+            return redirect()->back()->with(compact('failures'));
+       } catch (Exception $e) {
+            return redirect()->back()->with("message", $e->getMessage());
+        }
+
+    }
 
 }

@@ -49,6 +49,8 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::put('clients-reassign/{id}', [ClientsController::class, 'reassignClients'])->name('clients.reassign');
     Route::get('clients-import', [ClientsController::class, 'importView'])->name('clients.import_view');
     Route::post('clients-import', [ClientsController::class, 'import'])->name('clients.import');
+    Route::get('users-import', [UsersController::class, 'importView'])->name('users.import_view');
+    Route::post('users-import', [UsersController::class, 'import'])->name('users.import');
     Route::get('client-relatives/{id}', [ClientsController::class, 'clientRelatives'])->name('client.relatives');
     Route::delete('relatives/{id}', [RelativesController::class, 'destroy'])->name('relatives.destroy');
     Route::resource('users', UsersController::class);
