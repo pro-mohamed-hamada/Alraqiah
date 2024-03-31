@@ -115,11 +115,11 @@ class ClientsController extends Controller
         userCan(request: $request, permission: 'delete_client');
         try {
             $result = $this->clientService->destroy($id);
-            if (!$result)
-                return redirect()->back()->with("message", __('lang.not_found'));
-            return redirect()->back()->with("message", __('lang.success_operation'));
+            if(!$result)
+                return apiResponse(message: trans('lang.not_found'),code: 404);
+            return apiResponse(message: trans('lang.success_operation'));
         } catch (\Exception $e) {
-            return redirect()->back()->with("message", $e->getMessage());
+            return apiResponse(message: $e->getMessage(),code: 422);
         }
     } //end of destroy
 

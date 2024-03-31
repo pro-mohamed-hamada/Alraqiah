@@ -57,6 +57,7 @@ class SitesController extends Controller
 
     public function update(SiteUpdateRequest $request, $id)
     {
+        userCan(request: $request, permission: 'edit_site');
         try {
             $this->siteService->update($id, $request->validated());
             return redirect()->route('sites.index')->with('message', __('lang.success_operation'));
@@ -65,20 +66,22 @@ class SitesController extends Controller
         }
     } //end of update
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        userCan(request: $request, permission: 'delete_site');
         try {
             $result = $this->siteService->destroy($id);
-            if (!$result)
-                return redirect()->back()->with("message", __('lang.not_found'));
-            return redirect()->back()->with("message", __('lang.success_operation'));
+            if(!$result)
+                return apiResponse(message: trans('lang.not_found'),code: 404);
+            return apiResponse(message: trans('lang.success_operation'));
         } catch (\Exception $e) {
-            return redirect()->back()->with("message", $e->getMessage());
+            return apiResponse(message: $e->getMessage(),code: 422);
         }
     } //end of destroy
 
     public function show(Request $request, $id)
     {
+        userCan(request: $request, permission: 'view_site');
         try{
             $site = $this->siteService->findById(id: $id);
             return view('Dashboard.Sites.show', compact('site'));
