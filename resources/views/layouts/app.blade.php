@@ -53,23 +53,22 @@
                 </div>
               </div>
         </div>
-            {{-- start show photo section --}}
-            <div id="show_photo" class="text-center col-xs-12">
-            
-            </div>
+        {{-- start show photo section --}}
+        <div id="show_photo" class="text-center col-xs-12">
+        
         </div>
         {{-- end update section --}}
        
-            <div style="display: none" class="alert_message alert alert-success" role="alert">
+        <div style="display: none" class="alert_message alert alert-success" role="alert">
+            
+        </div>
+        <div class=" displayView">
+            <div class="displayViewContent">
                 
             </div>
-            <div class=" displayView">
-                <div class="displayViewContent">
-                    
-                </div>
-                <button class="close btn btn-danger">X</button>     
-            </div>
-        
+            <button class="close btn btn-danger">X</button>     
+        </div>
+    </div>
         <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
         <script src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>

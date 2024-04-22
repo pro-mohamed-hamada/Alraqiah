@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -42,5 +42,9 @@ class HomeController extends Controller
         $total_sites = Site::count();
         $rate = Setting::first()->rate;
         return view('home', compact('total_users', 'total_clients', 'total_complaints', 'active_complaints', 'not_active_complaints', 'total_videos', 'total_faqs', 'total_sites', 'rate'));
+    }
+
+    public function privacy(){
+        return view('privacy');
     }
 }
