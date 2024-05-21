@@ -41,7 +41,7 @@ class ClientLaunchDateReminderCommand extends Command
 
         if($scheduleFcmLaunchDateBeforeOneDay)
         {
-            $filters['launch_date'] = Carbon::now()->setTimezone('Africa/Cairo')->addDay()->format('Y-m-d');
+            $filters['launch_date'] = Carbon::now()->addDay()->format('Y-m-d');
             $users = app()->make(UserService::class)->queryGet(filters: $filters)->get();
             User::SendNotification(fcm: $scheduleFcmLaunchDateBeforeOneDay, users: $users);
         }
@@ -50,7 +50,7 @@ class ClientLaunchDateReminderCommand extends Command
 
         if($scheduleFcmLaunchDateBeforeTwoDays)
         {
-            $filters['launch_date'] = Carbon::now()->setTimezone('Africa/Cairo')->addDays(2)->format('Y-m-d');
+            $filters['launch_date'] = Carbon::now()->addDays(2)->format('Y-m-d');
             $users = app()->make(UserService::class)->queryGet(filters: $filters)->get();
             User::SendNotification(fcm: $scheduleFcmLaunchDateBeforeTwoDays, users: $users);
         }
@@ -59,7 +59,7 @@ class ClientLaunchDateReminderCommand extends Command
 
         if($scheduleFcmLaunchDateBeforeSevenDays)
         {
-            $filters['launch_date'] = Carbon::now()->setTimezone('Africa/Cairo')->addDays(7)->format('Y-m-d');
+            $filters['launch_date'] = Carbon::now()->addDays(7)->format('Y-m-d');
             $users = app()->make(UserService::class)->queryGet(filters: $filters)->get();
             User::SendNotification(fcm: $scheduleFcmLaunchDateBeforeSevenDays, users: $users);
         }
