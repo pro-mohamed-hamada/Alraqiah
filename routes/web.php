@@ -43,7 +43,6 @@ Route::get('/test', function(){
     return "Done";
 });
 Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
-Route::get('/privacy', [HomeController::class, 'privacy'])->name('privacy');
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);
