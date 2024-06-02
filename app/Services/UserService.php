@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
+use function PHPUnit\Framework\isEmpty;
+
 class UserService extends BaseService
 {
 
@@ -93,7 +95,7 @@ class UserService extends BaseService
     {
         $user = $this->findById($id);
         $userClients = $user->supervisorClients;
-        if(!empty($userClients))
+        if($userClients->isNotEmpty())
             throw new Exception(__('lang.user_has_clients'));
         $user->clearMediaCollection('users');
         return $user->delete();
