@@ -65,7 +65,7 @@ class ClientService extends BaseService
         $userData['password'] = "123456";
         $userData['type'] = UserTypeEnum::CLIENT;
         $userData['is_active'] = ActivationStatusEnum::ACTIVE;
-        
+
         return $userData;
     }
 
@@ -96,7 +96,7 @@ class ClientService extends BaseService
                 $relativesData[$i]['country'] = $data['relatives_country'][$i];
                 $relativesData[$i]['city'] = $data['relatives_city'][$i];
             }
-        
+
         return $relativesData;
     }
 
@@ -109,7 +109,7 @@ class ClientService extends BaseService
         $user->client->update([
             'parent_id'=>$parentId,
         ]);
-        
+
         return true;
     } //end of location
 
@@ -117,7 +117,7 @@ class ClientService extends BaseService
     {
         $status = $this->getModel()->where('supervisor_id', $id)->update(['supervisor_id'=> $data['supervisor_id']]);
         if(!$status)
-            throw new NotFoundException(__('lang.something_went_wrong'));        
+            throw new NotFoundException(__('lang.something_went_wrong'));
         return true;
     } //end of location
 
@@ -169,6 +169,11 @@ class ClientService extends BaseService
     {
         $client = $this->findById($id);
         return $client->delete();
+    } //end of delete
+
+    public function deleteMultiple($ids = [])
+    {
+        return $this->getModel()->whereIn('id', $ids)->delete();
     } //end of delete
 
     public function status($id)

@@ -46,6 +46,7 @@ Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('hom
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);
+    Route::delete('clients-delete-multiple',[ ClientsController::class, 'deleteMultiple'])->name('clients.delete_multiple');
     Route::put('clients-reassign/{id}', [ClientsController::class, 'reassignClients'])->name('clients.reassign');
     Route::get('clients-import', [ClientsController::class, 'importView'])->name('clients.import_view');
     Route::post('clients-import', [ClientsController::class, 'import'])->name('clients.import');
@@ -63,7 +64,7 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
 
     Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
     Route::put('settings/{id}', [SettingsController::class, 'update'])->name('settings.update');
-    
+
     Route::get('rates', [RatesController::class, 'index'])->name('rates.index');
     Route::delete('rates/{id}', [RatesController::class, 'destroy'])->name('rates.destroy');
     Route::post('rates/{id}', [RatesController::class, 'status'])->name('rates.status');

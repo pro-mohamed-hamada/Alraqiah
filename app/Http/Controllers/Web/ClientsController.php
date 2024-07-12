@@ -123,6 +123,21 @@ class ClientsController extends Controller
         }
     } //end of destroy
 
+    public function deleteMultiple(Request $request)
+    {
+        userCan(request: $request, permission: 'delete_client');
+
+        try {
+            $ids = $request->ids;
+            $result = $this->clientService->deleteMultiple($ids);
+            if(!$result)
+                return apiResponse(message: trans('lang.not_found'),code: 404);
+            return apiResponse(message: trans('lang.success_operation'));
+        } catch (\Exception $e) {
+            return apiResponse(message: $e->getMessage(),code: 422);
+        }
+    } //end of destroy
+
     public function show(Request $request, $id)
     {
         try{
@@ -138,7 +153,7 @@ class ClientsController extends Controller
         }
     } //end of show
 
-    public function importView(Request $request) 
+    public function importView(Request $request)
     {
         userCan(request: $request, permission: 'import_client');
         $supervisorsFilters['is_active'] = ActivationStatusEnum::ACTIVE;
@@ -149,19 +164,19 @@ class ClientsController extends Controller
         return View('Dashboard.Clients.import', compact('supervisors'));
     }
 
-    public function import(ImportClientRequest $request) 
+    public function import(ImportClientRequest $request)
     {
         try{
             $import = new ClientsWithRelativesImport();
 
             // Use the import object with the request data
             Excel::import($import, $request->file('file'));
-        
+
             return redirect()->route('clients.index')->with('message', __('lang.success_operation'));
-    
+
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
             $failures = $e->failures();
-            
+
             return redirect()->back()->with(compact('failures'));
        } catch (Exception $e) {
             return redirect()->back()->with("message", $e->getMessage());

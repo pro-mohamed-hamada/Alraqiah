@@ -39,7 +39,7 @@
                                         <label>{{ __('lang.launch_date') }}</label>
                                         <input type="date" name="launch_date" class="form-control" placeholder="{{ __('lang.launch_date') }}">
                                     </div>
-                                    
+
                                 </div>
                             </div>
                             <div  class="filters-buttons">
@@ -52,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            
+
             {{-- start Datatable --}}
             @include('Datatables.ClientsDatatable');
             {{-- end Datatable --}}
@@ -61,3 +61,40 @@
         @section("script")
         @include('layouts.datatables-scripts')
         @endsection
+
+        {{-- @section('script')
+        <script>
+            $(document).ready(function () {
+                var selected_ids = [];
+                $('.datatable-checkboxes').change(function() {
+                    if ($(this).is(':checked')) {
+                        // Perform action when checkbox is checked
+                        selected_ids.push($(this).val())
+                        console.log('Checkbox is checked.');
+
+                    } else {
+                        // Perform action when checkbox is unchecked
+                        selected_ids.pop($(this).val())
+                        console.log('Checkbox is unchecked.');
+                    }
+                });
+
+                $(".checkAll").click(function(){
+                    $('.datatable-checkboxes').not(this).prop('checked', this.checked);
+                    $('input[name="awbs[]"]').each(function(i){
+                        if ($(this).is(':checked')) {
+                            // Perform action when checkbox is checked
+                            selected_ids.push($(this).val())
+                            console.log('Checkbox is checked.');
+
+                        } else {
+                            // Perform action when checkbox is unchecked
+                            selected_ids.pop($(this).val())
+                            console.log('Checkbox is unchecked.');
+                        }
+                    });
+                });
+
+            });
+        </script>
+        @endsection --}}

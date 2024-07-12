@@ -23,6 +23,12 @@ class ClientsDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+            ->addColumn('check_box', function (Client $client) {
+                return view(
+                    'layouts.components._datatable-checkbox',
+                    ['name' => "clients[]", 'value' => $client->id]
+                );
+            })
             ->addColumn('action', function(Client $model){
                 return view('Dashboard.Clients.actions',compact('model'))->render();
             })
@@ -48,7 +54,7 @@ class ClientsDataTable extends DataTable
                     $query->where('phone', 'like', "%{$keyword}%");
                 });
             })
-            ->rawColumns(['action', 'location'])
+            ->rawColumns(['check_box', 'action', 'location'])
             ->setRowId('id');
     }
 
@@ -95,6 +101,10 @@ class ClientsDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('check_box')->title('<label class="custom-control custom-checkbox custom-control-md">
+            <input type="checkbox" class="custom-control-input checkAll">
+            <span class="custom-control-label custom-control-label-md  tx-17"></span></label>')->searchable(false)->orderable(false),
+
             Column::make('id')->title(__('lang.id')),
             Column::make('name')->title(__('lang.name')),
             Column::make('phone')->title(__('lang.phone')),

@@ -20,7 +20,7 @@
     @endif
     <link href="{{ asset('css/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Almarai&display=swap" rel="stylesheet"> -->
-    
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
@@ -33,13 +33,13 @@
             <div class="container-fluid">
                 <div class="row ">
                     @include('layouts.header')
-    
+
                     @yield('content')
                 </div>
             </div>
-        
+
         </main>
-        
+
         <div class="load_content form-group text-center">
             <img class="load_image" src="{{asset('images/load_image.jpg')}}">
         </div>
@@ -55,18 +55,18 @@
         </div>
         {{-- start show photo section --}}
         <div id="show_photo" class="text-center col-xs-12">
-        
+
         </div>
         {{-- end update section --}}
-       
+
         <div style="display: none" class="alert_message alert alert-success" role="alert">
-            
+
         </div>
         <div class=" displayView">
             <div class="displayViewContent">
-                
+
             </div>
-            <button class="close btn btn-danger">X</button>     
+            <button class="close btn btn-danger">X</button>
         </div>
     </div>
         <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
@@ -83,9 +83,17 @@
             $(document).ready(function(){
                 $("body").on("click", "button[name='delete']",function(e){
                     e.preventDefault();
+                    $('#btn_yes').data('delete_type', 'single');
                     $('#btn_yes').data('href', $(this).parent('form').attr('action'));
                     $('.confirm_content').show();
-                    
+
+                });
+                $("body").on("click", "a[name='delete_multiple']",function(e){
+                    e.preventDefault();
+                    $('#btn_yes').data('delete_type', 'multiple');
+                    $('#btn_yes').data('href', $(this).attr('href'));
+                    $('.confirm_content').show();
+
                 });
                 if('{{ session("message") }}')
                 {
@@ -96,38 +104,79 @@
                     $('.confirm_content').hide();
                 });
                 $('body').on('click', '#btn_yes', function(e){
-                    var url = $(this).data('href');
-                    $('.confirm_content').hide();
-                    $.ajax({
-                        url:url,
-                        method:"post",
-                        data: {"_method":"delete", "_token": '{{ csrf_token() }}'},
-                        beforeSend:function(){
-                            $(".load_content").show();
-                        },
-                        success:function(responsetext){
-                            $(".load_content").hide();
-                            $(".alert_message").text('{{ __("lang.success_operation") }}');
-                            $(".alert_message").fadeIn().delay(2000).fadeOut();
-                            $('.table-data').DataTable().ajax.reload(null, false);
-                        },
-                        error: function(data_error, exception){
-                            $(".load_content").hide();
-                            if(exception == "error"){
-                                $(".alert_message").text(data_error.responseJSON.message);
+                    var delete_type = $(this).data('delete_type');
+                    if(delete_type == 'single')
+                    {
+                        var url = $(this).data('href');
+                        $('.confirm_content').hide();
+                        $.ajax({
+                            url:url,
+                            method:"post",
+                            data: {"_method":"delete", "_token": '{{ csrf_token() }}'},
+                            beforeSend:function(){
+                                $(".load_content").show();
+                            },
+                            success:function(responsetext){
+                                $(".load_content").hide();
+                                $(".alert_message").text('{{ __("lang.success_operation") }}');
                                 $(".alert_message").fadeIn().delay(2000).fadeOut();
+                                $('.table-data').DataTable().ajax.reload(null, false);
+                            },
+                            error: function(data_error, exception){
+                                $(".load_content").hide();
+                                if(exception == "error"){
+                                    $(".alert_message").text(data_error.responseJSON.message);
+                                    $(".alert_message").fadeIn().delay(2000).fadeOut();
+                                }
                             }
-                        }
-        
-                    });
+
+                        });
+                    }else{
+                        var url = $(this).data('href');
+                        $('.confirm_content').hide();
+                        // start get clients ids
+                        var selected_ids = [];
+                        $('input[name="clients[]"]').each(function(i){
+                            if ($(this).is(':checked')) {
+                                // Perform action when checkbox is checked
+                                selected_ids.push($(this).val())
+
+                            }
+                        });
+                        // // end get clients ids
+                        $.ajax({
+                            url:url,
+                            method:"post",
+                            data: {"_method":"delete", "ids":selected_ids, "_token": '{{ csrf_token() }}'},
+                            beforeSend:function(){
+                                $(".load_content").show();
+                            },
+                            success:function(responsetext){
+                                $(".load_content").hide();
+                                $(".alert_message").text('{{ __("lang.success_operation") }}');
+                                $(".alert_message").fadeIn().delay(2000).fadeOut();
+                                $('.table-data').DataTable().ajax.reload(null, false);
+                            },
+                            error: function(data_error, exception){
+                                $(".load_content").hide();
+                                if(exception == "error"){
+                                    $(".alert_message").text(data_error.responseJSON.message);
+                                    $(".alert_message").fadeIn().delay(2000).fadeOut();
+                                }
+                            }
+
+                        });
+                    }
+
+
                 });
                 $("body").on("change", "select[name='per_page']",function(e){
                     e.preventDefault();
                     $("form[name='per_page_form']").submit();
                 });
-                
+
                 // start the is_active button
-        
+
                 $("body").on("click", "#is_active",function(e){
                     var url = $(this).data("href");
                     $.ajax({
@@ -145,9 +194,31 @@
                         }
                     });
                 });
-        
+
                 // end the is_active button
-        
+
+            });
+        </script>
+        {{-- @yield('script') --}}
+        <script>
+            $(document).ready(function () {
+                var selected_ids = [];
+
+                $(".checkAll").click(function(){
+                    $('.datatable-checkboxes').not(this).prop('checked', this.checked);
+                    $('input[name="clients[]"]').each(function(i){
+                        if ($(this).is(':checked')) {
+                            // Perform action when checkbox is checked
+                            selected_ids.push($(this).val())
+
+                        } else {
+                            // Perform action when checkbox is unchecked
+                            selected_ids.pop($(this).val())
+                            console.log('Checkbox is unchecked.');
+                        }
+                    });
+                });
+
             });
         </script>
     </body>
