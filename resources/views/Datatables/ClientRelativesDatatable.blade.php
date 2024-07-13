@@ -3,8 +3,8 @@
         <div class="card-header">{{ __('lang.relatives') }}</div>
 
         <div class="card-body">
-            
-           
+
+
 
             <div class="datatable table-responsive">
                 <table class="table text-center table-bordered table-hover">
@@ -16,8 +16,10 @@
                         <th>{{ __('lang.seat_number') }}</th>
                         <th>{{ __('lang.country') }}</th>
                         <th>{{ __('lang.city') }}</th>
+                        <th>{{ __('lang.chronic_disease') }}</th>
+                        <th>{{ __('lang.chronic_disease_discription') }}</th>
                         <th>{{ __('lang.created_at') }}</th>
-                        
+
                     </thead>
                     <tbody>
                         @foreach ($client->relatives as $relative)
@@ -29,6 +31,8 @@
                             <td>{{ $relative->seat_number }}</td>
                             <td>{{ $relative->country }}</td>
                             <td>{{ $relative->city }}</td>
+                            <td>{{ $relative->chronic_disease ? __('lang.yes'):__('lang.no') }}</td>
+                            <td>{{ $relative->chronic_disease_discription }}</td>
                             <td>{{ $relative->created_at }}</td>
                             <td>
                                 <ul class="list-group list-group-horizontal">
@@ -43,7 +47,7 @@
                                 </ul>
                             </td>
                         </tr>
-                        @endforeach 
+                        @endforeach
                     </tbody>
                     <tfoot>
                         <tr>

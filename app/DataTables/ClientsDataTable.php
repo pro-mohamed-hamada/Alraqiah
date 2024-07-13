@@ -41,6 +41,9 @@ class ClientsDataTable extends DataTable
             ->addColumn('location', function(Client $model){
                 return '<a target="_blank" href="https://www.google.com/maps/search/?api=1&query='.$model->user->lat.','.$model->user->lng.'"><i class="fa fa-map-o"></i></a>';
             })
+            ->editColumn('chronic_disease', function(Client $model){
+                return $model->chronic_disease ? __('lang.yes') :  __('lang.no');
+            })
             ->editColumn('supervisor_id', function(Client $model){
                 return $model->supervisor?->name;
             })
@@ -117,6 +120,8 @@ class ClientsDataTable extends DataTable
             Column::make('location')->title(__('lang.location')),
             Column::make('country')->title(__('lang.country')),
             Column::make('city')->title(__('lang.city')),
+            Column::make('chronic_disease')->title(__('lang.chronic_disease')),
+            Column::make('chronic_disease_discription')->title(__('lang.chronic_disease_discription')),
             Column::make('supervisor_id')->title(__('lang.supervisor')),
             Column::computed('action')
                 ->title(__('lang.actions'))

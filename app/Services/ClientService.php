@@ -97,6 +97,8 @@ class ClientService extends BaseService
                 $relativesData[$i]['seat_number'] = $data['relatives_seat_number'][$i];
                 $relativesData[$i]['country'] = $data['relatives_country'][$i];
                 $relativesData[$i]['city'] = $data['relatives_city'][$i];
+                $relativesData[$i]['chronic_disease'] = isset($data['relatives_chronic_disease'][$i]) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
+                $relativesData[$i]['chronic_disease_discription'] = $data['relatives_chronic_disease_discription'][$i];
             }
 
         return $relativesData;

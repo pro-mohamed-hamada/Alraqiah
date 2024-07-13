@@ -22,6 +22,15 @@ class ClientsFilter extends QueryFilter
         return $this->builder->where('is_active',$term);
     }
 
+
+    public function chronic_disease($term)
+    {
+        return $this->builder->where('chronic_disease',$term)
+        ->orWhereHas('relatives', function ($query) use ($term) {
+            $query->where('chronic_disease', $term);
+        });;
+    }
+
     public function parent_id($term)
     {
         return $this->builder->where('parent_id',$term);
@@ -33,7 +42,7 @@ class ClientsFilter extends QueryFilter
             $query->where('phone', $term);
         });
     }
-    
+
     public function supervisor_id($term)
     {
         return $this->builder->where('supervisor_id',$term);

@@ -218,6 +218,26 @@
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="col-lg-4">
+                        <label>{{ __('lang.logo') }} *</label>
+                        <input type="file" name="relatives_logo[]" class="form-control">
+                        @error('relatives_logo[]')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-check form-switch">
+                            <input name="relatives_chronic_disease[]" class="form-check-input" type="checkbox">
+                            <label class="form-check-label">{{ __('lang.chronic_disease') }}</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label>{{ __('lang.chronic_disease_discription') }} *</label>
+                        <textarea name="relatives_chronic_disease_discription[]" class="form-control"></textarea>
+                        @error('relatives_chronic_disease_discription[]')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="row mb-3 g-3">
                     <div class="relative-buttons">

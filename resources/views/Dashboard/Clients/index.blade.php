@@ -24,6 +24,14 @@
                                         @enderror
                                     </div>
                                     <div class="col-lg-4">
+                                        <label>{{ __('lang.chronic_disease') }}</label>
+                                        <select name="chronic_disease" class="form-control">
+                                            <option value="">{{ __('lang.choose') }}</option>
+                                            <option value="{{ \App\Enum\ActivationStatusEnum::ACTIVE }}">{{ __('lang.yes') }}</option>
+                                            <option value="{{ \App\Enum\ActivationStatusEnum::NOT_ACTIVE }}">{{ __('lang.no') }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <label>{{ __('lang.phone') }}</label>
                                         <input type="tel" name="phone" class="form-control" placeholder="{{ __('lang.phone') }}">
                                     </div>

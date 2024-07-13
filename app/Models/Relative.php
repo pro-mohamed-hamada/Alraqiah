@@ -9,7 +9,7 @@ use App\Traits\Filterable;
 class Relative extends Model
 {
     use HasFactory, Filterable;
-    
+
     protected $fillable = [
         'name',
         'gender',
@@ -17,7 +17,9 @@ class Relative extends Model
         'seat_number',
         'country',
         'city',
-        'client_id'
+        'client_id',
+        'chronic_disease',
+        'chronic_disease_discription',
     ];
 
     public function client(): \Illuminate\Database\Eloquent\Relations\belongsTo

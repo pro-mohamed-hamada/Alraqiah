@@ -1,6 +1,6 @@
 <?php
 	return  [
-        
+
         "search"=>"بحث",
         "reset"=>"استرجاع",
         "logout"=>"تسجيل خروج",
@@ -16,12 +16,12 @@
         "complaints"=>"الشكاوى",
         "fcm_messages"=>"Fcm رسائل",
         "schedule_fcm"=>"رسائل FCM مجدولة",
-        
+
         "users_filters"=>"فلترة المستخدمين",
         "create_user"=>"إنشاء مستخدم",
         "email"=>"الايميل",
         "is_active"=>"نشط",
-        
+
         "clients_filters"=>"فلترة العملاء",
         "clients"=>"العملاء",
         "name"=>"الاسم",
@@ -37,11 +37,11 @@
         "gender"=>"النوع",
         "identity_number"=>"رقم الهوية",
         "location"=>"الموقع",
-        
+
         "videos_filters"=>"فلترة الفيديوهات",
         "create_video"=>"إنشاء فيديوا",
         "title"=>"العنوان",
-        
+
         "faqs_filters"=>"فلترة الاسئلة الشائعة",
         "create_faq"=>"انشاء FAQ",
         "question"=>"السؤال",
@@ -65,39 +65,39 @@
         "schedule_fcm_filters"=>"فلتره FCM المجدولة",
         "create_schedule_fcm"=>"إنشاء FCM مجدولة",
         "trigger"=>"الحدث",
-        
+
         "create"=>"إنشاء",
         "go_back"=>"عوده",
         "success_operation"=>"عملية ناجحة",
         //////////////////////////////////////////// start create
-        
+
         "password"=>"الرقم السرى",
         "password_confirmation"=>"تأكيد الرقم السرى",
         "logo"=>"الشعار",
         "edit_user"=>"تعديل المستخدم",
         "delete_user"=>"حذف المستخدم",
         "view_user"=>"عرض المستخدم",
-        
+
         "edit_client"=>"تعديل العميل",
         "delete_client"=>"حذف العميل",
         "view_client"=>"عرض العميل",
-        
+
         "edit_faq"=>"تعديل FAQ",
         "delete_faq"=>"حذف FAQ",
         "view_faq"=>"عرض FAQ",
-        
+
         "edit_video"=>"تعديل الفيديوا",
         "delete_video"=>"حذف الفيديوا",
         "view_video"=>"عرض الفيديوا",
-        
+
         "create_complaint"=>"إنشاء شكوى",
         "edit_complaint"=>"تعديل شكوى",
         "delete_complaint"=>"حذف شكوى",
         "view_complaint"=>"عرض شكوى",
-        
+
         "view_settings"=>"عرض الاعدادات",
         "edit_settings"=>"تعديل الاعدادات",
-        
+
         "edit_fcm_message"=>"تعديل رسائل FCM",
         "delete_fcm_message"=>"حذف رسائل FCM",
         "view_fcm_message"=>"عرض رسائل FCM",
@@ -107,11 +107,11 @@
         "delete_schedule_fcm"=>"حذف FCM مجدول",
         "view_schedule_fcm"=>"عرض FCM مجدول",
         "change_schedule_fcm_status"=>"تغير حالة FCm مجدولة",
-        
+
         "add_relative"=>"إضافة أقارب",
-        
+
         "video"=>"الفيديوا",
-        
+
         "flags"=>"أعلام",
         "choose"=>"إختار",
         "update"=>"تحديث",
@@ -163,5 +163,8 @@
         "launch_date_should_be_equal_or_greater_than"=>"تاريخ الإنطلاق يجب ان يكون مساوى او اكبر من",
         "user_has_clients"=>"المستخدم لديه عملاء",
         //////////////////////////////////////////// end create
+        "delete_multiple"=>"حذف متعدد",
+        "chronic_disease"=>"مرض مزمن",
+        "chronic_disease_discription"=>"وصف المرض المزمن",
 	]
 ?>

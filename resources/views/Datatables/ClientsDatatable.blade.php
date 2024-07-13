@@ -13,7 +13,7 @@
                 @endif --}}
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Action
+                        {{ __('lang.actions') }}
                     </button>
                     <ul class="dropdown-menu">
                         @can('import_client')
@@ -21,7 +21,7 @@
                         <li><a role="button" class="dropdown-item" href="{{asset('imports/Clients_with_relatives.xlsx')}}"><i class="fa fa-download"></i> {{__('lang.download_template')}}</a></li>
                         @endif
                         <li><hr class="dropdown-divider"></li>
-                        <li><a name="delete_multiple" class="dropdown-item" href={{ route('clients.delete_multiple') }}> {{__('lang.delete_multiple')}}</a></li>
+                        <li><a name="delete_multiple" class="dropdown-item" href={{ route('clients.delete_multiple') }}><i class="fa fa-trash"></i> {{__('lang.delete_multiple')}}</a></li>
                     </ul>
                 </div>
             </div>

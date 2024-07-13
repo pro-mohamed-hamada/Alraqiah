@@ -80,12 +80,12 @@ class ClientsController extends Controller
     public function store(ClientStoreRequest $request)
     {
         userCan(request: $request, permission: 'create_client');
-        try {
+        // try {
             $this->clientService->store($request->validated());
             return redirect()->route('clients.index')->with('message', __('lang.success_operation'));
-        } catch (\Exception $e) {
-            return redirect()->route('clients.index')->with('message', $e->getMessage());
-        }
+        // } catch (\Exception $e) {
+        //     return redirect()->route('clients.index')->with('message', $e->getMessage());
+        // }
     }//end of store
 
     public function update(ClientUpdateRequest $request, $id)
