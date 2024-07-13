@@ -10,14 +10,14 @@
                     <div class="card-body">
                         <div class="errors alert alert-danger">
                             <ul>
-                                
+
                             </ul>
                         </div>
                         {{-- start update form --}}
                         <form id="client_form" method="POST" action="{{ route('clients.store') }}">
                             @csrf
                             <div class="row mb-3 g-3">
-                                
+
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.name') }} *</label>
                                     <input type="text" name="name" value="{{ old('name') }}" class="form-control">
@@ -92,6 +92,7 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
+
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.supervisor') }} *</label>
                                     <select name="supervisor_id" class="form-control selectpicker" data-live-search="true">
@@ -104,7 +105,28 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
-            
+
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.logo') }} *</label>
+                                    <input type="file" name="logo" class="form-control">
+                                    @error('logo')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-check form-switch">
+                                        <input name="chronic_disease" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">{{ __('lang.chronic_disease') }}</label>
+                                    </div>
+                                </div>
+                                <div style="display: none" id="chronic_disease_discription_parent" class="col-lg-12">
+                                    <label>{{ __('lang.chronic_disease_discription') }} *</label>
+                                    <textarea name="chronic_disease_discription" class="form-control"></textarea>
+                                    @error('chronic_disease_discription')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                             </div>
                             <hr>
                             <div class="row mb-3 g-3">
@@ -142,7 +164,7 @@
                 </div>
             </div>
 
-            
+
         </div>
         @endsection
 <div id="relative" style="display: none !important">
@@ -246,9 +268,16 @@
                 }
             });
         });
-
+        $('input[name="chronic_disease"]').click(function(){
+            if($(this).is(':checked'))
+            {
+                $('#chronic_disease_discription_parent').show();
+            }else{
+                $('#chronic_disease_discription_parent').hide();
+            }
+        });
     });
 </script>
 
 @endsection
-   
+

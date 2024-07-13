@@ -71,6 +71,8 @@ class ClientService extends BaseService
 
     private function prepareClientData(array $data): array
     {
+        $clientData['chronic_disease'] = isset($data['chronic_disease']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
+        $clientData['chronic_disease_discription'] = $data['chronic_disease_discription'];
         $clientData['reservation_number'] = $data['reservation_number'];
         $clientData['package'] = $data['package'];
         $clientData['launch_date'] = $data['launch_date'];

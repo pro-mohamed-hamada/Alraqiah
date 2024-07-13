@@ -21,6 +21,8 @@ class Client extends Model
         'city',
         'parent_id',
         'supervisor_id',
+        'chronic_disease',
+        'chronic_disease_discription',
     ];
 
 
@@ -38,7 +40,7 @@ class Client extends Model
     {
         return $this->hasMany(Client::class,  'parent_id');
     }
-    
+
     public function user(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(User::class);
@@ -57,5 +59,5 @@ class Client extends Model
     {
         return $this->belongsToMany(Site::class,  ClientSite::class)->withTimestamps();
     }
-    
+
 }

@@ -170,11 +170,6 @@
 
 
                 });
-                $("body").on("change", "select[name='per_page']",function(e){
-                    e.preventDefault();
-                    $("form[name='per_page_form']").submit();
-                });
-
                 // start the is_active button
 
                 $("body").on("click", "#is_active",function(e){

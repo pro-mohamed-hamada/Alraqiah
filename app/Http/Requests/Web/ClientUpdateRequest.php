@@ -52,6 +52,8 @@ class ClientUpdateRequest extends FormRequest
             'relatives_city.*'=>'required|string',
             'sites'=>'nullable|array',
             'sites.*'=>'required|integer|exists:sites,id',
+            'chronic_disease'=>'nullable|string',
+            'chronic_disease_discription'=>'nullable|required_with:chronic_disease|string',
         ];
     }
 }

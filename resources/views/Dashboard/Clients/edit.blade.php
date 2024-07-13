@@ -22,7 +22,7 @@
                             @method('put')
                             @csrf
                             <div class="row mb-3 g-3">
-                                
+
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.name') }} *</label>
                                     <input type="text" name="name" value="{{ $client->user->name }}" class="form-control">
@@ -109,6 +109,27 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.logo') }} *</label>
+                                    <input type="file" name="logo" class="form-control">
+                                    @error('logo')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-check form-switch">
+                                        <input name="chronic_disease" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" {{ $client->getRawOriginal('chronic_disease') ? "checked":"" }}>
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">{{ __('lang.chronic_disease') }}</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label>{{ __('lang.chronic_disease_discription') }} *</label>
+                                    <textarea name="chronic_disease_discription" class="form-control">{{ $client->chronic_disease_discription }}</textarea>
+                                    @error('chronic_disease_discription')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
 
                             </div>
                             <hr>
@@ -131,7 +152,7 @@
                                                 </div>
                                             </div>
                                         @endif
-                                                
+
                                     @endforeach
                                 {{-- end sites --}}
                             </div>
@@ -223,7 +244,7 @@
                 </div>
             </div>
 
-            
+
         </div>
         @endsection
 <div id="relative" style="display: none !important">
@@ -296,13 +317,13 @@
             $('.client-relatives').append(element);
         });
         $('.client-relatives').on('click', '.remove-relative', function(){
-            
+
             var element = $(this).parents('.relative');
             var url = $(this).data('url');
             if(url)
             {
                 var status = confirm("{{ __('lang.are_you_sure') }}");
-            
+
                 if(status==true){
                     $.ajax({
                         url: url,
@@ -315,19 +336,19 @@
                             element.remove();
                             $('.load_content').hide();
                         }
-                        
+
                     });
                 }
-                
+
             }else{
                 element.remove();
             }
-            
-            
+
+
         });
-        
+
     });
 </script>
 
 @endsection
-   
+
