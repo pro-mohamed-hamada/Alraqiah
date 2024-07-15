@@ -53,6 +53,7 @@ class ClientStoreRequest extends FormRequest
             'sites.*'=>'required|integer|exists:sites,id',
             'chronic_disease'=>'nullable|string',
             'chronic_disease_discription'=>'nullable|required_with:chronic_disease|string',
+            'arrival_location_url'=>'required|url',
             'relatives_chronic_disease'=>'nullable|array',
             'relatives_chronic_disease.*'=>'nullable|string',
             'relatives_chronic_disease_discription'=>'nullable|array',

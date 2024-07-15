@@ -41,6 +41,9 @@ class ClientsDataTable extends DataTable
             ->addColumn('location', function(Client $model){
                 return '<a target="_blank" href="https://www.google.com/maps/search/?api=1&query='.$model->user->lat.','.$model->user->lng.'"><i class="fa fa-map-o"></i></a>';
             })
+            ->addColumn('arrival_location_url', function(Client $model){
+                return '<a target="_blank" href="'.$model->arrival_location_url.'"><i class="fa fa-map-o"></i></a>';
+            })
             ->editColumn('chronic_disease', function(Client $model){
                 return $model->chronic_disease ? __('lang.yes') :  __('lang.no');
             })
@@ -57,7 +60,7 @@ class ClientsDataTable extends DataTable
                     $query->where('phone', 'like', "%{$keyword}%");
                 });
             })
-            ->rawColumns(['check_box', 'action', 'location'])
+            ->rawColumns(['check_box', 'action', 'location', 'arrival_location_url'])
             ->setRowId('id');
     }
 
@@ -118,6 +121,7 @@ class ClientsDataTable extends DataTable
             Column::make('gender')->title(__('lang.gender')),
             Column::make('identity_number')->title(__('lang.identity_number')),
             Column::make('location')->title(__('lang.location')),
+            Column::make('arrival_location_url')->title(__('lang.arrival_location_url')),
             Column::make('country')->title(__('lang.country')),
             Column::make('city')->title(__('lang.city')),
             Column::make('chronic_disease')->title(__('lang.chronic_disease')),

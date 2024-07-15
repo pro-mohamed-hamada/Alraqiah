@@ -25,6 +25,7 @@ class ClientsSeeder extends Seeder
             'city'=>'city one',
             'parent_id'=>null,
             'supervisor_id'=>2,
+            'arrival_location_url'=>'https://alraqiah.com',
         ]);
         $client2 = Client::create([
             'reservation_number'=>123,
@@ -37,6 +38,7 @@ class ClientsSeeder extends Seeder
             'city'=>'city two',
             'parent_id'=>null,
             'supervisor_id'=>2,
+            'arrival_location_url'=>'https://alraqiah.com',
         ]);
 
         $client1->user()->create([

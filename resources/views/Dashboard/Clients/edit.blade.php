@@ -97,6 +97,15 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
+
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.arrival_location_url') }} *</label>
+                                    <input type="url" name="arrival_location_url" value="{{ $client->arrival_location_url }}" class="form-control">
+                                    @error('arrival_location_url')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.supervisor') }} *</label>
                                     <select name="supervisor_id" class="form-control selectpicker" data-live-search="true">

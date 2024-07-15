@@ -167,5 +167,6 @@
         "delete_multiple"=>"Delete multiple",
         "chronic_disease"=>"Chronic disease",
         "chronic_disease_discription"=>"Chronic disease discription",
+        "arrival_location_url"=>"Arrival location url",
 	]
 ?>

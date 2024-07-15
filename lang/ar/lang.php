@@ -166,5 +166,6 @@
         "delete_multiple"=>"حذف متعدد",
         "chronic_disease"=>"مرض مزمن",
         "chronic_disease_discription"=>"وصف المرض المزمن",
+        "arrival_location_url"=>"رابط مكان الوصول",
 	]
 ?>

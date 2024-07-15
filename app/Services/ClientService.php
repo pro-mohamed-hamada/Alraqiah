@@ -82,6 +82,7 @@ class ClientService extends BaseService
         $clientData['country'] = $data['country'];
         $clientData['city'] = $data['city'];
         $clientData['supervisor_id'] = $data['supervisor_id'];
+        $clientData['arrival_location_url'] = $data['arrival_location_url'];
         return $clientData;
     }
 
