@@ -32,6 +32,9 @@ class ClientsResource extends JsonResource
             "relaives"=>$this->whenLoaded('relatives', RelativesResource::collection($this->relatives)),
             "sites"=>$this->whenLoaded('sites', SitesResource::collection($this->sites)),
             "supervisor"=> new UsersResource($this->supervisor),
+            "chronic_disease"=> $this->getRawOriginal('chronic_disease'),
+            "chronic_disease_discription"=> $this->chronic_disease_discription,
+            "arrival_location_url"=> $this->arrival_location_url,
         ];
     }
 }
