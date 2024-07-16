@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Web;
 
 use App\DataTables\ComplaintsDataTable;
 use App\Enum\ActivationStatusEnum;
+use App\Events\MessageEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Services\ComplaintService;
 use Exception;
 

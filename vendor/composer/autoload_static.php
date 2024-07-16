@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c
+class ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
@@ -21,13 +21,14 @@ class ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '47e1160838b5e5a10346ac4084b58c23' => __DIR__ . '/..' . '/laravel/prompts/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '3109cb1a231dcd04bee1f9f620d46975' => __DIR__ . '/..' . '/paragonie/sodium_compat/autoload.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
@@ -117,6 +118,7 @@ class ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c
         ),
         'P' => 
         array (
+            'Pusher\\' => 7,
             'Psy\\' => 4,
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
@@ -411,6 +413,10 @@ class ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c
         array (
             0 => __DIR__ . '/..' . '/ramsey/collection/src',
         ),
+        'Pusher\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pusher/pusher-php-server/src',
+        ),
         'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src',
@@ -667,6 +673,8 @@ class ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c
         'App\\Enum\\ReservationStatusEnum' => __DIR__ . '/../..' . '/app/Enum/ReservationStatusEnum.php',
         'App\\Enum\\UserActiveEnum' => __DIR__ . '/../..' . '/app/Enum/UserActiveEnum.php',
         'App\\Enum\\UserTypeEnum' => __DIR__ . '/../..' . '/app/Enum/UserTypeEnum.php',
+        'App\\Events\\ComplaintCountEvent' => __DIR__ . '/../..' . '/app/Events/ComplaintCountEvent.php',
+        'App\\Events\\MessageEvent' => __DIR__ . '/../..' . '/app/Events/MessageEvent.php',
         'App\\Events\\PushEvent' => __DIR__ . '/../..' . '/app/Events/PushEvent.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Exceptions\\NotFoundException' => __DIR__ . '/../..' . '/app/Exceptions/NotFoundException.php',
@@ -6263,6 +6271,13 @@ class ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c
         'Psy\\VersionUpdater\\IntervalChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/IntervalChecker.php',
         'Psy\\VersionUpdater\\NoopChecker' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/NoopChecker.php',
         'Psy\\VersionUpdater\\SelfUpdate' => __DIR__ . '/..' . '/psy/psysh/src/VersionUpdater/SelfUpdate.php',
+        'Pusher\\ApiErrorException' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/ApiErrorException.php',
+        'Pusher\\Pusher' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/Pusher.php',
+        'Pusher\\PusherCrypto' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/PusherCrypto.php',
+        'Pusher\\PusherException' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/PusherException.php',
+        'Pusher\\PusherInstance' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/PusherInstance.php',
+        'Pusher\\PusherInterface' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/PusherInterface.php',
+        'Pusher\\Webhook' => __DIR__ . '/..' . '/pusher/pusher-php-server/src/Webhook.php',
         'Ramsey\\Collection\\AbstractArray' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractArray.php',
         'Ramsey\\Collection\\AbstractCollection' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractCollection.php',
         'Ramsey\\Collection\\AbstractSet' => __DIR__ . '/..' . '/ramsey/collection/src/AbstractSet.php',
@@ -8191,10 +8206,10 @@ class ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit9ad17cb2eea6060cfad8ea4c56460e5c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\DataTables\ClientsDataTable;
 use App\Enum\ActivationStatusEnum;
 use App\Enum\UserTypeEnum;
+use App\Events\ComplaintCountEvent;
 use Illuminate\Http\Request;
 use App\Services\ClientService;
 use App\Http\Controllers\Controller;

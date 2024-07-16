@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('myChannel.{id}', function ($user, $id) {
+    return ['id'=>$user->id, 'name'=>$user->name];//(int) $user->id === (int) $id;
+});
+
+Broadcast::channel('CompaintCountChannel', function ($user) {
+    return 1;//(int) $user->id === (int) $id;
+});

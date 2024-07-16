@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\ComplaintCountEvent;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Web\ComplaintsController;
 use App\Http\Controllers\Web\SitesController;
@@ -33,17 +34,21 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes(['register' => false]);
-Route::get('/test', function(){
+// Route::get('/test', function(){
     // $scheduleFcm = ScheduleFcm::first();
     // $users[0] = Auth::user();
     // ScheduleFcm::UserReminderFcm(scheduleFcm: $scheduleFcm, users: $users);
     // $user = Auth::user();
     // $notificationData = ['title'=>'this is the title', 'content'=>'this is the content'];
     // $user->notify(new SendEmailNotification(message: 'this is the message'));
-    return "Done";
-});
+    // return "Done";
+// });
 Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
-
+Route::get('/test', function(){
+    // event(new ComplaintCountEvent("aa"));
+    broadcast(new ComplaintCountEvent("aa"));
+    return true;
+});
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);
     Route::delete('clients-delete-multiple',[ ClientsController::class, 'deleteMultiple'])->name('clients.delete_multiple');

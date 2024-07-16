@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Events\ComplaintCountEvent;
 use App\Events\PushEvent;
 use App\Exceptions\NotFoundException;
 use App\Models\Complaint;
@@ -45,6 +46,7 @@ class ComplaintService extends BaseService
         $complaint = $this->getModel()->create($data);
         if (!$complaint)
             return false ;
+        broadcast(new ComplaintCountEvent(app('activeComplaints')));
         // notify the admin that there is new complaint
         $admin = User::find(1);
         $admin->notify(new AlraqiahComplaint(complaint: $complaint));
