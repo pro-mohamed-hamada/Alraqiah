@@ -91,7 +91,6 @@
                 document.getElementById('myAudio').play();
             }
             $(document).ready(function(){
-                $("#myAudio")[0].play();
                 $("body").on("click", "button[name='delete']",function(e){
                     e.preventDefault();
                     $('#btn_yes').data('delete_type', 'single');
