@@ -68,6 +68,12 @@
             </div>
             <button class="close btn btn-danger">X</button>
         </div>
+        {{-- start notifications sounds --}}
+        <div>
+            <audio src="{{ asset('sounds/complaint_notification_sound.mp3') }}"  id="myAudio"  controls hidden>
+            </audio>
+        </div>
+        {{-- end notifications sounds --}}
     </div>
         <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
         <script src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
@@ -80,7 +86,12 @@
         <script src="{{asset('js/rtl.js')}}"></script>
         @endif
         <script>
+            function playAudio()
+            {
+                document.getElementById('myAudio').play();
+            }
             $(document).ready(function(){
+                $("#myAudio")[0].play();
                 $("body").on("click", "button[name='delete']",function(e){
                     e.preventDefault();
                     $('#btn_yes').data('delete_type', 'single');
@@ -239,7 +250,9 @@
                 var myChannel = pusher.subscribe('CompaintCountChannel');
                 myChannel.bind('my-event', function(data) {
                     $('#complaint_count').html(data.count);
+                    playAudio();
                 });
+
         </script>
     </body>
 
