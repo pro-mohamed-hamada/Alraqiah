@@ -78,6 +78,7 @@ class ComplaintService extends BaseService
     {
         $complaint = $this->findById(id: $id);
         $complaint->is_active = !$complaint->getRawOriginal('is_active');
+        broadcast(new ComplaintCountEvent(app('activeComplaints')));
         return $complaint->save();
 
     }//end of status
