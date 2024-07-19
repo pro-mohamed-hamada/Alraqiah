@@ -10,7 +10,9 @@ use App\Http\Requests\Api\ClientUpdateRequest;
 use App\Http\Requests\Api\LocationRequest;
 use App\Http\Requests\Api\RelativeUpdateRequest;
 use App\Http\Requests\Api\SubscribeRequest;
+use App\Http\Requests\Api\UpdateProfileLogoRequest;
 use App\Http\Resources\ClientsResource;
+use App\Http\Resources\RelativesResource;
 use App\Services\ClientService;
 use App\Services\RelativeService;
 use Exception;
@@ -35,5 +37,15 @@ class RelativesController extends Controller
         }
 
     }//end of location
+
+    public function updateProfileLogo($id, UpdateProfileLogoRequest $request): \Illuminate\Http\Response|\Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory
+    {
+        try {
+            $relative = $this->relativeService->updateProfileLogo(id: $id, data: $request->Validated());
+            return apiResponse(data: new RelativesResource($relative), message: __('lang.success_operation'));
+        } catch (\Exception $exception) {
+            return apiResponse(message: $exception->getMessage(), code: 422);
+        }
+    }
 
 }

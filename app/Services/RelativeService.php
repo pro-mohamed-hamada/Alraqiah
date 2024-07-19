@@ -56,4 +56,16 @@ class RelativeService extends BaseService
         return $relative->delete();
     }
 
+    public function updateProfileLogo($id, array $data)
+    {
+        $relative = $this->findById(id: $id);
+        if (isset($data['logo']))
+        {
+            $relative->clearMediaCollection('relatives');
+            $relative->addMediaFromRequest('logo')->toMediaCollection('relatives');
+        }
+        return $relative;
+
+    }
+
 }

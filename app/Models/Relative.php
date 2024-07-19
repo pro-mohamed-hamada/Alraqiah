@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Filterable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Relative extends Model
+class Relative extends Model implements HasMedia
 {
-    use HasFactory, Filterable;
+    use HasFactory, Filterable, InteractsWithMedia;
 
     protected $fillable = [
         'name',

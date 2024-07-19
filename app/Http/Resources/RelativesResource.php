@@ -17,6 +17,7 @@ class RelativesResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'profile_image' =>$this->getFirstMediaUrl('relatives') !=""?$this->getFirstMediaUrl('relatives') : asset('images/default-image.jpg'),
             'gender' => $this->gender,
             'identity_number' => $this->identity_number,
             'seat_number'=>$this->seat_number,

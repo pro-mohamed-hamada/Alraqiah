@@ -32,6 +32,7 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::post('logout',      [AuthController::class, 'logout']);
     Route::get('profile',      [AuthController::class, 'profile']);
     Route::post('profile-logo', [AuthController::class, 'updateProfileLogo']);
+    Route::post('relatives-profile-logo/{id}', [RelativesController::class, 'updateProfileLogo']);
     Route::get('rates', [RatesController::class, 'index']);
     Route::post('rates', [RatesController::class, 'store']);
 

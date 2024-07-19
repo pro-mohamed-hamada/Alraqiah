@@ -19,12 +19,12 @@ class UserService extends BaseService
 
     public function __construct(private User $model)
     {
-        
+
     }
 
     public function getAll(array $filters = [] , array $withRelations =[], $perPage = 10 ): \Illuminate\Contracts\Pagination\CursorPaginator
     {
-        
+
         return $this->queryGet(filters: $filters,withRelations: $withRelations)->cursorPaginate($perPage);
     }
 
@@ -57,7 +57,7 @@ class UserService extends BaseService
     {
         $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
         $user = $this->findById(id: $id);
-        
+
         if (isset($data['logo']))
         {
             $user->clearMediaCollection('users');
@@ -77,10 +77,10 @@ class UserService extends BaseService
             'lat'=>$data['lat'],
             'lng'=>$data['lng']
         ]);
-        
+
         return true;
     } //end of location
-    
+
     public function changeStatus($id)
     {
         $user = $this->findById($id);
