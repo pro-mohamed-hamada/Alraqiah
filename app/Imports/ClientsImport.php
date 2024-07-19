@@ -38,7 +38,8 @@ class ClientsImport implements ToModel, SkipsEmptyRows, WithValidation, WithHead
             'country'=> $row['country'],
             'city'=> $row['incoming_city'],
             'chronic_disease' => isset($row['chronic_disease']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE,
-            'chronic_disease_discription'=> $row['chronic_disease_discription'],
+            'chronic_disease_description'=> $row['chronic_disease_description'],
+            'arrival_location_url'=> $row['arrival_location_url'],
             'supervisor_id'=> $supervisor->id,
          ]);
          $client->user()->create([
@@ -73,7 +74,8 @@ class ClientsImport implements ToModel, SkipsEmptyRows, WithValidation, WithHead
             'incoming_city'=>['required', 'string'],
             'supervisor_phone'=>['required', 'exists:users,phone'],
             'chronic_disease'=>['nullable', 'integer'],
-            'chronic_disease_discription'=>['nullable', 'string'],
+            'chronic_disease_description'=>['nullable', 'string'],
+            'arrival_location_url'=>['nullable', 'url'],
         ];
     }
 

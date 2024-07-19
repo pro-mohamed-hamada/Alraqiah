@@ -41,7 +41,7 @@ class RelativesImport implements ToModel, SkipsEmptyRows, WithValidation, WithHe
             'country'=> $row['country'],
             'city'=> $row['incoming_city'],
             'chronic_disease' => isset($row['chronic_disease']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE,
-            'chronic_disease_discription'=> $row['chronic_disease_discription'],
+            'chronic_disease_description'=> $row['chronic_disease_description'],
             'client_id'=> $client->id,
          ]);
 
@@ -60,7 +60,7 @@ class RelativesImport implements ToModel, SkipsEmptyRows, WithValidation, WithHe
             'country'=>['required', 'string'],
             'incoming_city'=>['required', 'string'],
             'chronic_disease'=>['nullable', 'integer'],
-            'chronic_disease_discription'=>['nullable', 'string'],
+            'chronic_disease_description'=>['nullable', 'string'],
         ];
     }
 
