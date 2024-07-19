@@ -19,7 +19,7 @@ class Relative extends Model
         'city',
         'client_id',
         'chronic_disease',
-        'chronic_disease_discription',
+        'chronic_disease_description',
     ];
 
     public function client(): \Illuminate\Database\Eloquent\Relations\belongsTo

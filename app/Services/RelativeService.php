@@ -8,6 +8,8 @@ use App\QueryFilters\RelativesFilter;
 use App\QueryFilters\ReservationsFilter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
+
 class RelativeService extends BaseService
 {
 
@@ -31,6 +33,16 @@ class RelativeService extends BaseService
         return $this->queryGet(filters: $filters,withRelations: $withRelations)->cursorPaginate($perPage);
     }
 
+    public function updateChronicDisease(string $id, array $data = [])
+    {
+        $relative = $this->findById(id: $id);
+        DB::beginTransaction();
+        $relative->update($data);
+        DB::commit();
+
+        return true;
+    }
+
     /**
      * deleting rate
      * @param int $id
@@ -40,7 +52,7 @@ class RelativeService extends BaseService
     public function destroy($id): bool
     {
         $relative = $this->findById(id: $id);
-        
+
         return $relative->delete();
     }
 

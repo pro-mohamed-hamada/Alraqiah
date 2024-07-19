@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\FaqsController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\NotificationsController;
 use App\Http\Controllers\Api\RatesController;
+use App\Http\Controllers\Api\RelativesController;
 use App\Http\Controllers\Api\SitesController;
 use App\Http\Controllers\Api\UsersController;
 
@@ -52,5 +53,8 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::get('notifications', [NotificationsController::class, 'index']);
     Route::delete('notifications/{id}', [NotificationsController::class, 'destroy']);
     Route::put('notifications-read/{id}', [NotificationsController::class, 'markAsRead']);
+
+    Route::put('clients/update-chronic-disease', [ClientsController::class, 'updateChronicDisease']);
+    Route::put('relatives/update-chronic-disease/{id}', [RelativesController::class, 'updateChronicDisease']);
 
 });

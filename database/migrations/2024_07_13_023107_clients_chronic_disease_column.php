@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::table('clients', function (Blueprint $table) {
             $table->boolean('chronic_disease')->default(ActivationStatusEnum::NOT_ACTIVE);
-            $table->longText('chronic_disease_discription')->nullable();
+            $table->longText('chronic_disease_description')->nullable();
         });
     }
 

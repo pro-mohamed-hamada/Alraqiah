@@ -72,7 +72,7 @@ class ClientService extends BaseService
     private function prepareClientData(array $data): array
     {
         $clientData['chronic_disease'] = isset($data['chronic_disease']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
-        $clientData['chronic_disease_discription'] = $data['chronic_disease_discription'];
+        $clientData['chronic_disease_description'] = $data['chronic_disease_description'];
         $clientData['reservation_number'] = $data['reservation_number'];
         $clientData['package'] = $data['package'];
         $clientData['launch_date'] = $data['launch_date'];
@@ -99,7 +99,7 @@ class ClientService extends BaseService
                 $relativesData[$i]['country'] = $data['relatives_country'][$i];
                 $relativesData[$i]['city'] = $data['relatives_city'][$i];
                 $relativesData[$i]['chronic_disease'] = isset($data['relatives_chronic_disease'][$i]) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
-                $relativesData[$i]['chronic_disease_discription'] = $data['relatives_chronic_disease_discription'][$i];
+                $relativesData[$i]['chronic_disease_description'] = $data['relatives_chronic_disease_description'][$i];
             }
 
         return $relativesData;
@@ -142,6 +142,16 @@ class ClientService extends BaseService
         dd($latestStatus->id);
         if($latestStatus->status == $newStatus)
             throw new Exception(message: __('lang.the_status_can_not_be_the_same'), code: 442);
+    }
+
+    public function updateChronicDisease(array $data = [])
+    {
+        $user = auth('sanctum')->user();
+        DB::beginTransaction();
+        $user->client->update($data);
+        DB::commit();
+
+        return true;
     }
 
     public function update(int $id, array $data=[])

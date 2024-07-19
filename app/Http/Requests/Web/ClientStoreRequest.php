@@ -52,12 +52,12 @@ class ClientStoreRequest extends FormRequest
             'sites'=>'nullable|array',
             'sites.*'=>'required|integer|exists:sites,id',
             'chronic_disease'=>'nullable|string',
-            'chronic_disease_discription'=>'nullable|required_with:chronic_disease|string',
+            'chronic_disease_description'=>'nullable|required_with:chronic_disease|string',
             'arrival_location_url'=>'required|url',
             'relatives_chronic_disease'=>'nullable|array',
             'relatives_chronic_disease.*'=>'nullable|string',
-            'relatives_chronic_disease_discription'=>'nullable|array',
-            'relatives_chronic_disease_discription.*'=>'nullable|string|required_with:relatives_chronic_disease.*',
+            'relatives_chronic_disease_description'=>'nullable|array',
+            'relatives_chronic_disease_description.*'=>'nullable|string|required_with:relatives_chronic_disease.*',
         ];
     }
 }

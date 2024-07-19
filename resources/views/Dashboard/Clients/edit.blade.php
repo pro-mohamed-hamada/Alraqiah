@@ -132,9 +132,9 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <label>{{ __('lang.chronic_disease_discription') }} *</label>
-                                    <textarea name="chronic_disease_discription" class="form-control">{{ $client->chronic_disease_discription }}</textarea>
-                                    @error('chronic_disease_discription')
+                                    <label>{{ __('lang.chronic_disease_description') }} *</label>
+                                    <textarea name="chronic_disease_description" class="form-control">{{ $client->chronic_disease_description }}</textarea>
+                                    @error('chronic_disease_description')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -239,9 +239,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12">
-                                                        <label>{{ __('lang.chronic_disease_discription') }} *</label>
-                                                        <textarea name="relatives_chronic_disease_discription[]" class="form-control">{{ $relative->chronic_disease_discription }}</textarea>
-                                                        @error('relatives_chronic_disease_discription[]')
+                                                        <label>{{ __('lang.chronic_disease_description') }} *</label>
+                                                        <textarea name="relatives_chronic_disease_description[]" class="form-control">{{ $relative->chronic_disease_description }}</textarea>
+                                                        @error('relatives_chronic_disease_description[]')
                                                             <span class="error">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -341,9 +341,9 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <label>{{ __('lang.chronic_disease_discription') }} *</label>
-                        <textarea name="relatives_chronic_disease_discription[]" class="form-control"></textarea>
-                        @error('relatives_chronic_disease_discription[]')
+                        <label>{{ __('lang.chronic_disease_description') }} *</label>
+                        <textarea name="relatives_chronic_disease_description[]" class="form-control"></textarea>
+                        @error('relatives_chronic_disease_description[]')
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>

@@ -22,7 +22,7 @@ class Client extends Model
         'parent_id',
         'supervisor_id',
         'chronic_disease',
-        'chronic_disease_discription',
+        'chronic_disease_description',
         'arrival_location_url',
     ];
 

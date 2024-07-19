@@ -127,10 +127,10 @@
                                         <label class="form-check-label" for="flexSwitchCheckChecked">{{ __('lang.chronic_disease') }}</label>
                                     </div>
                                 </div>
-                                <div style="display: none" id="chronic_disease_discription_parent" class="col-lg-12">
-                                    <label>{{ __('lang.chronic_disease_discription') }} *</label>
-                                    <textarea name="chronic_disease_discription" class="form-control"></textarea>
-                                    @error('chronic_disease_discription')
+                                <div style="display: none" id="chronic_disease_description_parent" class="col-lg-12">
+                                    <label>{{ __('lang.chronic_disease_description') }} *</label>
+                                    <textarea name="chronic_disease_description" class="form-control"></textarea>
+                                    @error('chronic_disease_description')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -240,9 +240,9 @@
                         </div>
                     </div>
                     <div class="col-lg-12">
-                        <label>{{ __('lang.chronic_disease_discription') }} *</label>
-                        <textarea name="relatives_chronic_disease_discription[]" class="form-control"></textarea>
-                        @error('relatives_chronic_disease_discription[]')
+                        <label>{{ __('lang.chronic_disease_description') }} *</label>
+                        <textarea name="relatives_chronic_disease_description[]" class="form-control"></textarea>
+                        @error('relatives_chronic_disease_description[]')
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>
@@ -299,9 +299,9 @@
         $('input[name="chronic_disease"]').click(function(){
             if($(this).is(':checked'))
             {
-                $('#chronic_disease_discription_parent').show();
+                $('#chronic_disease_description_parent').show();
             }else{
-                $('#chronic_disease_discription_parent').hide();
+                $('#chronic_disease_description_parent').hide();
             }
         });
     });

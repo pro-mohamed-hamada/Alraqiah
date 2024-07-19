@@ -125,7 +125,7 @@ class ClientsDataTable extends DataTable
             Column::make('country')->title(__('lang.country')),
             Column::make('city')->title(__('lang.city')),
             Column::make('chronic_disease')->title(__('lang.chronic_disease')),
-            Column::make('chronic_disease_discription')->title(__('lang.chronic_disease_discription')),
+            Column::make('chronic_disease_description')->title(__('lang.chronic_disease_description')),
             Column::make('supervisor_id')->title(__('lang.supervisor')),
             Column::computed('action')
                 ->title(__('lang.actions'))

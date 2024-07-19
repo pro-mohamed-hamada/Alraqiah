@@ -33,7 +33,7 @@ class ClientsResource extends JsonResource
             "sites"=>$this->whenLoaded('sites', SitesResource::collection($this->sites)),
             "supervisor"=> new UsersResource($this->supervisor),
             "chronic_disease"=> $this->getRawOriginal('chronic_disease'),
-            "chronic_disease_discription"=> $this->chronic_disease_discription,
+            "chronic_disease_description"=> $this->chronic_disease_description,
             "arrival_location_url"=> $this->arrival_location_url,
         ];
     }
