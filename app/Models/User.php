@@ -34,6 +34,7 @@ class User extends Authenticatable implements HasMedia
         'type',
         'lat',
         'lng',
+        'whatsapp_url',
         'is_active',
         'client_id',
     ];
@@ -62,7 +63,7 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->createToken(config('app.name'))->plainTextToken;
     }
-    
+
     public function getId()
     {
         return $this->id;
@@ -104,7 +105,7 @@ class User extends Authenticatable implements HasMedia
                 app()->make(NotificationService::class)->sendToTokens(title: $title,body: $body,tokens: $tokens);
             else
                 $user->notify(new \App\Notifications\AlraqiahEmail(title: $title, content: $body));
-            
+
             $user->notify(new \App\Notifications\GeneralNotification(title: $title, content: $body));
 
         }

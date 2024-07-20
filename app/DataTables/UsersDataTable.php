@@ -26,6 +26,10 @@ class UsersDataTable extends DataTable
             ->addColumn('action', function(User $model){
                 return view('Dashboard.Users.actions',compact('model'))->render();
             })
+            ->addColumn('whatsapp_url', function(User $model){
+                return '<a target="_blank" href="'.$model->whatsapp_url.'"><i class="fa fa-2x fa-whatsapp"></i></a>';
+            })
+            ->rawColumns(['whatsapp_url', 'action'])
             ->setRowId('id');
     }
 
@@ -76,6 +80,7 @@ class UsersDataTable extends DataTable
             Column::make('name')->title(__('lang.name')),
             Column::make('email')->title(__('lang.email')),
             Column::make('phone')->title(__('lang.phone')),
+            Column::make('whatsapp_url')->title(__('lang.whatsapp_url')),
             Column::make('is_active')->title(__('lang.is_active')),
             Column::computed('action')
                 ->title(__('lang.actions'))

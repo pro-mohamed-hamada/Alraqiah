@@ -19,7 +19,7 @@ class RelativesSeeder extends Seeder
             'seat_number'=>'1501',
             'country'=>'country one',
             'city'=>'city one',
-            'client_id'=>1,
+            'client_id'=>2,
         ]);
         $relative2 = Relative::create([
             'name'=>'relative 2',
@@ -28,7 +28,7 @@ class RelativesSeeder extends Seeder
             'seat_number'=>'1502',
             'country'=>'country two',
             'city'=>'city two',
-            'client_id'=>1,
+            'client_id'=>2,
         ]);
     }
 }

@@ -22,7 +22,7 @@
                             @method('put')
                             @csrf
                             <div class="row mb-3 g-3">
-                                
+
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.name') }} *</label>
                                     <input type="text" name="name" value="{{ $user->name }}" class="form-control">
@@ -62,6 +62,13 @@
                                     <label>{{ __('lang.logo') }} *</label>
                                     <input type="file" name="logo" class="form-control">
                                     @error('logo')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.whatsapp_url') }}</label>
+                                    <input type="url" name="whatsapp_url" value="{{ $user->whatsapp_url }}" class="form-control">
+                                    @error('whatsapp_url')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -110,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         @endsection
-   
+

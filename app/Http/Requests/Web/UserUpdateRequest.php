@@ -31,6 +31,7 @@ class UserUpdateRequest extends FormRequest
             'permissions' => 'required|array|min:1',
             'permissions.*' => 'string|exists:permissions,name',
             'is_active'=>'nullable|string',
+            'whatsapp_url'=>'nullable|url',
         ];
     }
 }

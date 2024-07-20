@@ -21,7 +21,7 @@
                         <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3 g-3">
-                                
+
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.name') }} *</label>
                                     <input type="text" name="name" class="form-control">
@@ -64,6 +64,13 @@
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.whatsapp_url') }}</label>
+                                    <input type="url" name="whatsapp_url" class="form-control">
+                                    @error('whatsapp_url')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                 <div class="col-md-12">
                                     <div class="form-check form-switch">
                                         <input name="is_active" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
@@ -75,13 +82,13 @@
                             <div class="row mb-3 g-3">
                                     {{-- permissions --}}
                                     @foreach($permissions as $key =>$permission)
-    
+
                                         <div class="col-sm-4 col-xl-4 border-5">
                                             <div class="card card-absolute">
                                                 <div class="card-header bg-primary">
                                                     <h5 class="text-white">{{trans('lang.'.$key)}}</h5>
                                                 </div>
-    
+
                                                     <div class="card-body">
                                                         @foreach($permission as $item)
                                                             <div class="mb-3 m-t-15">
@@ -92,10 +99,10 @@
                                                             </div>
                                                         @endforeach
                                                     </div>
-    
+
                                             </div>
                                         </div>
-    
+
                                     @endforeach
                                     {{-- end permissions --}}
                             </div>
@@ -110,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         @endsection
-   
+

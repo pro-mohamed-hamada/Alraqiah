@@ -23,6 +23,7 @@ class UsersResource extends JsonResource
             "user_type"=>$this->type,
             "lat"=>$this->lat,
             "lng"=>$this->lng,
+            "whatsapp_url"=>$this->whatsapp_url,
             'profile_image' =>$this->getFirstMediaUrl('users') !=""?$this->getFirstMediaUrl('users') : asset('images/default-image.jpg'),
         ];
     }

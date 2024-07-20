@@ -25,6 +25,8 @@ class ClientsSeeder extends Seeder
             'city'=>'city one',
             'parent_id'=>null,
             'supervisor_id'=>2,
+            'chronic_disease'=>1,
+            'chronic_disease_description'=>'this is the chronic disease description',
             'arrival_location_url'=>'https://alraqiah.com',
         ]);
         $client2 = Client::create([

@@ -27,6 +27,7 @@ class UsersSeeder extends Seeder
             'password'=>'123456',
             'type'=>2,
             'is_active'=>1,
+            'whatsapp_url'=>'https://www.web.whatsapp.com',
         ]);
     }
 }
