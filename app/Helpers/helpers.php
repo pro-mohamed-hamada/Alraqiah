@@ -102,9 +102,9 @@ if (!function_exists('isPointInPolygon')) {
         $checkLat =  ($latP >$latA && $latP < $latB && $latP > $latC && $latP < $latD)? true:false;
         $checkLng =  ($lngP >$lngA && $lngP > $lngB && $lngP < $lngC && $lngP < $lngD)? true:false;
         if($checkLat && $checkLng)
-            return "true";
+            return true;
         else
-            return "false";
+            return false;
 
     }
 
