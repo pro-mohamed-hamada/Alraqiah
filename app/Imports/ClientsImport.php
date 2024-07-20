@@ -41,6 +41,7 @@ class ClientsImport implements ToModel, SkipsEmptyRows, WithValidation, WithHead
             'chronic_disease_description'=> $row['chronic_disease_description'],
             'arrival_location_url'=> $row['arrival_location_url'],
             'supervisor_id'=> $supervisor->id,
+            'qrcode' => uniqid(),
          ]);
          $client->user()->create([
             'name'=> $row['name'],

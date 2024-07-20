@@ -24,6 +24,7 @@ class Client extends Model
         'chronic_disease',
         'chronic_disease_description',
         'arrival_location_url',
+        'qrcode',
     ];
 
 

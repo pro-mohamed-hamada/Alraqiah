@@ -85,6 +85,7 @@ class ClientService extends BaseService
         $clientData['city'] = $data['city'];
         $clientData['supervisor_id'] = $data['supervisor_id'];
         $clientData['arrival_location_url'] = $data['arrival_location_url'];
+        $clientData['qrcode'] = uniqid();
         return $clientData;
     }
 

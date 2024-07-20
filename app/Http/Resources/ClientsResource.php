@@ -35,6 +35,7 @@ class ClientsResource extends JsonResource
             "chronic_disease"=> $this->getRawOriginal('chronic_disease'),
             "chronic_disease_description"=> $this->chronic_disease_description,
             "arrival_location_url"=> $this->arrival_location_url,
+            "qrcode"=> $this->qrcode,
         ];
     }
 }

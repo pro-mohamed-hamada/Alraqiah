@@ -28,6 +28,7 @@ class ClientsSeeder extends Seeder
             'chronic_disease'=>1,
             'chronic_disease_description'=>'this is the chronic disease description',
             'arrival_location_url'=>'https://alraqiah.com',
+            'qrcode'=>uniqid()
         ]);
         $client2 = Client::create([
             'reservation_number'=>123,
@@ -41,6 +42,7 @@ class ClientsSeeder extends Seeder
             'parent_id'=>null,
             'supervisor_id'=>2,
             'arrival_location_url'=>'https://alraqiah.com',
+            'qrcode'=>uniqid()
         ]);
 
         $client1->user()->create([

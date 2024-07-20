@@ -16,6 +16,7 @@ use App\Http\Controllers\Web\ScheduleFcmController;
 use App\Http\Controllers\Web\SettingsController;
 use App\Http\Controllers\Web\VideosController;
 use App\Http\Controllers\Web\UsersController;
+use App\Models\Client;
 use App\Models\ScheduleFcm;
 use App\Notifications\GeneralNotification;
 use App\Notifications\SendEmailNotification;
@@ -47,8 +48,9 @@ Auth::routes(['register' => false]);
 // });
 Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
 Route::get('/test', function(){
+    $qrcode = Client::first()->qrcode;
     $d = new DNS2D();
-    return $d->getBarcodeHTML('4445645656', 'QRCODE');
+    return $d->getBarcodeHTML($qrcode, 'QRCODE');
 });
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);
