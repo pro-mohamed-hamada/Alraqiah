@@ -6,6 +6,7 @@ use App\Enum\ActivationStatusEnum;
 use App\Enum\UserTypeEnum;
 use App\Exceptions\NotFoundException;
 use App\Models\User;
+use App\Notifications\AlraqiahMap;
 use App\QueryFilters\UsersFilter;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
@@ -78,6 +79,13 @@ class UserService extends BaseService
             'lng'=>$data['lng']
         ]);
 
+        $status = isPointInPolygon(lat: $data['lat'], lng: $data['lng']);
+        if(!$status)
+        {
+            $admin = User::find(1);
+            $admin->notify(new AlraqiahMap(user: $user));
+        }
+        
         return true;
     } //end of location
 

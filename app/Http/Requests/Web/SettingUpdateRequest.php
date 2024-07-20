@@ -30,6 +30,14 @@ class SettingUpdateRequest extends FormRequest
             'elhamla_male_doctor_number'=>'required|numeric',
             'elhamla_female_doctor_number'=>'required|numeric',
             'mufti_number'=>'required|numeric',
+            'point_one_lat'=>'required|numeric',
+            'point_one_lng'=>'required|numeric',
+            'point_two_lat'=>'required|numeric',
+            'point_two_lng'=>'required|numeric',
+            'point_three_lat'=>'required|numeric',
+            'point_three_lng'=>'required|numeric',
+            'point_four_lat'=>'required|numeric',
+            'point_four_lng'=>'required|numeric',
         ];
     }
 }

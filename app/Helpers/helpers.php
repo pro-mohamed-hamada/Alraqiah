@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\Cast\Double;
 
 if (!function_exists('apiResponse')) {
     function apiResponse($data = null, $message = null, $code = 200)
@@ -78,4 +80,32 @@ if (!function_exists('setLanguage')) {
     {
         app()->setLocale($locale);
     }
+}
+
+
+if (!function_exists('isPointInPolygon')) {
+
+    function isPointInPolygon(string $lat, string $lng)
+    {
+        $setting = Setting::first();
+        $latP = $lat;
+        $lngP = $lng;
+        $latA = $setting->point_one_lat;
+        $lngA = $setting->point_one_lng;
+        $latB = $setting->point_two_lat;
+        $lngB = $setting->point_two_lng;
+        $latC = $setting->point_three_lat;
+        $lngC = $setting->point_three_lng;
+        $latD = $setting->point_four_lat;
+        $lngD = $setting->point_four_lng;
+
+        $checkLat =  ($latP >$latA && $latP < $latB && $latP > $latC && $latP < $latD)? true:false;
+        $checkLng =  ($lngP >$lngA && $lngP > $lngB && $lngP < $lngC && $lngP < $lngD)? true:false;
+        if($checkLat && $checkLng)
+            return "true";
+        else
+            return "false";
+
+    }
+
 }

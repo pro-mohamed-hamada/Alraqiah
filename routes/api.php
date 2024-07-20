@@ -58,4 +58,9 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::get('clients-qrcode/{qrcode}', [ClientsController::class, 'findByQrcode']);
     Route::put('clients/update-chronic-disease', [ClientsController::class, 'updateChronicDisease']);
     Route::put('relatives/update-chronic-disease/{id}', [RelativesController::class, 'updateChronicDisease']);
+    Route::post('check-points', function(){
+        $lat = request()->lat;
+        $lng = request()->lng;
+        return isPointInPolygon($lat, $lng);
+    });
 });
