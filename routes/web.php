@@ -21,6 +21,8 @@ use App\Notifications\GeneralNotification;
 use App\Notifications\SendEmailNotification;
 use App\Notifications\SendFcmNotification;
 use Illuminate\Support\Facades\Auth;
+use Milon\Barcode\DNS1D;
+use Milon\Barcode\DNS2D;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,9 +47,8 @@ Auth::routes(['register' => false]);
 // });
 Route::get('/', [HomeController::class, 'index'])->middleware('auth')->name('home');
 Route::get('/test', function(){
-    // event(new ComplaintCountEvent("aa"));
-    broadcast(new ComplaintCountEvent("aa"));
-    return true;
+    $d = new DNS2D();
+    return $d->getBarcodeHTML('4445645656', 'QRCODE');
 });
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'], function(){
     Route::resource('clients', ClientsController::class);

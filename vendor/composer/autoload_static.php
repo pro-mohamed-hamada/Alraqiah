@@ -221,11 +221,11 @@ class ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea
         ),
         'Yajra\\DataTables\\' => 
         array (
-            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
-            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
+            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
             2 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
-            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
-            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
+            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'Whoops\\' => 
         array (
@@ -431,8 +431,8 @@ class ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -646,6 +646,13 @@ class ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea
     );
 
     public static $prefixesPsr0 = array (
+        'M' => 
+        array (
+            'Milon\\Barcode' => 
+            array (
+                0 => __DIR__ . '/..' . '/milon/barcode/src',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 
@@ -687,6 +694,7 @@ class ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea
         'App\\Http\\Controllers\\Api\\MediaController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/MediaController.php',
         'App\\Http\\Controllers\\Api\\NotificationsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/NotificationsController.php',
         'App\\Http\\Controllers\\Api\\RatesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/RatesController.php',
+        'App\\Http\\Controllers\\Api\\RelativesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/RelativesController.php',
         'App\\Http\\Controllers\\Api\\SitesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/SitesController.php',
         'App\\Http\\Controllers\\Api\\UsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/UsersController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -722,12 +730,14 @@ class ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\Api\\CheckPhoneRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/CheckPhoneRequest.php',
+        'App\\Http\\Requests\\Api\\ClientUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/ClientUpdateRequest.php',
         'App\\Http\\Requests\\Api\\ComplaintReplayStoreRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/ComplaintReplayStoreRequest.php',
         'App\\Http\\Requests\\Api\\ComplaintReplayUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/ComplaintReplayUpdateRequest.php',
         'App\\Http\\Requests\\Api\\ComplaintRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/ComplaintRequest.php',
         'App\\Http\\Requests\\Api\\LocationRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/LocationRequest.php',
         'App\\Http\\Requests\\Api\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/LoginRequest.php',
         'App\\Http\\Requests\\Api\\RateStoreRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/RateStoreRequest.php',
+        'App\\Http\\Requests\\Api\\RelativeUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/RelativeUpdateRequest.php',
         'App\\Http\\Requests\\Api\\SubscribeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/SubscribeRequest.php',
         'App\\Http\\Requests\\Api\\UpdateProfileLogoRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Api/UpdateProfileLogoRequest.php',
         'App\\Http\\Requests\\Web\\ClientStoreRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Web/ClientStoreRequest.php',
@@ -784,6 +794,7 @@ class ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea
         'App\\Models\\Site' => __DIR__ . '/../..' . '/app/Models/Site.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Video' => __DIR__ . '/../..' . '/app/Models/Video.php',
+        'App\\Notifications\\AlraqiahChronicDisease' => __DIR__ . '/../..' . '/app/Notifications/AlraqiahChronicDisease.php',
         'App\\Notifications\\AlraqiahComplaint' => __DIR__ . '/../..' . '/app/Notifications/AlraqiahComplaint.php',
         'App\\Notifications\\AlraqiahEmail' => __DIR__ . '/../..' . '/app/Notifications/AlraqiahEmail.php',
         'App\\Notifications\\GeneralNotification' => __DIR__ . '/../..' . '/app/Notifications/GeneralNotification.php',
@@ -4014,6 +4025,20 @@ class ComposerStaticInitbf24a7332d1aca23ee896c314b77ceea
         'Matrix\\Operators\\Multiplication' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/Operators/Multiplication.php',
         'Matrix\\Operators\\Operator' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/Operators/Operator.php',
         'Matrix\\Operators\\Subtraction' => __DIR__ . '/..' . '/markbaker/matrix/classes/src/Operators/Subtraction.php',
+        'Milon\\Barcode\\BarcodeServiceProvider' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/BarcodeServiceProvider.php',
+        'Milon\\Barcode\\DNS1D' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/DNS1D.php',
+        'Milon\\Barcode\\DNS2D' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/DNS2D.php',
+        'Milon\\Barcode\\Datamatrix' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/Datamatrix.php',
+        'Milon\\Barcode\\Facades\\DNS1DFacade' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/Facades/DNS1DFacade.php',
+        'Milon\\Barcode\\Facades\\DNS2DFacade' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/Facades/DNS2DFacade.php',
+        'Milon\\Barcode\\GS1_128\\AIData' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/GS1_128/AIData.php',
+        'Milon\\Barcode\\GS1_128\\GS1128' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/GS1_128/GS1128.php',
+        'Milon\\Barcode\\GS1_128\\Section' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/GS1_128/Section.php',
+        'Milon\\Barcode\\GS1_128\\SectionSlicer' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/GS1_128/SectionSlicer.php',
+        'Milon\\Barcode\\GS1_128\\Subsets' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/GS1_128/Subsets.php',
+        'Milon\\Barcode\\PDF417' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/PDF417.php',
+        'Milon\\Barcode\\QRcode' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/QRcode.php',
+        'Milon\\Barcode\\WrongCheckDigitException' => __DIR__ . '/..' . '/milon/barcode/src/Milon/Barcode/WrongCheckDigitException.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',
