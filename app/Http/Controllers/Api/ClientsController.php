@@ -22,15 +22,15 @@ class ClientsController extends Controller
 
     public function updateChronicDisease(ClientUpdateRequest $request)
     {
-        try{
+        // try{
             $status = $this->clientService->updateChronicDisease(data: $request->Validated());
             if(!$status)
                 return apiResponse(message: __('lang.something_went_wrong'), code: 442);
             return apiResponse(message: __('lang.success_operation'));
 
-        }catch(Exception $e){
-            return apiResponse(message: __('lang.something_went_wrong'), code: 442);
-        }
+        // }catch(Exception $e){
+        //     return apiResponse(message: __('lang.something_went_wrong'), code: 442);
+        // }
 
     }//end of location
 

@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Exceptions\NotFoundException;
 use App\Models\Relative;
+use App\Models\User;
+use App\Notifications\AlraqiahChronicDisease;
 use App\QueryFilters\RelativesFilter;
 use App\QueryFilters\ReservationsFilter;
 use Illuminate\Database\Eloquent\Model;
@@ -39,6 +41,15 @@ class RelativeService extends BaseService
         DB::beginTransaction();
         $relative->update($data);
         DB::commit();
+
+        $admin = User::find(1);
+        $emailData = [
+            'name'=>$relative->name,
+            'phone'=>$relative->client?->user->phone,
+            'photo'=>$relative->getFirstMediaUrl('relatives') !=""?$relative->getFirstMediaUrl('relatives') : asset('images/default-image.jpg'),
+            'type'=>'Relative',
+        ];
+        $admin->notify(new AlraqiahChronicDisease(data: $emailData));
 
         return true;
     }

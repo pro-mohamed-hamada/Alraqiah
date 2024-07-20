@@ -11,7 +11,9 @@ use App\QueryFilters\ClientsFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use App\Exceptions\BadRequestHttpException;
+use App\Models\Setting;
 use App\Models\User;
+use App\Notifications\AlraqiahChronicDisease;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -148,8 +150,18 @@ class ClientService extends BaseService
     {
         $user = auth('sanctum')->user();
         DB::beginTransaction();
-        $user->client->update($data);
+        $client = $user->Client;
+        $client->update($data);
         DB::commit();
+
+        $admin = User::find(1);
+        $emailData = [
+            'name'=>$client->user->name,
+            'phone'=>$client->user->phone,
+            'photo'=>$client->user->getFirstMediaUrl('users') !=""?$client->getFirstMediaUrl('users') : asset('images/default-image.jpg'),
+            'type'=>'Client',
+        ];
+        $admin->notify(new AlraqiahChronicDisease(data: $emailData));
 
         return true;
     }
