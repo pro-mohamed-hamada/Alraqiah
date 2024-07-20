@@ -204,12 +204,15 @@ class ClientService extends BaseService
         return $this->getModel()->whereIn('id', $ids)->delete();
     } //end of delete
 
-    public function status($id)
-    {
-        $doctor = $this->findById($id);
-        $doctor->is_active = !$doctor->is_active;
-        return $doctor->save();
 
-    }//end of status
+    public function findByQRCode(string $qrcode)
+    {
+        $client = $this->getModel()->where('qrcode', $qrcode)->first();
+        if(!$client)
+            throw new Exception(__('lang.not_found'));
+
+        return $client;
+
+    }//end of find by qrcode
 
 }

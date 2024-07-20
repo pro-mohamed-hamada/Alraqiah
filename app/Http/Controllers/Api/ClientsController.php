@@ -36,15 +36,29 @@ class ClientsController extends Controller
 
     public function subscribe(SubscribeRequest $request)
     {
-        // try{
+        try{
             $status = $this->clientService->subscribe(data: $request->Validated());
             if(!$status)
                 return apiResponse(message: __('lang.something_went_wrong'), code: 442);
             return apiResponse(message: __('lang.success_operation'));
 
-        // }catch(Exception $e){
-        //     return apiResponse(message: __('lang.something_went_wrong'), code: 442);
-        // }
+        }catch(Exception $e){
+            return apiResponse(message: __('lang.something_went_wrong'), code: 442);
+        }
+
+    }//end of location
+
+    public function findByQrcode(string $qrcode = "")
+    {
+        try{
+            $client = $this->clientService->findByQRCode(qrcode: $qrcode);
+            if(!$client)
+                return apiResponse(message: __('lang.something_went_wrong'), code: 442);
+            return apiResponse(data: new ClientsResource($client), message: __('lang.success_operation'));
+
+        }catch(Exception $e){
+            return apiResponse(message: $e->getMessage(), code: 442);
+        }
 
     }//end of location
 

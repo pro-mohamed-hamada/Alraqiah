@@ -55,7 +55,7 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::delete('notifications/{id}', [NotificationsController::class, 'destroy']);
     Route::put('notifications-read/{id}', [NotificationsController::class, 'markAsRead']);
 
+    Route::get('clients-qrcode/{qrcode}', [ClientsController::class, 'findByQrcode']);
     Route::put('clients/update-chronic-disease', [ClientsController::class, 'updateChronicDisease']);
     Route::put('relatives/update-chronic-disease/{id}', [RelativesController::class, 'updateChronicDisease']);
-
 });
