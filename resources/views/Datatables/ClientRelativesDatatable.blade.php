@@ -31,7 +31,7 @@
                             <td>{{ $relative->seat_number }}</td>
                             <td>{{ $relative->country }}</td>
                             <td>{{ $relative->city }}</td>
-                            <td>{{ $relative->chronic_disease ? __('lang.yes'):__('lang.no') }}</td>
+                            <td>{!! $relative->chronic_disease ? "<img style='width:40px' class='img-responsive' src='".asset('images/disease.png')."'>":__('lang.no') !!}</td>
                             <td>{{ $relative->chronic_disease_description }}</td>
                             <td>{{ $relative->created_at }}</td>
                             <td>
