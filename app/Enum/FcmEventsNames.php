@@ -15,6 +15,7 @@ class FcmEventsNames
         'CREAET_NEW_COMPLAINT'            => 'create_new_complaint',
         'SUPERVISOR_REPLIED_ON_COMPLAINT' => 'supervisor_replied_on_complaint',
         'CLIENT_LOGIN' => 'client_login',
+        'CLIENT_OUTSIDE_LIMIT' => 'CLIENT_OUTSIDE_LIMIT',
     ];
 
     public static array $FLAGS = [

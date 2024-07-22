@@ -4,7 +4,9 @@ namespace App\Services;
 
 use App\Enum\ActivationStatusEnum;
 use App\Enum\UserTypeEnum;
+use App\Events\PushEvent;
 use App\Exceptions\NotFoundException;
+use App\Models\FcmMessage;
 use App\Models\User;
 use App\Notifications\AlraqiahMap;
 use App\QueryFilters\UsersFilter;
@@ -78,14 +80,21 @@ class UserService extends BaseService
             'lat'=>$data['lat'],
             'lng'=>$data['lng']
         ]);
-
-        $status = isPointInPolygon(lat: $data['lat'], lng: $data['lng']);
-        if(!$status)
+        if($user->getRawOriginal('type') == UserTypeEnum::CLIENT)
         {
-            $admin = User::find(1);
-            $admin->notify(new AlraqiahMap(user: $user));
+
+            $status = isPointInPolygon(lat: $data['lat'], lng: $data['lng']);
+            if(!$status)
+            {
+                $admin = User::find(1);
+                $admin->notify(new AlraqiahMap(user: $user));
+
+                //notify the users the complaint created
+                $users[0] = $user->client->supervisor;
+                event(new PushEvent( users: $users, action: FcmMessage::CLIENT_OUTSIDE_LIMIT));
+            }
         }
-        
+
         return true;
     } //end of location
 
