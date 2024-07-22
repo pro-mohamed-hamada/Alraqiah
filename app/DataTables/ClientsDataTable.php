@@ -45,7 +45,7 @@ class ClientsDataTable extends DataTable
                 return '<a target="_blank" href="'.$model->arrival_location_url.'"><i class="fa fa-map-o"></i></a>';
             })
             ->editColumn('chronic_disease', function(Client $model){
-                return $model->chronic_disease ? __('lang.yes') :  __('lang.no');
+                return $model->chronic_disease ? "<img style='width:40px' class='img-responsive' src='".asset('images/disease.png')."'>" :  __('lang.no');
             })
             ->editColumn('supervisor_id', function(Client $model){
                 return $model->supervisor?->name;
@@ -60,7 +60,7 @@ class ClientsDataTable extends DataTable
                     $query->where('phone', 'like', "%{$keyword}%");
                 });
             })
-            ->rawColumns(['check_box', 'action', 'location', 'arrival_location_url'])
+            ->rawColumns(['check_box', 'action', 'location', 'chronic_disease', 'arrival_location_url'])
             ->setRowId('id');
     }
 
