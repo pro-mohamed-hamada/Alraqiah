@@ -172,5 +172,15 @@
         "current_media"=>"Current media",
         "image"=>"Image",
         "media"=>"Media",
+        "map_limits"=>"Map limits",
+        "point_one_lat"=>"Point one lat",
+        "point_one_lng"=>"Point one lng",
+        "point_two_lat"=>"Point two lat",
+        "point_two_lng"=>"Point two lng",
+        "point_three_lat"=>"Point three lat",
+        "point_three_lng"=>"Point three lng",
+        "point_four_lat"=>"Point four lat",
+        "point_four_lng"=>"Point four lng",
+
 	]
 ?>
