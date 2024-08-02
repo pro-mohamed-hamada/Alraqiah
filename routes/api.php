@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ComplaintReplayController;
 use App\Http\Controllers\Api\ComplaintsController;
 use App\Http\Controllers\Api\FaqsController;
 use App\Http\Controllers\Api\HomeController;
+use App\Http\Controllers\Api\LiveMessageController;
 use App\Http\Controllers\Api\NotificationsController;
 use App\Http\Controllers\Api\RatesController;
 use App\Http\Controllers\Api\RelativesController;
@@ -54,6 +55,8 @@ Route::group(['middleware'=>'auth:sanctum'], function(){
     Route::get('notifications', [NotificationsController::class, 'index']);
     Route::delete('notifications/{id}', [NotificationsController::class, 'destroy']);
     Route::put('notifications-read/{id}', [NotificationsController::class, 'markAsRead']);
+    Route::get('live-messages', [LiveMessageController::class, 'index']);
+    Route::post('live-messages', [LiveMessageController::class, 'store']);
 
     Route::get('clients-qrcode/{qrcode}', [ClientsController::class, 'findByQrcode']);
     Route::put('clients/update-chronic-disease', [ClientsController::class, 'updateChronicDisease']);

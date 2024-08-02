@@ -79,6 +79,11 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(Client::class,  'supervisor_id');
     }
 
+    public function liveMessages(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(LiveMessage::class,  'user_id');
+    }
+
 
     public static function SendNotification(ScheduleFcm|FcmMessage $fcm, $users)
     {

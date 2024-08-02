@@ -3,10 +3,8 @@
 namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Enum\ActionTypeEnum;
-use Illuminate\Support\Facades\Auth;
 
-class ComplaintRequest extends FormRequest
+class LiveMessageStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +22,23 @@ class ComplaintRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'complaint'=>'required|string',
+            'title'=>'required|string',
+            'content'=>'required|string',
+            //@rule@
+
         ];
     }
+
+    /**
+     * Handle the request after validation has passed.
+     *
+     * @return void
+     */
+    protected function passedValidation()
+    {
+        $this->merge([
+            'user_id'=>auth('sanctum')->user()->id,
+        ]);
+    }
+
 }
