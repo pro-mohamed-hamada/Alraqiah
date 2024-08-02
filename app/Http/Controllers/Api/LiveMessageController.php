@@ -39,13 +39,13 @@ class LiveMessageController extends Controller
     public function store(LiveMessageStoreRequest $request)
     {
         try{
-            $liveMessage = $this->liveMessageService->store(data: $request->Validated());
+            $liveMessage = $this->liveMessageService->store(data: $request->all());
             if(!$liveMessage)
                 return apiResponse(message: __('lang.something_went_wrong'));
             return apiResponse(data: new LiveMessagesResource($liveMessage), message: __('lang.success_operation'));
 
         }catch(Exception $e){
-            return apiResponse(message: __('lang.something_went_wrong'), code: 442);
+            return apiResponse(message: $e->getMessage(), code: 442);
         }
 
     }//end of store
