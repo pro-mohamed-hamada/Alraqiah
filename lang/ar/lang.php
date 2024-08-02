@@ -167,5 +167,10 @@
         "chronic_disease"=>"مرض مزمن",
         "chronic_disease_discription"=>"وصف المرض المزمن",
         "arrival_location_url"=>"رابط مكان الوصول",
+        "type"=>"النوع",
+        "current_media"=>"الوسائط الحالية",
+        "image"=>"صورة",
+        "media"=>"الوسائط",
+
 	]
 ?>

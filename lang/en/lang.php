@@ -168,5 +168,9 @@
         "chronic_disease"=>"Chronic disease",
         "chronic_disease_discription"=>"Chronic disease discription",
         "arrival_location_url"=>"Arrival location url",
+        "type"=>"Type",
+        "current_media"=>"Current media",
+        "image"=>"Image",
+        "media"=>"Media",
 	]
 ?>
