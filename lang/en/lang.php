@@ -181,6 +181,7 @@
         "point_three_lng"=>"Point three lng",
         "point_four_lat"=>"Point four lat",
         "point_four_lng"=>"Point four lng",
+        "replies"=>"Replies",
 
 	]
 ?>

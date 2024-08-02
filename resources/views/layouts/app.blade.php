@@ -205,54 +205,12 @@
             });
         </script>
         {{-- @yield('script') --}}
-        <script>
-            $(document).ready(function () {
-                var selected_ids = [];
 
-                $(".checkAll").click(function(){
-                    $('.datatable-checkboxes').not(this).prop('checked', this.checked);
-                    $('input[name="clients[]"]').each(function(i){
-                        if ($(this).is(':checked')) {
-                            // Perform action when checkbox is checked
-                            selected_ids.push($(this).val())
-
-                        } else {
-                            // Perform action when checkbox is unchecked
-                            selected_ids.pop($(this).val())
-                            console.log('Checkbox is unchecked.');
-                        }
-                    });
-                });
-
-            });
-        </script>
-
+        <script src="{{ asset('js/app.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
         <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
-        <script>
-                //  // Enable pusher logging - don't include this in production
-                Pusher.logToConsole = true;
+        <script src="{{ asset('js/pusher.js') }}"></script>
 
-                // var pusher = new Pusher('274a7b774e7ee17cfcf3', {
-                //     cluster: 'eu'
-                // });
-
-                var pusher = new Pusher('274a7b774e7ee17cfcf3', {
-                    cluster: 'eu',
-                    authEndpoint: '/broadcasting/auth',
-                    auth: {
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        }
-                    }
-                });
-                var myChannel = pusher.subscribe('CompaintCountChannel');
-                myChannel.bind('my-event', function(data) {
-                    $('#complaint_count').html(data.count);
-                    playAudio();
-                });
-
-        </script>
     </body>
 
 </html>
