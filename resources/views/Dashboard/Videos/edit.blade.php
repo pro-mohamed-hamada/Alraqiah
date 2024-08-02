@@ -13,7 +13,19 @@
                             @method('put')
                             @csrf
                             <div class="row mb-3 g-3">
-                                
+
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.type') }} *</label>
+                                    <select type="text" name="type" class="form-control">
+                                        <option value="">{{ __('lang.choose') }}</option>
+                                        <option value="video" {{ $video->type == 'video' ? "selected":"" }}>{{ __('lang.video') }}</option>
+                                        <option value="image" {{ $video->type == 'image' ? "selected":"" }}>{{ __('lang.image') }}</option>
+                                    </select>
+                                    @error('type')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.title') }} *</label>
                                     <input type="text" name="title" value="{{ $video->title }}" class="form-control">
@@ -22,9 +34,9 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg-4">
-                                    <label>{{ __('lang.video') }} *</label>
-                                    <input type="file" name="video_file" class="form-control">
-                                    @error('video_file')
+                                    <label>{{ __('lang.media') }} *</label>
+                                    <input type="file" name="media_file" class="form-control">
+                                    @error('media_file')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -36,12 +48,16 @@
                                 </div>
 
                                 <div class="col-lg-12">
-                                    <h2>{{ __('lang.current_video') }}</h2>
+                                    <h2>{{ __('lang.current_media') }}</h2>
+                                    @if($video->type == 'video')
                                     <video width="320" height="240" controls>
                                         <source src="{{ $video->getFirstMediaUrl('media') }}" type="video/mp4">
                                         <source src="{{ $video->getFirstMediaUrl('media') }}" type="video/ogg">
                                         Your browser does not support the video tag.
                                     </video>
+                                    @else
+                                    <img width="320" height="240" src="{{ $video->getFirstMediaUrl('media') }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="row mb-3 g-3">
@@ -55,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         @endsection
-   
+

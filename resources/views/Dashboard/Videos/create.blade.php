@@ -21,7 +21,18 @@
                         <form method="POST" action="{{ route('videos.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3 g-3">
-                                
+
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.type') }} *</label>
+                                    <select type="text" name="type" class="form-control">
+                                        <option value="">{{ __('lang.choose') }}</option>
+                                        <option value="video">{{ __('lang.video') }}</option>
+                                        <option value="image">{{ __('lang.image') }}</option>
+                                    </select>
+                                    @error('type')
+                                        <span class="error">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.title') }} *</label>
                                     <input type="text" name="title" class="form-control">
@@ -30,9 +41,9 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg-4">
-                                    <label>{{ __('lang.video') }} *</label>
-                                    <input type="file" name="video_file" class="form-control">
-                                    @error('video_file')
+                                    <label>{{ __('lang.media') }} *</label>
+                                    <input type="file" name="media_file" class="form-control">
+                                    @error('media_file')
                                         <span class="error">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -54,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         @endsection
-   
+

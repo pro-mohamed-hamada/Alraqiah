@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Web;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class VideoStoreRequest extends FormRequest
 {
@@ -23,7 +24,11 @@ class VideoStoreRequest extends FormRequest
     {
         return [
             'title'=>'required|string',
-            'video_file'=>'required|file|mimes:mp4,mov,avi,mpeg',
+            'type'=>'required|string|in:video,image',
+            'media_file'=>['required','file',
+                Rule::when($this->type === 'video', ['mimes:mp4,mkv,avi,mov,mpeg']),
+                Rule::when($this->type === 'image', ['mimes:jpg,jpeg,png,webp']),
+            ],
             'is_active'=>'nullable|string',
         ];
     }

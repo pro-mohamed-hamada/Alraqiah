@@ -10,7 +10,11 @@
                     <div class="card-body">
                         {{-- start show --}}
                             <div class="row mb-3 g-3">
-                                
+
+                                <div class="col-lg-4">
+                                    <label>{{ __('lang.type') }} *</label>
+                                    <label class="form-control">{{ $video->type }}</label>
+                                </div>
                                 <div class="col-lg-4">
                                     <label>{{ __('lang.title') }} *</label>
                                     <label class="form-control">{{ $video->title }}</label>
@@ -22,12 +26,16 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <h2>{{ __('lang.current_video') }}</h2>
+                                    <h2>{{ __('lang.current_media') }}</h2>
+                                    @if($video->type == 'video')
                                     <video width="320" height="240" controls>
                                         <source src="{{ $video->getFirstMediaUrl('media') }}" type="video/mp4">
                                         <source src="{{ $video->getFirstMediaUrl('media') }}" type="video/ogg">
                                         Your browser does not support the video tag.
                                     </video>
+                                    @else
+                                    <img width="320" height="240" src="{{ $video->getFirstMediaUrl('media') }}">
+                                    @endif
                                 </div>
                             </div>
                             <div class="row mb-3 g-3">
@@ -39,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         @endsection
-   
+

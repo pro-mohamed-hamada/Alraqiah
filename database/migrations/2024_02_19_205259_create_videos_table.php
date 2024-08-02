@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->enum('type', ['video', 'image']);
             $table->boolean('is_active')->default(ActivationStatusEnum::ACTIVE);
             $table->timestamps();
         });

@@ -18,6 +18,7 @@ class VideosResource extends JsonResource
             'id'    => $this->id,
             'title' => $this->title,
             'url' =>$this->getFirstMediaUrl('media') !=""?$this->getFirstMediaUrl('media') : asset('images/default-image.jpg'),
+            'type' =>$this->type,
         ];
     }
 }

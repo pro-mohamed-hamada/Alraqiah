@@ -77,8 +77,9 @@
                             <hr>
                             <h1>{{ __('lang.map_limits') }}</h1>
                             <div class="row mb-3 g-3">
-                                <div class="col-lg-12">
-                                    <img style="height: 300px" src="{{ asset('images/default-image.jpg') }}" class="form-control">
+
+                                <div class="col-lg-4">
+                                    <img style="height: 300px" src="{{ asset('images/map_limits.jpg') }}" class="form-control">
                                 </div>
                             </div>
                             <div class="row mb-3 g-3">

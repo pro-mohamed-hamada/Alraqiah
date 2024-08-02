@@ -45,9 +45,9 @@ class VideoService extends BaseService
         $video = $this->getModel()->create($data);
         if (!$video)
             return false ;
-        if (isset($data['video_file']))
+        if (isset($data['media_file']))
         {
-            $path = Request()->file('video_file')->store('temporary_videos');
+            $path = Request()->file('media_file')->store('temporary_videos');
             StoreVideoJob::dispatch($video, $path);
         }
         return $video;
@@ -57,9 +57,9 @@ class VideoService extends BaseService
     {
         $video = $this->findById($id);
         $data['is_active'] = isset($data['is_active']) ? ActivationStatusEnum::ACTIVE:ActivationStatusEnum::NOT_ACTIVE;
-        if (isset($data['video_file']))
+        if (isset($data['media_file']))
         {
-            $path = Request()->file('video_file')->store('temporary_videos');
+            $path = Request()->file('media_file')->store('temporary_videos');
             UpdateVideoJob::dispatch($video, $path);
         }
         return $video->update($data);
