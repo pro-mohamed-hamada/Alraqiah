@@ -41,7 +41,7 @@ class AlraqiahMap extends Notification
                     ->line('This client is now outside the map points')
                     ->line('New Complaint from: '.$this->user->name)
                     ->line('client phone: '.$this->user->phone)
-                    ->action('Show complaints', url("https://www.google.com/maps/search/?api=1&query='.$this->user->lat.','.$this->user->lng.'"))
+                    ->action('Show complaints', url('https://www.google.com/maps/search/?api=1&query='.$this->user->lat.','.$this->user->lng.''))
                     ->line('Thank you for using our application!');
     }
 
